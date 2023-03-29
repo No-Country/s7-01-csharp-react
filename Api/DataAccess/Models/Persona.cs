@@ -6,8 +6,11 @@ namespace s7_01.Api.DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
+
         public string Nombre { get; set; }
+
         public string DNI { get; set; }
+
         public Direccion? Direccion { get; set; }
     }
 }
