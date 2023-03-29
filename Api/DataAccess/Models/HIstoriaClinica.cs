@@ -1,15 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace s7_01.Api.DataAccess.Models
 {
     public class HistoriaClinica
     {
         public int Id { get; set; }
-
-        //TODO No se sea relevante el propietario acá
-        //public int PropietarioId { get; set; }
-
-        //public Propietario Propietario { get; set; }
 
         public int MascotaId { get; set; }
         [ForeignKey("MascotaId")]
