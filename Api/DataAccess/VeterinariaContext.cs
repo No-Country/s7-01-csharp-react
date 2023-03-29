@@ -13,6 +13,7 @@ namespace s7_01.Api.DataAccess
         {
 
         }
+        
         public virtual DbSet<Direccion> Direcciones { get; set; }
 
         public virtual DbSet<Propietario> Propietarios { get; set; }
@@ -22,12 +23,9 @@ namespace s7_01.Api.DataAccess
         public virtual DbSet<MascotaPropietario> MascotaPropietarios { get; set; }
 
 
-
-
         public virtual DbSet<Autorizacion> Autorizaciones { get; set; }
 
         public virtual DbSet<CarnetVacuna> CarnetVacunas { get; set; }
-
 
 
         //Veterinaria
@@ -37,5 +35,6 @@ namespace s7_01.Api.DataAccess
         public virtual DbSet<Tratamiento> Tratamientos { get; set; }
 
         public virtual DbSet<Producto> Productos { get; set; }
+
     }
 }

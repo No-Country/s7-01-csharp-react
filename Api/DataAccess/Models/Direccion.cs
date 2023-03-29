@@ -6,6 +6,7 @@ namespace s7_01.Api.DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
+        
         public int IdPersona { get; set; }
         //public Persona Persona { get; set; }
 
