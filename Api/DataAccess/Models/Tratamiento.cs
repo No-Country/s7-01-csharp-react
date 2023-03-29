@@ -1,12 +1,12 @@
-﻿namespace s7_01.Api.DataAccess.Models
+namespace s7_01.Api.DataAccess.Models
 {
     public class Tratamiento
     {
         public int Id { get; set; }
 
-        public int MascotaId { get; set; }
+        public int HistoriaClinicaId { get; set; }
 
-        public Mascota Mascota { get; set; }
+        public HistoriaClinica HistoriaClinica { get; set; }
 
         public int VeterinariaId { get; set; }
 
