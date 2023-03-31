@@ -29,7 +29,7 @@ namespace s7_01.Api.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
-       
+
             //para prueba
             //var repo = new MascotaPropietarioRepository(_context);
             var propietario = new Propietario()

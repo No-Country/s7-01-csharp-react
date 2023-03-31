@@ -6,7 +6,7 @@ namespace s7_01.Api.DataAccess.Models
     {
         public int Id { get; set; }
 
-        //TODO No se sea relevante el propietario acá
+        //TODO No se sea relevante el propietario ac�
         //public int PropietarioId { get; set; }
 
         //public Propietario Propietario { get; set; }
