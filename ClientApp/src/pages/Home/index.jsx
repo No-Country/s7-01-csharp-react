@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const App = () => {
+const Home = () => {
   return (
     <div class="w-full">
       <nav class="mx-auto flex justify-between">
@@ -23,4 +23,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
