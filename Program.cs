@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.DataAccess;
+using s7_01.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,7 +13,8 @@ builder.Services.AddDbContext<VeterinariaContext>(  options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("vet")
     ));
 
-
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IMascotaPropietarioRepository, MascotaPropietarioRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
