@@ -1,8 +1,13 @@
 # vite-template-react
-skeleton de un proyecto react con vite usando docker! 
+
+skeleton de un proyecto react con vite usando docker!
+
 <h1 align="center">
   Vite Template React app
 </h1>
+
+SDK .NET Framework:
+https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-6.0.407-linux-x64-binaries
 
 <p align="center">
   <a href="https://github.com/SafdarJamal/vite-template-react/releases">
