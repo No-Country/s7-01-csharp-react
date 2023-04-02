@@ -3,7 +3,9 @@ export function DataClinic() {
     <>
       <div className="mt-16 p-4">
         <div className="p-1">
-          <h1 className="text-black ">nombre de la clinica</h1>
+          <h1 className="text-black not-italic font-medium text-2xl">
+            nombre de la clinica
+          </h1>
         </div>
         <div className="flex mb-2 text-sm text-black">
           <svg
