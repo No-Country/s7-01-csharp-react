@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "../components/Layouts/Navbar";
+import Home from "../pages/Home";
 // import { useSelector, useDispatch } from "react-redux";
 
 import { PublicRoutes, PrivateRoutes, AuthRouter, AppRouter } from "../router";
@@ -11,9 +11,10 @@ export function App() {
   console.log(authenticate, " routes");
   return (
     <BrowserRouter>
-      <Navbar/>
+      
       <Routes>
-        <Route path="/" element={<p> sin logear</p>} />
+    
+        <Route path="/" element={<Home/>} />
         <Route
           path="/auth/*"
           element={
