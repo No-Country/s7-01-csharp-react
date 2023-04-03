@@ -1,26 +1,26 @@
+import { Clock, MapPin } from "@phosphor-icons/react";
+
 export function DataClinic() {
   return (
     <>
       <div className="mt-16 p-4">
-        <div className="p-1">
+        <div className="mb-2">
           <h1 className="text-black not-italic font-medium text-2xl">
             nombre de la clinica
           </h1>
         </div>
-        <div className="flex mb-2 text-sm text-black">
-          <svg
-            class="w-5 h-5 inline mr-3"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-          <p>Change a few things up and try submitting again.</p>
+
+        <div className="flex justify-start items-center gap-1.5 mb-2 text-sm text-[#888888]">
+          <Clock className="block" size={13} />
+          <p className="text-[#888888] not-italic font-normal text-xs uppercase">
+            LUN. A VIE. DE 08:00 A 19:00
+          </p>
+        </div>
+        <div className="flex justify-start items-center gap-1.5 mb-2 text-sm text-[#888888]">
+          <MapPin size={13} />
+          <p className="text-[#888888] not-italic font-normal text-xs uppercase">
+            dirección
+          </p>
         </div>
       </div>
     </>
