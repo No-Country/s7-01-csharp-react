@@ -2,22 +2,25 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    // se colocar las fuentes
-    // fontFamily: {
+
+     fontFamily: {
     //   sans: ['Graphik', 'sans-serif'],
     //   serif: ['Merriweather', 'serif'],
-    // },
-    // colors: {
-    //   'blue': '#1fb6ff',
-    //   'purple': '#7e5bef',
-    //   'pink': '#ff49db',
-    //   'orange': '#ff7849',
-    //   'green': '#13ce66',
-    //   'yellow': '#ffc82c',
-    //   'gray-dark': '#273444',
-    //   'gray': '#8492a6',
-    //   'gray-light': '#d3dce6',
-    // },
+    poppins:['Poppins',"sans-serif"]
+    },
+    colors: {
+      'white': '#ffffff',
+      'gray-50': '#ebebeb',
+      'bg-color': '#f5f5f5',
+      'grey-100': '#999ca0',
+      'grey-150': '#656565',
+      'primary-100': '#1558d6',
+      'primary-50': '#e8f0fe',
+      'primary-150': '#5c9ce8',
+      'secondary-50': '#a4d0c0',
+      'secondary-100': '#488c73',
+      'error': '#ff4e64'
+    },
     extend: {
       // spacing: {
       //   '8xl': '96rem',
