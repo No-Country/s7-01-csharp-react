@@ -2,6 +2,7 @@ import { CoverClinic } from "../../components/CoverClinic";
 import { DataClinic } from "../../components/DataClinic";
 import { ContactClinic } from "../../components/ContactClinic";
 import { InfoClinic } from "../../components/InfoClinic";
+import { ServiceClinic } from "../../components/ServiceClinic";
 import Navbar from "../../components/Layouts/Navbar";
 
 export function Clinic() {
@@ -15,6 +16,7 @@ export function Clinic() {
         <DataClinic />
         <ContactClinic />
         <InfoClinic />
+        <ServiceClinic />
       </main>
     </>
   );

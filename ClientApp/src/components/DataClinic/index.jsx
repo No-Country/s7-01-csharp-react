@@ -3,7 +3,7 @@ import { Clock, MapPin } from "@phosphor-icons/react";
 export function DataClinic() {
   return (
     <>
-      <div className="mt-16 p-4">
+      <section className="mt-10 mx-4">
         <div className="mb-2">
           <h1 className="text-black not-italic font-medium text-2xl">
             nombre de la clinica
@@ -22,7 +22,7 @@ export function DataClinic() {
             dirección
           </p>
         </div>
-      </div>
+      </section>
     </>
   );
 }
