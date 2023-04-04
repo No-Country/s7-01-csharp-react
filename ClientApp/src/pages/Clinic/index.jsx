@@ -7,9 +7,11 @@ import Navbar from "../../components/Layouts/Navbar";
 export function Clinic() {
   return (
     <>
-      <Navbar />
-      <CoverClinic />
+      <header>
+        <Navbar />
+      </header>
       <main className="flex flex-col gap-8">
+        <CoverClinic />
         <DataClinic />
         <ContactClinic />
         <InfoClinic />

@@ -1,6 +1,6 @@
 export function CoverClinic() {
   return (
-    <div className="container relative mx-auto mt-4">
+    <section className="container relative mx-auto mt-4">
       <div className="w-full h-48 bg-slate-500 rounded-t-lg">
         <img
           className="w-full h-full object-cover object-center rounded-t-lg"
@@ -18,6 +18,6 @@ export function CoverClinic() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
