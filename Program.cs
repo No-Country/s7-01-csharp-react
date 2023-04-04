@@ -15,6 +15,7 @@ builder.Services.AddDbContext<VeterinariaContext>(  options =>
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IMascotaPropietarioRepository, MascotaPropietarioRepository>();
+builder.Services.AddScoped<IVeterinariaRepository, VeterinariaRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

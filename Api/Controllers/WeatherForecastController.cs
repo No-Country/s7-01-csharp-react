@@ -18,12 +18,14 @@ namespace s7_01.Api.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly VeterinariaContext _context;
         private readonly IMascotaPropietarioRepository _repo;
+        private readonly IVeterinariaRepository _vetrepo;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo, IVeterinariaRepository vetrepo)
         {
             _logger = logger;
             _context = context;
             _repo = repo;
+            _vetrepo = vetrepo;
         }
 
         [HttpGet]
@@ -66,6 +68,27 @@ namespace s7_01.Api.Controllers
 
             var result = _context.SaveChanges();
 
+
+            _context.Productos.Add(new Producto
+            {
+                VeterinariaId = 20,
+                Nombre = "producto de vet 2",
+                Costo = 10
+            });
+
+            _context.Veterinarias.Add(new Veterinaria
+            {
+                Telefono = "2321321",
+                PersonaResponsableId = 1,
+                Nombre = "Veterinaria 1",
+                DNI = "dni"
+            });
+
+            
+
+            _context.SaveChanges();
+
+            var productos = _vetrepo.GetProductosByVeterinariaId(6);
 
 
 

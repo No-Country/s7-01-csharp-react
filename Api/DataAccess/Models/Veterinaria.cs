@@ -33,6 +33,10 @@ namespace s7_01.Api.DataAccess.Models
         [Required]
         public string Telefono { get; set; } //por si no tiene whatsapp
 
+        public IEnumerable<Producto> Productos { get; set; } = new List<Producto>();
+
+        public IEnumerable<Servicio> Servicios { get; set; } = new List<Servicio>();
+
 
 
 

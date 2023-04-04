@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace s7_01.Api.DataAccess.Models
 {
-    public class Producto
+    public class Servicio
     {
-        public int Id { get; set; }              
+        public int Id { get; set; }
 
         public int VeterinariaId { get; set; }
 
@@ -15,6 +15,5 @@ namespace s7_01.Api.DataAccess.Models
         public decimal Costo { get; set; }
 
         public string Nombre { get; set; }
-
     }
 }
