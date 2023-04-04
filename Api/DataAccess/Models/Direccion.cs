@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace s7_01.Api.DataAccess.Models
 {
@@ -6,9 +7,10 @@ namespace s7_01.Api.DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
-        
         public int IdPersona { get; set; }
-        //public Persona Persona { get; set; }
+
+        [ForeignKey("IdPersona")]
+        public Persona Persona { get; set; }
 
         //TODO : podria ir en un solo string estas dos
         public string Calle { get; set; }
