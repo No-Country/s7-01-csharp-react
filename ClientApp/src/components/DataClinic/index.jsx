@@ -5,7 +5,7 @@ export function DataClinic() {
     <>
       <section className="mt-10 mx-4">
         <div className="mb-2">
-          <h1 className="text-black not-italic font-medium text-2xl">
+          <h1 className="text-[#010B1D] not-italic font-medium text-2xl">
             nombre de la clinica
           </h1>
         </div>
