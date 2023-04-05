@@ -5,10 +5,10 @@ const Navbar = () => {
     return (
         
             <nav className="mx-auto flex justify-between w-full bg-slate-200">
-                <div className="text-2xl cursor-pointer ">
+                <div className="text-2xl cursor-pointer">
                    <Dog size={40} />
                 </div>
-                <div className=" cursor-pointer">
+                <div className=" cursor-pointer bg-gree">
                     <UserCircle size={40}/>
                 </div>
             </nav>
