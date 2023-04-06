@@ -4,6 +4,7 @@ import { ContactClinic } from "../../components/ContactClinic";
 import { InfoClinic } from "../../components/InfoClinic";
 import { ServiceClinic } from "../../components/ServiceClinic";
 import Navbar from "../../components/Layouts/Navbar";
+import { SocialNetwork } from "../../components/SocialNetwork";
 
 export function Clinic() {
   return (
@@ -17,6 +18,7 @@ export function Clinic() {
         <ContactClinic />
         <InfoClinic />
         <ServiceClinic />
+        <SocialNetwork />
       </main>
     </>
   );
