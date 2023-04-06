@@ -5,6 +5,7 @@ import { InfoClinic } from "../../components/InfoClinic";
 import { ServiceClinic } from "../../components/ServiceClinic";
 import Navbar from "../../components/Layouts/Navbar";
 import { SocialNetwork } from "../../components/SocialNetwork";
+import { OtherClinic } from "../../components/OtherClinic";
 
 export function Clinic() {
   return (
@@ -13,12 +14,27 @@ export function Clinic() {
         <Navbar />
       </header>
       <main className="flex flex-col gap-8">
-        <CoverClinic />
-        <DataClinic />
-        <ContactClinic />
-        <InfoClinic />
-        <ServiceClinic />
+        <section className="container relative mx-auto">
+          <CoverClinic />
+        </section>
+
+        <section className="mt-10 mx-4">
+          <DataClinic />
+        </section>
+        <section className="mx-4">
+          <ContactClinic />
+        </section>
+        <section className="mx-4">
+          <InfoClinic />
+        </section>
+        <section className="mx-4">
+          <ServiceClinic />
+        </section>
+
         <SocialNetwork />
+        <section className="mx-4">
+          <OtherClinic />
+        </section>
       </main>
     </>
   );
