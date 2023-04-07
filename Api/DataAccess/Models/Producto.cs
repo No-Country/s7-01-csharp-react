@@ -5,8 +5,9 @@ namespace s7_01.Api.DataAccess.Models
 {
     public class Producto
     {
-        public int Id { get; set; }              
+        public int Id { get; set; }
 
+        [ForeignKey("Veterinaria")]
         public int VeterinariaId { get; set; }
 
         public Veterinaria Veterinaria { get; set; }

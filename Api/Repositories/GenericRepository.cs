@@ -7,6 +7,7 @@ namespace s7_01.Api.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly DbContext _context;
+
         public GenericRepository(DbContext context)
         {
             _context = context;
