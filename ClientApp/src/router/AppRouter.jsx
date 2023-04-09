@@ -15,6 +15,7 @@ export function AppRouter() {
         <Route path="/clinic" element={<Clinic />} />
         <Route path="/petinfo" element={<PetInfo />} />
         <Route path="/add-mascot" element={<AddPet />} />
+        <Route path="/petinfo" element={<PetInfo />} />
       </Routes>
     </>
   );
