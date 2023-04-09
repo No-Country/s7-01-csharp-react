@@ -3,18 +3,30 @@ using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.DataAccess;
 using s7_01.Api.Repositories;
 using s7_01.Api.Extensions;
+using s7_01.Api.Services.Email;
+using System.ComponentModel;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSwaggerGen(c =>
+ c.CustomSchemaIds(x => x.GetCustomAttributes<DisplayNameAttribute>().SingleOrDefault().DisplayName));
+
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddAplicationServices();
 
-builder.Services.AddDbContext<VeterinariaContext>(  options =>
+builder.Services.AddDbContext<VeterinariaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("vet")
     ));
 
+var emailConfig = builder.Configuration
+      .GetSection(EmailConfiguration.Section)
+      .Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
+
+builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IMascotaPropietarioRepository, MascotaPropietarioRepository>();
 var app = builder.Build();
@@ -26,6 +38,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
@@ -35,6 +50,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller}/{action=Index}/{id?}");
 
-app.MapFallbackToFile("index.html"); 
+app.MapFallbackToFile("index.html");
 
 app.Run();
