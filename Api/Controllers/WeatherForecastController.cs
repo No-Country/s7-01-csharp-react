@@ -3,6 +3,8 @@ using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.DataAccess;
 using s7_01.Api.DataAccess.Models;
 using s7_01.Api.Repositories;
+using s7_01.Api.Services.Email;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace s7_01.Api.Controllers
 {
@@ -18,12 +20,14 @@ namespace s7_01.Api.Controllers
         private readonly ILogger<WeatherForecastController> _logger;
         private readonly VeterinariaContext _context;
         private readonly IMascotaPropietarioRepository _repo;
+        private readonly IEmailService _emailService;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo, IEmailService emailService)
         {
             _logger = logger;
             _context = context;
             _repo = repo;
+            _emailService = emailService;
         }
 
         [HttpGet]
@@ -76,6 +80,14 @@ namespace s7_01.Api.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("/sendEmail")]
+        public IActionResult SendEmail(string message)
+        {
+            var msg = new Message(new[] {"vet@mailinator.com" }, "Mensaje de prueba",message);
+            _emailService.SendEmail(msg);
+            return Ok("vet@mailinator.com");
         }
     }
 }
