@@ -1,5 +1,8 @@
 import React from "react";
 import { PawPrint } from "@phosphor-icons/react";
+import imgPerro from "../../assets/images/imgPerro.png"
+import imgPerro2 from "../../assets/images/imgPerro2.png"
+import imgPerro3 from "../../assets/images/imgPerro3.png"
 
 const ShowPets = () => {
   return (
@@ -17,21 +20,17 @@ const ShowPets = () => {
             <p className="text-center">Mascota</p>
           </div>
           <div className="">
-            <div className="h-16 w-16 rounded-full border bg-slate-300 hover:border-purple-700"></div>
+            <img src={imgPerro} alt="perro" className="h-16 w-16 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer" />
             <p className="text-center">{"Mascota"}</p>
           </div>
           <div className="">
-            <div className="h-16 w-16 rounded-full border bg-slate-300 hover:border-purple-700"></div>
+          <img src={imgPerro2} alt="perro" className="h-16 w-16 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer" />
             <p className="text-center">{"Mascota"}</p>
           </div>
           <div className="">
-            <div className="h-16 w-16 rounded-full border bg-slate-300 hover:border-purple-700"></div>
+          <img src={imgPerro3} alt="perro" className="h-16 w-16 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer" />
             <p className="text-center">{"Mascota"}</p>
-          </div>
-          <div className="">
-            <div className="h-16 w-16 rounded-full border bg-slate-300 hover:border-purple-700"></div>
-            <p className="text-center">{"Mascota"}</p>
-          </div>
+          </div>        
         </div>
       </>
     </>
