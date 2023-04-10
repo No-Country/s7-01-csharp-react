@@ -1,11 +1,14 @@
 import { CoverClinic } from "../../components/CoverClinic";
 import { DataClinic } from "../../components/DataClinic";
-import { ContactClinic } from "../../components/ContactClinic";
+import { ContactSocialNetwork } from "../../components/common";
 import { InfoClinic } from "../../components/InfoClinic";
 import { ServiceClinic } from "../../components/ServiceClinic";
 import Navbar from "../../components/Layouts/Navbar";
 import { SocialNetwork } from "../../components/SocialNetwork";
 import { OtherClinic } from "../../components/OtherClinic";
+
+// icons
+import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function Clinic() {
   return (
@@ -13,6 +16,7 @@ export function Clinic() {
       <header>
         <Navbar />
       </header>
+
       <main className="flex flex-col gap-8">
         <section className="container relative mx-auto">
           <CoverClinic />
@@ -21,12 +25,18 @@ export function Clinic() {
         <section className="mt-10 mx-4">
           <DataClinic />
         </section>
+
         <section className="mx-4">
-          <ContactClinic />
+          <ContactSocialNetwork
+            icon={<WhatsappLogo size={20} />}
+            title="Enviar Whatsapp"
+          />
         </section>
+
         <section className="mx-4">
           <InfoClinic />
         </section>
+
         <section className="mx-4">
           <ServiceClinic />
         </section>
