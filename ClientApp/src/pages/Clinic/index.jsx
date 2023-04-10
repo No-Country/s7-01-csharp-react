@@ -41,7 +41,10 @@ export function Clinic() {
           <ServiceClinic />
         </section>
 
-        <SocialNetwork />
+        <section className="mx-4">
+          <SocialNetwork />
+        </section>
+
         <section className="mx-4">
           <OtherClinic />
         </section>
