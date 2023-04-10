@@ -5,6 +5,7 @@ import { ContentImage } from "../../components/ContentImage";
 import { Input } from "../../components/common";
 import { CheckBox } from "../../components/common";
 import { Button } from "../../components/common";
+import { Title, Description } from "../../components/common";
 
 export function AddPet() {
   return (
@@ -14,11 +15,10 @@ export function AddPet() {
       </header>
       <main>
         <section className="m-4">
-          <Information
-            className="border-0 p-0"
-            title="Agregar mascota"
-            description="Agrega algunos datos para iniciar el seguimiento médico de tu mascota. "
-          />
+          <Information className="border-0 p-0">
+            <Title content="Agregar mascota" />
+            <Description content="Agrega algunos datos para iniciar el seguimiento médico de tu mascota." />
+          </Information>
         </section>
         <section className="m-4">
           <Subtitle content="Imagen" />
