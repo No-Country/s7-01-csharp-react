@@ -43,7 +43,7 @@ namespace s7_01.Api.Controllers
         }
         // id = id de propietario
         [HttpPost("addMascota/{id}")]
-        public async Task<ActionResult> AddMascota( int id, Mascota mascotaModel)
+        public async Task<ActionResult> AddMascota( int id, [FromBody] Mascota mascotaModel)
         {
             _mascotaRepository.Add(mascotaModel);
             _mascotaPropietarioRepository.Add(new MascotaPropietario()
@@ -56,6 +56,31 @@ namespace s7_01.Api.Controllers
             
             return Ok("Creado con exito");
             
+        }
+
+        [HttpPut("updateMascota/{id}")]
+        public async Task<ActionResult> UpdateMascota(int id, [FromBody] Mascota mascotaModel)
+        {
+            var mascota = _mascotaRepository.GetById(id);
+            if(mascota == null)
+            {
+                return BadRequest("Error mascota not found");
+            }
+            if (mascotaModel == null)
+            {
+                return NotFound("Body not found");
+            }
+            if (mascotaModel.Id != id)
+            {
+                return BadRequest("Error mascota");
+            }
+   
+            mascotaModel.Id = id;
+            _mascotaRepository.Update(mascotaModel);
+            
+            await _mascotaRepository.Save();
+
+            return Ok("Mascota Actualizada");
         }
     }
 }

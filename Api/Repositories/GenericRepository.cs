@@ -16,7 +16,10 @@ namespace s7_01.Api.Repositories
         {
             _context.Set<T>().Add(entity);
         }
-
+        public virtual void Update(T entity)
+        {
+            _context.Set<T>().Update(entity);
+        }
         public void AddRange(IEnumerable<T> entities)
         {
             _context.Set<T>().AddRange(entities);
