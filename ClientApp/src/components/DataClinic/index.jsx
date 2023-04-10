@@ -1,6 +1,6 @@
 import { Clock, MapPin } from "@phosphor-icons/react";
 
-export function DataClinic() {
+export function DataClinic({ className }) {
   return (
     <div className="flex flex-col">
       <div className="mb-2">

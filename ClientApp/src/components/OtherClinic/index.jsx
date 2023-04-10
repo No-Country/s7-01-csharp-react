@@ -1,4 +1,9 @@
+// components
 import { DataClinic } from "../DataClinic";
+import { ContactSocialNetwork } from "../common";
+
+// icons
+import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function OtherClinic() {
   return (
@@ -17,7 +22,10 @@ export function OtherClinic() {
           </div>
           <div className="flex flex-col">
             <DataClinic />
-            {/* <ContactClinic className="bg-red-600" /> */}
+            <ContactSocialNetwork
+              icon={<WhatsappLogo size={20} />}
+              title="Enviar Whatsapp"
+            />
           </div>
         </div>
         <hr className="border border-solid border-[#EBEBEB]" />
