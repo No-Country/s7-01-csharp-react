@@ -11,5 +11,6 @@ namespace s7_01.Api.Contracts.Repositories
         void AddRange(IEnumerable<T> entities);
         void Remove(T entity);
         void RemoveRange(IEnumerable<T> entities);
+        Task<int> Save();
     }
 }

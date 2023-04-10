@@ -46,5 +46,9 @@ namespace s7_01.Api.Repositories
         {
             _context.Set<T>().RemoveRange(entities);
         }
+        public async Task<int> Save()
+        {
+            return await _context.SaveChangesAsync();
+        }
     }
 }

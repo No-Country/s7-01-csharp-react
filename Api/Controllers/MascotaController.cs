@@ -41,6 +41,22 @@ namespace s7_01.Api.Controllers
 
             return Ok(mascotaXPropietarioDto);
         }
+        // id = id de propietario
+        [HttpPost("addMascota/{id}")]
+        public async Task<ActionResult> AddMascota( int id, Mascota mascotaModel)
+        {
+            _mascotaRepository.Add(mascotaModel);
+            _mascotaPropietarioRepository.Add(new MascotaPropietario()
+            {
+                 EsPrincipal = false,
+                 Mascota = mascotaModel,
+                 PropietarioId = id
+            });
+            await _mascotaPropietarioRepository.Save();
+            
+            return Ok("Creado con exito");
+            
+        }
     }
 }
 
