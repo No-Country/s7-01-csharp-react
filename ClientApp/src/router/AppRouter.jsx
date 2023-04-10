@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 // components
 import Home from "../pages/Home";
 import { Clinic } from "../pages/Clinic";
+import PetInfo from "../pages/PetInfo/PetInfo"
 
 export function AppRouter() {
   return (
