@@ -34,10 +34,13 @@ namespace s7_01.Api.DataAccess
         public virtual DbSet<Veterinaria> Veterinarias { get; set; }
 
         public virtual DbSet<HistoriaClinica> Historias { get; set; }
-        public virtual DbSet<Tratamiento> Tratamientos { get; set; }
 
+        public virtual DbSet<Tratamiento> Tratamientos { get; set; }
         public virtual DbSet<Producto> Productos { get; set; }
 
         public virtual DbSet<Servicio> Servicios { get; set; }
+
+        public virtual DbSet<Recordatorio>  Recordatorios { get; set; }
+
     }
 }

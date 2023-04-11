@@ -1,4 +1,5 @@
-﻿using s7_01.Api.DataAccess.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using s7_01.Api.DataAccess.Models;
 
 namespace s7_01.Api.Contracts.Repositories
 {
@@ -6,6 +7,6 @@ namespace s7_01.Api.Contracts.Repositories
     {
         IEnumerable<Producto> GetProductosByVeterinariaId(int id);
 
-        IEnumerable<Servicio> GetServiciosByVeterinariaId(int id);
+        IEnumerable<Servicio> GetServiciosByVeterinariaId(int id);        
     }
 }
