@@ -10,7 +10,7 @@ const ClinicHistory = () => {
         <button className="text-[13px]">Atencion Veterinaria</button>
       </div>
       <div className="mt-11 flex gap-20 ml-2">
-        <h3 className="ml-4 text-[18px]">Historial Clinico</h3>
+        <h3 className="ml-4 text-[18px] font-bold">Historial Clínico</h3>
         <button className="text-primary-100 border-2 border-primary-100 rounded-lg px-2 ">
           Ver Completo
         </button>
@@ -30,7 +30,7 @@ const ClinicHistory = () => {
             "Lorem ipsum dolor sit amet consectetur. Cursus sed arcu est tristique sit pellentesque pulvinar. Eleifend feugiat donec eget risus leo. Faucibus elit purus enim mi. Sed molestie tortor mi lacus viverra. Hac sem eget eu sit. Sit ut lobortis metus"
           }
         </p>
-        <p className="text-gray-150 text-[11px] text-end mt-2 mb-10">ACTUALIZADO POR"{"NOMBRE DE LA CLINICA"} EL 21/2/23"</p>
+        <p className="text-gray-150 text-[11px] text-end mt-2 mb-10 mr-2">ACTUALIZADO POR"{"NOMBRE DE LA CLINICA"} EL 21/2/23"</p>
       </div>
 
     </>
