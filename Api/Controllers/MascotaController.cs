@@ -41,6 +41,15 @@ namespace s7_01.Api.Controllers
 
             return Ok(mascotaXPropietarioDto);
         }
+
+
+        [HttpGet("getMascota/{id}")]
+        public async Task<ActionResult<Mascota>> GetMascota(int id)
+        {
+            Mascota mascota = _mascotaRepository.GetById(id);
+            return Ok(mascota);
+        }
+
         // id = id de propietario
         [HttpPost("addMascota/{id}")]
         public async Task<ActionResult> AddMascota( int id, [FromBody] Mascota mascotaModel)
