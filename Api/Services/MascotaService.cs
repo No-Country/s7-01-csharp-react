@@ -1,11 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+﻿
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.MascotaDTOs;
-using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
-using s7_01.Api.Repositories;
 
 namespace s7_01.Api.Services
 {
