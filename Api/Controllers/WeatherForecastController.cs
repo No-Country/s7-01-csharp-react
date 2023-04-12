@@ -108,9 +108,7 @@ namespace s7_01.Api.Controllers
 
             _context.SaveChanges();
 
-            var productos = _vetrepo.GetProductosByVeterinariaId(2);
-
-            var servicios = _vetrepo.GetServiciosByVeterinariaId(2);
+            
 
 
 

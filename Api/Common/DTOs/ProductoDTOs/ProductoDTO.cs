@@ -2,8 +2,8 @@
 {
     public class ProductoDTO
     {        
-        public int VeterinariaId { get; set; }
-        public decimal Costo { get; set; }
+        public int VeterinariaId { get; set; }        
         public string Nombre { get; set; }
+        public decimal Costo { get; set; }
     }
 }
