@@ -12,16 +12,16 @@ namespace s7_01.Api.Repositories
         {
             
         }
-        public IEnumerable<MascotaPropietario> GetAll()
+        public async Task<IEnumerable<MascotaPropietario>> GetAllAsync()
         {
-            return _context.Set<MascotaPropietario>()
+            return await _context.Set<MascotaPropietario>()
                 .Include(m => m.Propietario)
                 .Include(m => m.Mascota)
-                .ToList();
+                .ToListAsync();
         }
-        public IEnumerable<MascotaPropietario> Find(Expression<Func<MascotaPropietario, bool>> expression)
+        public async Task<IEnumerable<MascotaPropietario>> FindAsync(Expression<Func<MascotaPropietario, bool>> expression)
         {
-            return _context.Set<MascotaPropietario>().Where(expression).Include(m => m.Mascota).ToList();
+            return await _context.Set<MascotaPropietario>().Where(expression).Include(m => m.Mascota).ToListAsync();
         }
     }
 }

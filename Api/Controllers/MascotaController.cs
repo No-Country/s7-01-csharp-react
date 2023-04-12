@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using s7_01.Api.Contracts.Repositories;
-using s7_01.Api.DataAccess.Models;
-using s7_01.Api.Dtos;
+using s7_01.Api.Common.DTO;
+using s7_01.Api.Common.DTOs.MascotaDTOs;
+using s7_01.Api.Contracts.Services;
 
 namespace s7_01.Api.Controllers
 {
@@ -9,87 +9,52 @@ namespace s7_01.Api.Controllers
     [Route("[controller]")]
     public class MascotaController : Controller
     {
-        private readonly IMascotaRepository _mascotaRepository;
-        private readonly IMascotaPropietarioRepository _mascotaPropietarioRepository;
-
-        public MascotaController(IMascotaRepository mascotaRepository, IMascotaPropietarioRepository mascotaPropietarioRepository)
+        private readonly IMascotaService _macotaService;
+        public MascotaController(IMascotaService mascotaService)
         {
-            _mascotaRepository = mascotaRepository;
-            _mascotaPropietarioRepository = mascotaPropietarioRepository;
+            _macotaService = mascotaService;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MascotaPropietario>>> Index()
+        public async Task<ActionResult<IEnumerable<ResponseDTO>>> Index()
         {
-            var mascotaPropietarios = _mascotaPropietarioRepository.GetAll();
+            ResponseDTO response = await _macotaService.GetAllMascotasAsync();
 
-            return Ok(mascotaPropietarios);
+            return StatusCode(response.StatusCode, response);
         }
 
         [HttpGet("getForPropietarie/{id}")]
-        public async Task<ActionResult<MascotaXPropietarioDto>> getForPropietarie(int id)
+        public async Task<ActionResult<ResponseDTO>> getForPropietarie(int id)
         {
 
-            var mascotaPropietarios = _mascotaPropietarioRepository.Find(m => m.PropietarioId == id);
-            List<Mascota> mascotas = new List<Mascota>();
-            foreach (var mascotaXPropietario in mascotaPropietarios)
-            {
-                mascotas.Add(mascotaXPropietario.Mascota);
-            }
-            MascotaXPropietarioDto mascotaXPropietarioDto = new MascotaXPropietarioDto() { Mascotas = mascotas };
+            ResponseDTO response = await _macotaService.GetAllMascotasPropietaryAsync(id);
 
-
-
-            return Ok(mascotaXPropietarioDto);
+            return StatusCode(response.StatusCode, response);
         }
 
 
         [HttpGet("getMascota/{id}")]
-        public async Task<ActionResult<Mascota>> GetMascota(int id)
+        public async Task<ActionResult<ResponseDTO>> GetMascota(int id)
         {
-            Mascota mascota = _mascotaRepository.GetById(id);
-            return Ok(mascota);
+            ResponseDTO response = await _macotaService.GetMascotaByIdAsync(id);
+            return StatusCode(response.StatusCode, response);
         }
 
-        // id = id de propietario
+        //// id = id de propietario
         [HttpPost("addMascota/{id}")]
-        public async Task<ActionResult> AddMascota( int id, [FromBody] Mascota mascotaModel)
+        public async Task<ActionResult> AddMascota(int id, [FromBody] MascotaDTO mascotaModel)
         {
-            _mascotaRepository.Add(mascotaModel);
-            _mascotaPropietarioRepository.Add(new MascotaPropietario()
-            {
-                 EsPrincipal = false,
-                 Mascota = mascotaModel,
-                 PropietarioId = id
-            });
-            await _mascotaPropietarioRepository.Save();
-            
-            return Ok("Creado con exito");
-            
+            ResponseDTO response = await _macotaService.AddMascotaAsync(id, mascotaModel);
+
+            return StatusCode(response.StatusCode, response);
+
         }
 
         [HttpPut("updateMascota/{id}")]
-        public async Task<ActionResult> UpdateMascota(int id, [FromBody] Mascota mascotaModel)
+        public async Task<ActionResult> UpdateMascota(int id, [FromBody] MascotaDTO mascotaDTO)
         {
-            var mascota = _mascotaRepository.GetById(id);
-            if(mascota == null)
-            {
-                return BadRequest("Error mascota not found");
-            }
-            if (mascotaModel == null)
-            {
-                return NotFound("Body not found");
-            }
-            if (mascotaModel.Id != id)
-            {
-                return BadRequest("Error mascota");
-            }
-   
-            mascotaModel.Id = id;
-            _mascotaRepository.Update(mascotaModel);
-            
-            await _mascotaRepository.Save();
+            ResponseDTO response = await _macotaService.UpdateMascotaAsync(id, mascotaDTO);
 
-            return Ok("Mascota Actualizada");
+            return StatusCode(response.StatusCode, response);
         }
     }
 }
