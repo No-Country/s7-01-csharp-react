@@ -5,6 +5,7 @@ using s7_01.Api.DataAccess;
 using s7_01.Api.DataAccess.Models;
 using s7_01.Api.Repositories;
 using s7_01.Api.Services;
+using s7_01.Api.Extensions;
 using s7_01.Api.Services.Email;
 using System.ComponentModel;
 using System.Reflection;
@@ -24,6 +25,7 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddAplicationServices();
 
 builder.Services.AddDbContext<VeterinariaContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("vet")
