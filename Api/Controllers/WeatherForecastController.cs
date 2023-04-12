@@ -18,19 +18,17 @@ namespace s7_01.Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly VeterinariaContext _context;
-        private readonly IMascotaPropietarioRepository _repo;
+        private readonly VeterinariaContext _context;        
         private readonly IVeterinariaRepository _vetrepo;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo, IVeterinariaRepository vetrepo)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IVeterinariaRepository vetrepo)
 
         //private readonly IEmailService _emailService;
 
      //   public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo, IEmailService emailService)
         {
             _logger = logger;
-            _context = context;
-            _repo = repo;
+            _context = context;            
          //   _vetrepo = vetrepo;
 
           //  _emailService = emailService;

@@ -8,7 +8,6 @@ namespace s7_01.Api.Services
 {
     public class ProductoService : IProductoService
     {
-
         private readonly IGenericRepository<Producto> _productoRepository;
 
         public ProductoService(IGenericRepository<Producto> productoRepository)
@@ -16,94 +15,131 @@ namespace s7_01.Api.Services
             _productoRepository = productoRepository;
         }
 
-        public ResponseDTO GetAllProductos()
+        public async Task<ResponseDTO> GetAllProductosAsync()
         {
-            throw new NotImplementedException();
+            var productos = await _productoRepository.GetAllAsync();
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = productos,
+                Message = "Lista de productos obtenida correctamente",
+                StatusCode = 200
+            };
+
+            return response;
         }
 
-        public ResponseDTO GetProductoByIdAsync(int id)
+        public async Task<ResponseDTO> GetProductoByIdAsync(int id)
         {
-            try
-            {
-                var producto = _productoRepository.GetByIdAsync(id);
+            var producto = await _productoRepository.GetByIdAsync(id);
 
-                if (producto == null)
-                {
-                    return new ResponseDTO
-                    {
-                        Success = false,
-                        Result = null,
-                        Message = $"No se encontró el producto con el id {id}.",
-                        StatusCode = 404
-                    };
-                }
-
-                var productoDto = new ProductoDTO
-                {
-                    Id = producto.Id,
-                    VeterinariaId = producto.VeterinariaId,
-                    Costo = producto.Costo,
-                    Nombre = producto.Nombre
-                };
-
-                return new ResponseDTO
-                {
-                    Success = true,
-                    Result = productoDto,
-                    Message = $"Producto con id {id} encontrado exitosamente.",
-                    StatusCode = 200
-                };
-            }
-            catch (Exception ex)
+            if (producto == null)
             {
                 return new ResponseDTO
                 {
                     Success = false,
                     Result = null,
-                    Message = ex.Message,
-                    StatusCode = 500
+                    Message = "El producto no existe",
+                    StatusCode = 404
                 };
             }
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = producto,
+                Message = "Producto obtenido correctamente",
+                StatusCode = 200
+            };
+
+            return response;
         }
 
-        public ResponseDTO AddProducto(ProductoDTO productoDto)
+        public async Task<ResponseDTO> AddProductoAsync(ProductoDTO productoDTO)
         {
-            try
+            var producto = new Producto
             {
-                var producto = new Producto
-                {
-                    VeterinariaId = productoDto.VeterinariaId,
-                    Costo = productoDto.Costo,
-                    Nombre = productoDto.Nombre
-                };
+                VeterinariaId = productoDTO.VeterinariaId,
+                Costo = productoDTO.Costo,
+                Nombre = productoDTO.Nombre
+            };
 
-                _productoRepository.Add(producto);
-                _productoRepository.Save();
+            await _productoRepository.AddAsync(producto);
+            await _productoRepository.SaveAsync();
 
-                return new ResponseDTO
-                {
-                    Success = true,
-                    Result = producto.Id,
-                    Message = "Producto agregado exitosamente.",
-                    StatusCode = 201
-                };
-            }
-            catch (Exception ex)
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = producto,
+                Message = "Producto agregado correctamente",
+                StatusCode = 201
+            };
+
+            return response;
+        }
+        
+        public async Task<ResponseDTO> UpdateProductoAsync(int id, ProductoDTO productoDTO)
+        {
+            var producto = await _productoRepository.GetByIdAsync(id);
+
+            if (producto == null)
             {
                 return new ResponseDTO
                 {
                     Success = false,
                     Result = null,
-                    Message = ex.Message,
-                    StatusCode = 500
+                    Message = "El producto no existe",
+                    StatusCode = 404
                 };
             }
-        }                         
 
-        public ResponseDTO UpdateProducto(int id, ProductoDTO productoDto)
-        {
-            throw new NotImplementedException();
+            producto.VeterinariaId = productoDTO.VeterinariaId;
+            producto.Costo = productoDTO.Costo;
+            producto.Nombre = productoDTO.Nombre;
+
+            await _productoRepository.UpdateAsync(producto);
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = producto,
+                Message = "Producto actualizado correctamente",
+                StatusCode = 200
+            };
+
+            return response;
         }
 
+        public async Task<ResponseDTO> DeleteProductoAsync(int id)
+        {
+            var producto = await _productoRepository.GetByIdAsync(id);
+
+            if (producto == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Result = null,
+                    Message = "El producto no existe",
+                    StatusCode = 404
+                };
+            }
+
+            _productoRepository.Remove(producto);
+            await _productoRepository.SaveAsync();
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = producto,
+                Message = "Producto eliminado correctamente",
+                StatusCode = 200
+            };
+
+            return response;
+        }
     }
+
+
 }

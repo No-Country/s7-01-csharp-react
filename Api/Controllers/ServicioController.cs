@@ -1,25 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using s7_01.Api.Common.DTO;
-using s7_01.Api.Common.DTOs.ProductoDTOs;
+using s7_01.Api.Common.DTOs.ServicioDTOs;
 using s7_01.Api.Contracts.Services;
 
 namespace s7_01.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class ProductoController : ControllerBase
+    [Route("api/servicios")]
+    public class ServicioController : ControllerBase
     {
-        private readonly IProductoService _productoService;
+        private readonly IServicioService _servicioService;
 
-        public ProductoController(IProductoService productoService)
+        public ServicioController(IServicioService servicioService)
         {
-            _productoService = productoService;
+            _servicioService = servicioService;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllProductosAsync()
+        public async Task<IActionResult> GetAllServicios()
         {
-            var response = await _productoService.GetAllProductosAsync();
+            var response = await _servicioService.GetAllServiciosAsync();
 
             if (!response.Success)
             {
@@ -30,9 +29,9 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductoByIdAsync(int id)
+        public async Task<IActionResult> GetServicioById(int id)
         {
-            var response = await _productoService.GetProductoByIdAsync(id);
+            var response = await _servicioService.GetServicioByIdAsync(id);
 
             if (!response.Success)
             {
@@ -43,9 +42,9 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProductoAsync(ProductoDTO productoDto)
+        public async Task<IActionResult> AddServicio(ServicioDTO servicioDto)
         {
-            var response = await _productoService.AddProductoAsync(productoDto);
+            var response = await _servicioService.AddServicioAsync(servicioDto);
 
             if (!response.Success)
             {
@@ -56,9 +55,9 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProductoAsync(int id, ProductoDTO productoDto)
+        public async Task<IActionResult> UpdateServicio(int id, ServicioDTO servicioDto)
         {
-            var response = await _productoService.UpdateProductoAsync(id, productoDto);
+            var response = await _servicioService.UpdateServicioAsync(id, servicioDto);
 
             if (!response.Success)
             {
@@ -69,9 +68,9 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProductoAsync(int id)
+        public async Task<IActionResult> DeleteServicio(int id)
         {
-            var response = await _productoService.DeleteProductoAsync(id);
+            var response = await _servicioService.DeleteServicioAsync(id);
 
             if (!response.Success)
             {
@@ -81,5 +80,4 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
     }
-
 }

@@ -9,7 +9,9 @@ namespace s7_01.Api.DataAccess.Models
 
         public string Nombre { get; set; }
 
-        public string DNI { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }        
 
         public Direccion? Direccion { get; set; }
     }

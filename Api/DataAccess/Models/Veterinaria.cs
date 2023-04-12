@@ -5,12 +5,11 @@ namespace s7_01.Api.DataAccess.Models
 {
     public class Veterinaria : Persona
     {
+        public string RazonSocial { get; set; } // Ejemplo: Clinicucha SRL
+                
+        public string CUIT { get; set; } // Estructura: xx - xx xxx xxx - x ("x" son números, "-" son guiones). Ej: 29-15662874-9
 
-        public int? PersonaResponsableId { get; set; }
-        [ForeignKey("PersonaResponsableId")]
-        public Persona? PersonaResponsable { get; set; }
-
-        public string LogoURI { get; set; }
+        public string LogoURI { get; set; }        
 
         [Url]
         [DataType(DataType.Url)]
@@ -33,9 +32,9 @@ namespace s7_01.Api.DataAccess.Models
         [Required]
         public string Telefono { get; set; } //por si no tiene whatsapp
 
-        public IEnumerable<Producto> Productos { get; set; } = new List<Producto>();
+        public IEnumerable<Producto>? Productos { get; set; } = new List<Producto>();
 
-        public IEnumerable<Servicio> Servicios { get; set; } = new List<Servicio>();
+        public IEnumerable<Servicio>? Servicios { get; set; } = new List<Servicio>();
 
 
 
