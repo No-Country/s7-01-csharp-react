@@ -10,12 +10,12 @@ namespace s7_01.Api.DataAccess.Models
         [ForeignKey("Veterinaria")]
         public int VeterinariaId { get; set; }
 
-        public Veterinaria Veterinaria { get; set; }
+        public Veterinaria Veterinaria { get; set; }               
+
+        public string Nombre { get; set; }
 
         [Column(TypeName = "DECIMAL(11,2)")]
         public decimal Costo { get; set; }
-
-        public string Nombre { get; set; }
 
     }
 }

@@ -12,16 +12,16 @@ namespace s7_01.Api.Repositories
             
         }
 
-        public IEnumerable<Producto> GetProductosByVeterinariaId(int id)
+        public async Task<IEnumerable<Producto>> GetProductosByVeterinariaIdAsync(int id)
         {
-            var productos = _context.Set<Producto>().Where(p => p.VeterinariaId == id).ToList();
-            
+            var productos = await _context.Set<Producto>().Where(p => p.VeterinariaId == id).ToListAsync();
+
             return productos;
         }
 
-        public IEnumerable<Servicio> GetServiciosByVeterinariaId(int id)
-        {            
-            var servicios = _context.Set<Servicio>().Where(p => p.VeterinariaId == id).ToList();
+        public async Task<IEnumerable<Servicio>> GetServiciosByVeterinariaIdAsync(int id)
+        {
+            var servicios = await _context.Set<Servicio>().Where(p => p.VeterinariaId == id).ToListAsync();
 
             return servicios;
         }

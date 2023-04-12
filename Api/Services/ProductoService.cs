@@ -60,7 +60,7 @@ namespace s7_01.Api.Services
         {
             var producto = new Producto
             {
-                VeterinariaId = productoDTO.VeterinariaId,
+                VeterinariaId = productoDTO.VeterinariaId,                          
                 Costo = productoDTO.Costo,
                 Nombre = productoDTO.Nombre
             };

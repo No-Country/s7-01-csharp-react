@@ -12,7 +12,7 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    [Migration("20230412194808_Initial commit")]
+    [Migration("20230412230447_Initial commit")]
     partial class Initialcommit
     {
         /// <inheritdoc />
