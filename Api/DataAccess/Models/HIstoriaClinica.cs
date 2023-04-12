@@ -6,19 +6,14 @@ namespace s7_01.Api.DataAccess.Models
     {
         public int Id { get; set; }
 
-        //TODO No se sea relevante el propietario ac�
-        //public int PropietarioId { get; set; }
-
-        //public Propietario Propietario { get; set; }
-
+        [ForeignKey("Mascota")]
         public int MascotaId { get; set; }
-        [ForeignKey("MascotaId")]
+                
         public Mascota Mascota { get; set; }
-
-        public int CarnetVacunasId { get; set; }
 
         public string? Comentarios { get; set; }
 
+        public virtual ICollection<Vacuna> Vacunas { get; } = new List<Vacuna>(); // carnet de vacunas 
         public virtual ICollection<Tratamiento> Tratamientos { get; } = new List<Tratamiento>();
     }
 }
