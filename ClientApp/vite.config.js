@@ -11,6 +11,17 @@ export default defineConfig({
                 changeOrigin: true,
                 secure: false,
             },
+            "/swagger": {
+                target: "https://localhost:7280",
+                changeOrigin: true,
+                secure: false,
+            },
+             "/api": {
+                target: "https://localhost:7280",
+                changeOrigin: true,
+                secure: false,
+            }
+
         },
     },
     plugins: [react(), mkcert()],

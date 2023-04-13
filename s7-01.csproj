@@ -33,9 +33,27 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\dist\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\dist\**" />
+    <EmbeddedResource Remove="ClientApp\dist\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\dist\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\dist\assets\imgPerro.b4176218.png" />
+    <None Remove="ClientApp\dist\assets\imgPerro2.87129688.png" />
+    <None Remove="ClientApp\dist\assets\imgPerro3.0402fb18.png" />
+    <None Remove="ClientApp\dist\assets\index.6499bd5c.css" />
+    <None Remove="ClientApp\dist\assets\index.a2c22db1.js" />
+    <None Remove="ClientApp\dist\assets\Logo.b746a7c8.svg" />
+    <None Remove="ClientApp\dist\assets\perro.ce1b2faa.png" />
+    <None Remove="ClientApp\dist\assets\profilePic.978fd436.png" />
+    <None Remove="ClientApp\dist\favicon.svg" />
+    <None Remove="ClientApp\dist\index.html" />
+    <None Remove="ClientApp\dist\robots.txt" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
