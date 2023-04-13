@@ -1,7 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using s7_01.Api.Contracts.Repositories;
+using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess;
+using s7_01.Api.DataAccess.Models;
 using s7_01.Api.Repositories;
+using s7_01.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +18,17 @@ builder.Services.AddDbContext<VeterinariaContext>(  options =>
 
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IMascotaPropietarioRepository, MascotaPropietarioRepository>();
+builder.Services.AddScoped<IPropietarioRepository, PropietarioRepository>();
+
+builder.Services.AddScoped<IPropietarioRepository, PropietarioRepository>();
+builder.Services.AddScoped<IGenericRepository<Propietario>, PropietarioRepository>();
+builder.Services.AddScoped<IPropietarioService, PropietarioService>();
+
+builder.Services.AddScoped<IAutorizacionRepository, AutorizacionRepository>();
+builder.Services.AddScoped<IGenericRepository<Autorizacion>, AutorizacionRepository>();
+builder.Services.AddScoped<IAutorizacionService, AutorizacionService>();
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

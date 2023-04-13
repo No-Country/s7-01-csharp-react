@@ -10,5 +10,7 @@ namespace s7_01.Api.Repositories
         public MascotaPropietarioRepository(VeterinariaContext context) : base(context)
         {
         }
+
+       
     }
 }

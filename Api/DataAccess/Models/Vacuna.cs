@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace s7_01.Api.DataAccess.Models
 {
-    public class CarnetVacuna
+    public class Vacuna
     {
         [Key]
         public int Id { get; set; }
@@ -15,9 +15,10 @@ namespace s7_01.Api.DataAccess.Models
 
         [Required] public string LoteSerial { get; set; }
 
-        /// <summary>
-        /// Define si la dosis es unica, considerando que si no lo es se deberia llenar la proxima aplicacion
-        /// </summary>
+        public int HistoriaClinicaId { get; set; }
+
+        public HistoriaClinica HistoriaClinica { get; set; }
+
         public bool EsDosisUnica { get; set; } = false;
 
         [Required] public DateTime FechaAplicacion { get; set; }
