@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.VeterinariaDTOs;
 using s7_01.Api.Contracts.Services;
 
@@ -49,5 +50,22 @@ namespace s7_01.Api.Controllers
             var response = await _veterinariaService.DeleteVeterinariaAsync(id);
             return StatusCode(response.StatusCode, response);
         }
+
+        [HttpGet("{id}/productos")]
+        public async Task<IActionResult> GetProductosByVeterinariaIdAsync(int id)
+        {
+            var response = await _veterinariaService.GetProductosByVeterinariaIdAsync(id);
+
+            return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpGet("{id}/servicios")]
+        public async Task<IActionResult> GetServiciosByVeterinariaIdAsync(int id)
+        {
+            var response = await _veterinariaService.GetServiciosByVeterinariaIdAsync(id);
+
+            return StatusCode(response.StatusCode, response);
+        }        
+
     }
 }
