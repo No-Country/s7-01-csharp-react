@@ -9,6 +9,7 @@ namespace s7_01.Api.Contracts.Services
     {
         Task<ResponseDTO> GetAllServiciosAsync();
         Task<ResponseDTO> GetServicioByIdAsync(int id);
+        Task<ResponseDTO> GetServiciosByVeterinariaIdAsync(int id);
         Task<ResponseDTO> AddServicioAsync(ServicioDTO servicioDTO);
         Task<ResponseDTO> UpdateServicioAsync(int id, ServicioDTO servicioDTO);
         Task<ResponseDTO> DeleteServicioAsync(int id);

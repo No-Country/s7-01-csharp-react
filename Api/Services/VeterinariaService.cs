@@ -10,13 +10,11 @@ namespace s7_01.Api.Services
 {
     public class VeterinariaService : IVeterinariaService
     {
-        private readonly IGenericRepository<Veterinaria> _veterinariaRepository;
-        private readonly IVeterinariaRepository _veteRepository;
+        private readonly IGenericRepository<Veterinaria> _veterinariaRepository;        
 
         public VeterinariaService(IGenericRepository<Veterinaria> veterinariaRepository, IVeterinariaRepository veteRepository)
         {
-            _veterinariaRepository = veterinariaRepository;
-            _veteRepository = veteRepository;
+            _veterinariaRepository = veterinariaRepository;            
         }
 
         public async Task<ResponseDTO> GetAllVeterinariasAsync()
@@ -69,12 +67,12 @@ namespace s7_01.Api.Services
             };
 
             return response;
-        }
+        }       
 
         public async Task<ResponseDTO> AddVeterinariaAsync(VeterinariaDTO veterinariaDTO)
         {
 
-            var dir = veterinariaDTO.DireccionDTO;
+            var dir = veterinariaDTO.Direccion;
 
             var direccion = new Direccion
             {
@@ -133,11 +131,11 @@ namespace s7_01.Api.Services
             }
 
             veterinaria.Nombre = veterinariaDTO.Nombre;
-            veterinaria.Direccion.Calle = veterinariaDTO.DireccionDTO.Calle;
-            veterinaria.Direccion.Numero = veterinariaDTO.DireccionDTO.Numero;
-            veterinaria.Direccion.Ciudad = veterinariaDTO.DireccionDTO.Ciudad;
-            veterinaria.Direccion.Pais = veterinariaDTO.DireccionDTO.Pais;
-            veterinaria.Direccion.CodigoPostal = veterinariaDTO.DireccionDTO.CodigoPostal;
+            veterinaria.Direccion.Calle = veterinariaDTO.Direccion.Calle;
+            veterinaria.Direccion.Numero = veterinariaDTO.Direccion.Numero;
+            veterinaria.Direccion.Ciudad = veterinariaDTO.Direccion.Ciudad;
+            veterinaria.Direccion.Pais = veterinariaDTO.Direccion.Pais;
+            veterinaria.Direccion.CodigoPostal = veterinariaDTO.Direccion.CodigoPostal;
             veterinaria.RazonSocial = veterinariaDTO.RazonSocial;
             veterinaria.CUIT = veterinariaDTO.CUIT;
             veterinaria.Email = veterinariaDTO.Email;
@@ -190,57 +188,9 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<ResponseDTO> GetProductosByVeterinariaIdAsync(int id)
-        {
-            var productos = await _veteRepository.GetProductosByVeterinariaIdAsync(id);
+        
 
-            if (productos == null || !productos.Any())
-            {
-                return new ResponseDTO
-                {
-                    Success = false,
-                    Result = null,
-                    Message = "La veterinaria no tiene productos registrados",
-                    StatusCode = 404
-                };
-            }
-
-            var response = new ResponseDTO
-            {
-                Success = true,
-                Result = productos,
-                Message = "Lista de productos obtenida correctamente",
-                StatusCode = 200
-            };
-
-            return response;
-        }
-
-        public async Task<ResponseDTO> GetServiciosByVeterinariaIdAsync(int id)
-        {
-            var servicios = await _veteRepository.GetServiciosByVeterinariaIdAsync(id);
-
-            if (servicios == null || !servicios.Any())
-            {
-                return new ResponseDTO
-                {
-                    Success = false,
-                    Result = null,
-                    Message = "La veterinaria no tiene servicios registrados",
-                    StatusCode = 404
-                };
-            }
-
-            var response = new ResponseDTO
-            {
-                Success = true,
-                Result = servicios,
-                Message = "Lista de servicios obtenida correctamente",
-                StatusCode = 200
-            };
-
-            return response;
-        }
+        
 
     }
 }
