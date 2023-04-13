@@ -15,57 +15,42 @@ namespace s7_01.Api.Controllers
         {
             _veterinariaService = veterinariaService;
         }
-
-        [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] VeterinariaDTO veterinariaDTO)
-        {
-            var response = await _veterinariaService.AddVeterinariaAsync(veterinariaDTO);
-            return StatusCode(response.StatusCode, response);
-        }
+                
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> GetAllVeterinariasAsync()
         {
             var response = await _veterinariaService.GetAllVeterinariasAsync();
             return StatusCode(response.StatusCode, response);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        public async Task<IActionResult> GetVeterinariasByIdAsync(int id)
         {
             var response = await _veterinariaService.GetVeterinariaByIdAsync(id);
             return StatusCode(response.StatusCode, response);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddVeterinariaAsync([FromBody] VeterinariaDTO veterinariaDTO)
+        {
+            var response = await _veterinariaService.AddVeterinariaAsync(veterinariaDTO);
+            return StatusCode(response.StatusCode, response);
+        }
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateAsync(int id, [FromBody] VeterinariaDTO veterinariaDTO)
+        public async Task<IActionResult> UpdateVeterinariaAsync(int id, [FromBody] VeterinariaDTO veterinariaDTO)
         {
             var response = await _veterinariaService.UpdateVeterinariaAsync(id, veterinariaDTO);
             return StatusCode(response.StatusCode, response);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteVeterinariaAsync(int id)
         {
             var response = await _veterinariaService.DeleteVeterinariaAsync(id);
             return StatusCode(response.StatusCode, response);
         }
-
-        [HttpGet("{id}/productos")]
-        public async Task<IActionResult> GetProductosByVeterinariaIdAsync(int id)
-        {
-            var response = await _veterinariaService.GetProductosByVeterinariaIdAsync(id);
-
-            return StatusCode(response.StatusCode, response);
-        }
-
-        [HttpGet("{id}/servicios")]
-        public async Task<IActionResult> GetServiciosByVeterinariaIdAsync(int id)
-        {
-            var response = await _veterinariaService.GetServiciosByVeterinariaIdAsync(id);
-
-            return StatusCode(response.StatusCode, response);
-        }        
-
+          
     }
 }
