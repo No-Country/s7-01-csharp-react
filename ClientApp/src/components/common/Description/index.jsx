@@ -1,5 +1,3 @@
-export function Description({ content }) {
-  return (
-    <p className="text-[#010B1D] not-italic font-normal text-base">{content}</p>
-  );
+export function Description({ className, content }) {
+  return <p className={`not-italic font-normal ${className}`}>{content}</p>;
 }
