@@ -38,9 +38,10 @@ namespace s7_01.Api.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
 
+            #region Crear-MascotaPropietarioRepository
             //para prueba
             //var repo = new MascotaPropietarioRepository(_context);
-            
+
             //var propietario = new Propietario()
             //{
             //    Direccion = new Direccion()
@@ -73,34 +74,38 @@ namespace s7_01.Api.Controllers
 
             //_repo.Add(propietarioMascota);
 
-            //var result = _context.SaveChanges();
-                                  
+            //var result = _context.SaveChanges(); 
+            #endregion
 
-            //_context.Veterinarias.Add(new Veterinaria
-            //{
-            //    Telefono = "2321321",
-            //    PersonaResponsableId = 1,
-            //    Nombre = "Veterinaria 1",
-            //    DNI = "dni"
-            //});
+            var vet = new Veterinaria
+            {
+                Telefono = "2321321",
+                // PersonaResponsableId = 1,
+                Nombre = "Veterinaria 1",
+                CUIT = "CUIT",
+                Email = "vet1@mailinator.com"
+            };
+            _context.Veterinarias.Add(vet);
 
             _context.Productos.Add(new Producto
             {
-                VeterinariaId = 2,
+                Veterinaria = vet,
+               // VeterinariaId = 2,
                 Nombre = "Correa",
                 Costo = 20
             });
 
             _context.Servicios.Add(new Servicio
             {
-                VeterinariaId = 2,
+                Veterinaria = vet,
                 Nombre = "Corte de pelo",
-                Costo = 10
+                Costo = 10,
+               
             });
 
             _context.Servicios.Add(new Servicio
             {
-                VeterinariaId = 2,
+                Veterinaria = vet,
                 Nombre = "Extracción de muela",
                 Costo = 20
             });
