@@ -15,7 +15,9 @@ export function ContentImage({ content }) {
           Agrega una imagen de tu mascota
         </p>
       </div>
-      <FileInput />
+      <div className="relative">
+        <FileInput />
+      </div>
     </div>
   );
 }

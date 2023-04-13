@@ -5,7 +5,7 @@ import { ContentImage } from "../../components/ContentImage";
 import { Input } from "../../components/common";
 import { CheckBox } from "../../components/common";
 import { Button } from "../../components/common";
-import { Title, Description } from "../../components/common";
+import { Title, Description, Select } from "../../components/common";
 
 export function AddPet() {
   return (
@@ -33,7 +33,7 @@ export function AddPet() {
         </section>
         <section className="m-4">
           <Subtitle content="Especie" />
-          <Input type="text" placeholder="Elegir" />
+          <Select />
         </section>
         <section className="m-4">
           <Subtitle content="Raza" />
