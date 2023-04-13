@@ -89,19 +89,6 @@ namespace s7_01.Api.Controllers
                 Costo = 20
             });
 
-                },
-                DNI = "",
-                Email = "some@some.com",
-                Nombre = "name"
-            };
-            var mascota = new Mascota()
-            {
-                Veterinaria = vet,
-                Nombre = "Corte de pelo",
-                Costo = 10,
-               
-            });
-
             _context.Servicios.Add(new Servicio
             {
                 Veterinaria = vet,
