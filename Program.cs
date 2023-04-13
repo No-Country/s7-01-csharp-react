@@ -72,6 +72,13 @@ builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<IGenericRepository<Servicio>, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
 
+builder.Services.AddCors(o =>
+{
+    o.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -85,7 +92,7 @@ if (!app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
