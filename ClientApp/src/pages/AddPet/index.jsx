@@ -16,7 +16,7 @@ export function AddPet() {
       <main>
         <section className="m-4">
           <Information className="border-0 p-0">
-            <Title content="Agregar mascota" />
+            <Title className="text-lg" content="Agregar mascota" />
             <Description content="Agrega algunos datos para iniciar el seguimiento médico de tu mascota." />
           </Information>
         </section>
