@@ -1,4 +1,4 @@
-import { Button } from "../common";
+import { FileInput } from "../common";
 
 export function ContentImage({ content }) {
   return (
@@ -15,7 +15,7 @@ export function ContentImage({ content }) {
           Agrega una imagen de tu mascota
         </p>
       </div>
-      <Button className="w-32 h-8" text="Elegir imagen" />
+      <FileInput />
     </div>
   );
 }
