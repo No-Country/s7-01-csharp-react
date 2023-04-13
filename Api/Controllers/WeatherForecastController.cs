@@ -32,36 +32,69 @@ namespace s7_01.Api.Controllers
         public IEnumerable<WeatherForecast> Get()
         {
 
+            #region Crear-MascotaPropietarioRepository
             //para prueba
             //var repo = new MascotaPropietarioRepository(_context);
-            var propietario = new Propietario()
-            {
-                Direccion = new Direccion()
-                {
-                    Numero = "number",
-                    Calle = "calle",
-                    Ciudad = "ciudad",
-                    Pais = "Pais",
 
-                },
-                DNI = "",
-                Email = "some@some.com",
-                Nombre = "name"
-            };
-            var mascota = new Mascota()
+            //var propietario = new Propietario()
+            //{
+            //    Direccion = new Direccion()
+            //    {
+            //        Numero = "number",
+            //        Calle = "calle",
+            //        Ciudad = "ciudad",
+            //        Pais = "Pais",
+
+            //    },
+            //    DNI = "",
+            //    Email = "some@some.com",
+            //    Nombre = "name"
+            //};
+            //var mascota = new Mascota()
+            //{
+            //    FechaNacimento = DateTime.Now.AddYears(-1),
+            //    Especie = "Canino",
+            //    Nombre = "Firulais",
+            //    Peso = 5,
+            //    Sexo = "M", //Sexo.M
+            //};
+            //var propietarioMascota = new MascotaPropietario()
+            //{
+            //    EsPrincipal = true,
+            //    Mascota = mascota,
+            //    Propietario = propietario
+            //};
+
+
+            //_repo.Add(propietarioMascota);
+
+            //var result = _context.SaveChanges(); 
+            #endregion
+
+            var vet = new Veterinaria
             {
-                FechaNacimento = DateTime.Now.AddYears(-1),
-                Especie = "Canino",
-                Nombre = "Firulais",
-                Peso = 5,
-                Sexo = "M", //Sexo.M
+                Telefono = "2321321",
+                // PersonaResponsableId = 1,
+                Nombre = "Veterinaria 1",
+                CUIT = "CUIT",
+                Email = "vet1@mailinator.com"
             };
-            var propietarioMascota = new MascotaPropietario()
+            _context.Veterinarias.Add(vet);
+
+            _context.Productos.Add(new Producto
             {
-                EsPrincipal = true,
-                Mascota = mascota,
-                Propietario = propietario
-            };
+                Veterinaria = vet,
+               // VeterinariaId = 2,
+                Nombre = "Correa",
+                Costo = 20
+            });
+
+            _context.Servicios.Add(new Servicio
+            {
+                Veterinaria = vet,
+                Nombre = "Extracción de muela",
+                Costo = 20
+            });
 
 
             //_repo.Add(propietarioMascota);

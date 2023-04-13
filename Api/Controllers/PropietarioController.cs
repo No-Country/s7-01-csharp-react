@@ -40,7 +40,7 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("propietario/{id}/mascotas")]
         public async Task<IActionResult> GetMascotasByPropietarioIdAsync(int propietarioId)
         {
             var response = await _propietarioService.GetMascotasByPropietarioIdAsync(propietarioId);
