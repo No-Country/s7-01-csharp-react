@@ -1,18 +1,12 @@
-export function CheckBox({
-  className,
-  label1,
-  label2,
-  label3,
-  onChange,
-  checked,
-}) {
+export function Radio({ className, label1, label2, label3, onChange, name }) {
   return (
     <div className="flex flex-row gap-5 items-center">
       <div className="flex flex-row">
         <input
-          type="checkbox"
-          checked={checked}
-          name="sexo"
+          type="radio"
+          name={name}
+          id={label1}
+          defaultChecked={true}
           // onChange={onChange}
           className="h-5 w-5 text-gray-600"
         />
@@ -22,8 +16,9 @@ export function CheckBox({
       </div>
       <div className="flex flex-row">
         <input
-          type="checkbox"
-          name="sexo"
+          type="radio"
+          name={name}
+          id={label2}
           // onChange={onChange}
           className="h-5 w-5 text-gray-600"
         />
@@ -33,8 +28,9 @@ export function CheckBox({
       </div>
       <div className="flex flex-row">
         <input
-          type="checkbox"
-          name="sexo"
+          type="radio"
+          name={name}
+          id={label3}
           // onChange={onChange}
           className="h-5 w-5 text-gray-600"
         />

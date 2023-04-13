@@ -5,6 +5,6 @@ export * from "./Subtitle";
 export * from "./Title";
 export * from "./Button";
 export * from "./Input";
-export * from "./CheckBox";
+export * from "./Radio";
 export * from "./FileInput";
 export * from "./Select";

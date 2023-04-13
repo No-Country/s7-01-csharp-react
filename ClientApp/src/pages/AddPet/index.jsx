@@ -3,7 +3,7 @@ import { Information } from "../../components/common";
 import { Subtitle } from "../../components/common";
 import { ContentImage } from "../../components/ContentImage";
 import { Input } from "../../components/common";
-import { CheckBox } from "../../components/common";
+import { Radio } from "../../components/common";
 import { Button } from "../../components/common";
 import { Title, Description, Select } from "../../components/common";
 
@@ -49,18 +49,13 @@ export function AddPet() {
         </section>
         <section className="m-4">
           <Subtitle content="Sexo" />
-          <CheckBox
-            label1="Hembra"
-            label2="Macho"
-            label3="No lo sé"
-            checked={true}
-          />
+          <Radio label1="Hembra" label2="Macho" label3="Otro" name="sexo" />
         </section>
         <section className="m-4">
           <Subtitle content="Castración" />
-          <CheckBox label1="Si" label2="No" label3="No lo sé" checked={true} />
+          <Radio label1="Si" label2="No" label3="No lo sé" name="castracion" />
         </section>
-        <section className="m-4">
+        <section className="m-4 mb-7">
           <Button
             className="w-full text-base text-white bg-primary-100"
             text="Agregar mascota"
