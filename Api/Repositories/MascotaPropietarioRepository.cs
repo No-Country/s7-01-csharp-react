@@ -23,5 +23,7 @@ namespace s7_01.Api.Repositories
         {
             return await _context.Set<MascotaPropietario>().Where(expression).Include(m => m.Mascota).ToListAsync();
         }
+
+       
     }
 }

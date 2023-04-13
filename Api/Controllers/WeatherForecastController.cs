@@ -18,20 +18,14 @@ namespace s7_01.Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly VeterinariaContext _context;        
-        private readonly IVeterinariaRepository _vetrepo;
+        private readonly VeterinariaContext _context;
+        private readonly IMascotaPropietarioRepository _repo;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IVeterinariaRepository vetrepo)
-
-        //private readonly IEmailService _emailService;
-
-     //   public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo, IEmailService emailService)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo)
         {
             _logger = logger;
-            _context = context;            
-         //   _vetrepo = vetrepo;
-
-          //  _emailService = emailService;
+            _context = context;
+            _repo = repo;
         }
 
         [HttpGet]
@@ -95,7 +89,12 @@ namespace s7_01.Api.Controllers
                 Costo = 20
             });
 
-            _context.Servicios.Add(new Servicio
+                },
+                DNI = "",
+                Email = "some@some.com",
+                Nombre = "name"
+            };
+            var mascota = new Mascota()
             {
                 Veterinaria = vet,
                 Nombre = "Corte de pelo",
@@ -111,10 +110,12 @@ namespace s7_01.Api.Controllers
             });
 
 
-            _context.SaveChanges();
+            //_repo.Add(propietarioMascota);
 
-            
+            var result = _context.SaveChanges();
 
+
+            //var mascotas = _proprepo.GetMascotasByPropietarioId(1);
 
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

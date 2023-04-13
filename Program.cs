@@ -10,6 +10,7 @@ using s7_01.Api.Services.Email;
 using System.ComponentModel;
 using System.Reflection;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -39,6 +40,18 @@ builder.Services.AddSingleton(emailConfig);
 
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddScoped<IMascotaPropietarioRepository, MascotaPropietarioRepository>();
+builder.Services.AddScoped<IPropietarioRepository, PropietarioRepository>();
+
+builder.Services.AddScoped<IPropietarioRepository, PropietarioRepository>();
+builder.Services.AddScoped<IGenericRepository<Propietario>, PropietarioRepository>();
+builder.Services.AddScoped<IPropietarioService, PropietarioService>();
+
+builder.Services.AddScoped<IAutorizacionRepository, AutorizacionRepository>();
+builder.Services.AddScoped<IGenericRepository<Autorizacion>, AutorizacionRepository>();
+builder.Services.AddScoped<IAutorizacionService, AutorizacionService>();
+
+
 
 builder.Services.AddScoped<IVeterinariaRepository, VeterinariaRepository>();
 builder.Services.AddScoped<IGenericRepository<Veterinaria>, VeterinariaRepository>();
@@ -49,6 +62,7 @@ builder.Services.AddScoped<IProductoService, ProductoService>();
 
 builder.Services.AddScoped<IGenericRepository<Servicio>, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
+
 
 var app = builder.Build();
 

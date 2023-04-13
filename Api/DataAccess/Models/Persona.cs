@@ -11,7 +11,7 @@ namespace s7_01.Api.DataAccess.Models
 
         [Required]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }        
+        public string Email { get; set; }
 
         public Direccion? Direccion { get; set; }
     }
