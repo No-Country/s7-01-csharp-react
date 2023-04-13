@@ -240,7 +240,7 @@ namespace s7_01.Api.Services
             };
 
             return response;
-        }       
+        }
 
     }
 }
