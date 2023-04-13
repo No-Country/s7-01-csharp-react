@@ -38,14 +38,15 @@ builder.Services.AddSingleton(emailConfig);
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-builder.Services.AddScoped<IVeterinariaRepository, VeterinariaRepository>();
 builder.Services.AddScoped<IGenericRepository<Veterinaria>, VeterinariaRepository>();
 builder.Services.AddScoped<IVeterinariaService, VeterinariaService>();
 
 builder.Services.AddScoped<IGenericRepository<Producto>, ProductoRepository>();
+builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
 builder.Services.AddScoped<IProductoService, ProductoService>();
 
 builder.Services.AddScoped<IGenericRepository<Servicio>, ServicioRepository>();
+builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
 
 var app = builder.Build();
