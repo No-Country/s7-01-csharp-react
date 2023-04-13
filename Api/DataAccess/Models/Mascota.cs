@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace s7_01.Api.DataAccess.Models
 {
@@ -16,6 +18,7 @@ namespace s7_01.Api.DataAccess.Models
 
         public DateTime FechaNacimento { get; set; }
 
+        [Column(TypeName = "DECIMAL(5,2)")]
         public decimal Peso { get; set; }
 
         //TODO : Deberia ir acá?

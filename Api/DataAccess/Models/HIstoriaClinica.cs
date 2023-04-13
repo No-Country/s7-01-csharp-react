@@ -6,9 +6,9 @@ namespace s7_01.Api.DataAccess.Models
     {
         public int Id { get; set; }
 
+        [ForeignKey("Mascota")]
         public int MascotaId { get; set; }
 
-        [ForeignKey("MascotaId")]
         public Mascota Mascota { get; set; }
 
         public string? Comentarios { get; set; }

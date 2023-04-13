@@ -1,5 +1,8 @@
+using System.ComponentModel;
+
 namespace s7_01
 {
+    [DisplayName("NombrePersonalizado")]
     public class WeatherForecast
     {
         public DateTime Date { get; set; }

@@ -41,7 +41,7 @@ namespace s7_01.Api.Repositories
         public void Remove(T entity)
         {
             _context.Set<T>().Remove(entity);
-        }
+        }              
 
         public void RemoveRange(IEnumerable<T> entities)
         {

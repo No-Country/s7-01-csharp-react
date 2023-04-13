@@ -2,7 +2,7 @@
 
 namespace s7_01.Api.Contracts.Repositories
 {
-    public interface IMascotaPropietarioRepository : IGenericRepository<MascotaPropietario>
+    public interface IMascotaRepository : IGenericRepository<Mascota>
     {
     }
 }
