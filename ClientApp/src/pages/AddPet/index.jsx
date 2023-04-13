@@ -24,7 +24,7 @@ export function AddPet() {
           </Information>
         </section>
         <section className="m-4">
-          <Subtitle content="Imagen" />
+          <Subtitle content="Imagen (opcional)" />
           <ContentImage />
         </section>
         <section className="m-4">
