@@ -29,8 +29,17 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddAplicationServices();
 
 builder.Services.AddDbContext<VeterinariaContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("vet")
-    ));
+
+#if DEBUG
+     options.UseSqlServer(builder.Configuration.GetConnectionString("vet"))
+#elif (RELEASE)
+     options.UseSqlite(builder.Configuration.GetConnectionString("vet2"))
+#endif
+
+    );
+
+
+
 
 var emailConfig = builder.Configuration
       .GetSection(EmailConfiguration.Section)

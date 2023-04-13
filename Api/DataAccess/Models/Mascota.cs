@@ -9,11 +9,12 @@ namespace s7_01.Api.DataAccess.Models
     {
         [Key]
         public int Id { get; set; }
-
+        [StringLength(50)]
         public string Nombre { get; set; }
-
+        [StringLength(15)]
         public string Sexo { get; set; }
 
+        [StringLength(50)]
         public string Especie { get; set; }
 
         public DateTime FechaNacimento { get; set; }
