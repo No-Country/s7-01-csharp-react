@@ -72,6 +72,9 @@ builder.Services.AddScoped<IProductoService, ProductoService>();
 builder.Services.AddScoped<IGenericRepository<Servicio>, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
 
+builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
+builder.Services.AddScoped<IVacunaService, VacunaService>();
+
 
 var app = builder.Build();
 
