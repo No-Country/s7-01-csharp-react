@@ -61,7 +61,10 @@ export function AddPet() {
           <CheckBox label1="Si" label2="No" label3="No lo sé" checked={true} />
         </section>
         <section className="m-4">
-          <Button className="w-full" text="Agregar mascota" />
+          <Button
+            className="w-full text-base text-white bg-primary-100"
+            text="Agregar mascota"
+          />
         </section>
       </main>
     </>
