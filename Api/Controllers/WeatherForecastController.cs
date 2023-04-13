@@ -18,20 +18,14 @@ namespace s7_01.Api.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly VeterinariaContext _context;        
-        private readonly IVeterinariaRepository _vetrepo;
+        private readonly VeterinariaContext _context;
+        private readonly IMascotaPropietarioRepository _repo;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IVeterinariaRepository vetrepo)
-
-        //private readonly IEmailService _emailService;
-
-     //   public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo, IEmailService emailService)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, VeterinariaContext context, IMascotaPropietarioRepository repo)
         {
             _logger = logger;
-            _context = context;            
-         //   _vetrepo = vetrepo;
-
-          //  _emailService = emailService;
+            _context = context;
+            _repo = repo;
         }
 
         [HttpGet]
@@ -40,76 +34,42 @@ namespace s7_01.Api.Controllers
 
             //para prueba
             //var repo = new MascotaPropietarioRepository(_context);
-            
-            //var propietario = new Propietario()
-            //{
-            //    Direccion = new Direccion()
-            //    {
-            //        Numero = "number",
-            //        Calle = "calle",
-            //        Ciudad = "ciudad",
-            //        Pais = "Pais",
+            var propietario = new Propietario()
+            {
+                Direccion = new Direccion()
+                {
+                    Numero = "number",
+                    Calle = "calle",
+                    Ciudad = "ciudad",
+                    Pais = "Pais",
 
-            //    },
-            //    DNI = "",
-            //    Email = "some@some.com",
-            //    Nombre = "name"
-            //};
-            //var mascota = new Mascota()
-            //{
-            //    FechaNacimento = DateTime.Now.AddYears(-1),
-            //    Especie = "Canino",
-            //    Nombre = "Firulais",
-            //    Peso = 5,
-            //    Sexo = "M", //Sexo.M
-            //};
-            //var propietarioMascota = new MascotaPropietario()
-            //{
-            //    EsPrincipal = true,
-            //    Mascota = mascota,
-            //    Propietario = propietario
-            //};
+                },
+                DNI = "",
+                Email = "some@some.com",
+                Nombre = "name"
+            };
+            var mascota = new Mascota()
+            {
+                FechaNacimento = DateTime.Now.AddYears(-1),
+                Especie = "Canino",
+                Nombre = "Firulais",
+                Peso = 5,
+                Sexo = "M", //Sexo.M
+            };
+            var propietarioMascota = new MascotaPropietario()
+            {
+                EsPrincipal = true,
+                Mascota = mascota,
+                Propietario = propietario
+            };
 
 
             //_repo.Add(propietarioMascota);
 
-            //var result = _context.SaveChanges();
-                                  
-
-            //_context.Veterinarias.Add(new Veterinaria
-            //{
-            //    Telefono = "2321321",
-            //    PersonaResponsableId = 1,
-            //    Nombre = "Veterinaria 1",
-            //    DNI = "dni"
-            //});
-
-            _context.Productos.Add(new Producto
-            {
-                VeterinariaId = 2,
-                Nombre = "Correa",
-                Costo = 20
-            });
-
-            _context.Servicios.Add(new Servicio
-            {
-                VeterinariaId = 2,
-                Nombre = "Corte de pelo",
-                Costo = 10
-            });
-
-            _context.Servicios.Add(new Servicio
-            {
-                VeterinariaId = 2,
-                Nombre = "Extracción de muela",
-                Costo = 20
-            });
+            var result = _context.SaveChanges();
 
 
-            _context.SaveChanges();
-
-            
-
+            //var mascotas = _proprepo.GetMascotasByPropietarioId(1);
 
 
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast

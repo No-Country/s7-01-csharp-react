@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using s7_01.Api.DataAccess;
 
@@ -11,9 +12,11 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    partial class VeterinariaContextModelSnapshot : ModelSnapshot
+    [Migration("20230405223000_initial migration")]
+    partial class initialmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +54,6 @@ namespace s7_01.Migrations
                     b.ToTable("Autorizaciones");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.CarnetVacuna", b =>
                 {
                     b.Property<int>("Id")
@@ -87,8 +89,6 @@ namespace s7_01.Migrations
                     b.ToTable("CarnetVacunas");
                 });
 
-=======
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Direccion", b =>
                 {
                     b.Property<int>("Id")
@@ -135,12 +135,9 @@ namespace s7_01.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD
                     b.Property<int>("CarnetVacunasId")
                         .HasColumnType("int");
 
-=======
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                     b.Property<string>("Comentarios")
                         .HasColumnType("nvarchar(max)");
 
@@ -174,11 +171,7 @@ namespace s7_01.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Peso")
-<<<<<<< HEAD
                         .HasColumnType("decimal(18,2)");
-=======
-                        .HasColumnType("DECIMAL(5,2)");
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
 
                     b.Property<string>("Sexo")
                         .IsRequired()
@@ -217,19 +210,11 @@ namespace s7_01.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD
                     b.Property<string>("DNI")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Discriminator")
-=======
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Email")
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -255,23 +240,16 @@ namespace s7_01.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("Costo")
-<<<<<<< HEAD
                         .HasColumnType("decimal(18,2)");
-=======
-                        .HasColumnType("DECIMAL(11,2)");
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
 
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
                     b.Property<string>("Tipo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-=======
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                     b.Property<int>("VeterinariaId")
                         .HasColumnType("int");
 
@@ -282,80 +260,6 @@ namespace s7_01.Migrations
                     b.ToTable("Productos");
                 });
 
-<<<<<<< HEAD
-=======
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Recordatorio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CreadorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DestinatarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DiasPreviosNotificacion")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("EsEmailEnviado")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("EsLeido")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("EsPushNotificationEnviada")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("EsSMSEnviado")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("FechaCreacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("FechaNotificacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Mensaje")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DestinatarioId");
-
-                    b.ToTable("Recordatorios");
-                });
-
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Servicio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<decimal>("Costo")
-                        .HasColumnType("DECIMAL(11,2)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("VeterinariaId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VeterinariaId");
-
-                    b.ToTable("Servicios");
-                });
-
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Tratamiento", b =>
                 {
                     b.Property<int>("Id")
@@ -394,53 +298,11 @@ namespace s7_01.Migrations
                     b.ToTable("Tratamientos");
                 });
 
-<<<<<<< HEAD
-=======
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Vacuna", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("EsDosisUnica")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("FechaAplicacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("HistoriaClinicaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LoteSerial")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ProximaAplicacion")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HistoriaClinicaId");
-
-                    b.ToTable("Vacunas");
-                });
-
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Propietario", b =>
                 {
                     b.HasBaseType("s7_01.Api.DataAccess.Models.Persona");
 
-<<<<<<< HEAD
                     b.Property<string>("Email")
-=======
-                    b.Property<string>("DNI")
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -451,13 +313,6 @@ namespace s7_01.Migrations
                 {
                     b.HasBaseType("s7_01.Api.DataAccess.Models.Persona");
 
-<<<<<<< HEAD
-=======
-                    b.Property<string>("CUIT")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                     b.Property<string>("Facebook")
                         .HasColumnType("nvarchar(max)");
 
@@ -468,14 +323,8 @@ namespace s7_01.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
                     b.Property<int?>("PersonaResponsableId")
                         .HasColumnType("int");
-=======
-                    b.Property<string>("RazonSocial")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
 
                     b.Property<string>("Telefono")
                         .IsRequired()
@@ -487,11 +336,8 @@ namespace s7_01.Migrations
                     b.Property<string>("Whatsapp")
                         .HasColumnType("nvarchar(max)");
 
-<<<<<<< HEAD
                     b.HasIndex("PersonaResponsableId");
 
-=======
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                     b.HasDiscriminator().HasValue("Veterinaria");
                 });
 
@@ -514,7 +360,6 @@ namespace s7_01.Migrations
                     b.Navigation("Veterinaria");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.CarnetVacuna", b =>
                 {
                     b.HasOne("s7_01.Api.DataAccess.Models.Mascota", "Mascota")
@@ -526,8 +371,6 @@ namespace s7_01.Migrations
                     b.Navigation("Mascota");
                 });
 
-=======
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Direccion", b =>
                 {
                     b.HasOne("s7_01.Api.DataAccess.Models.Persona", "Persona")
@@ -572,33 +415,7 @@ namespace s7_01.Migrations
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Producto", b =>
                 {
                     b.HasOne("s7_01.Api.DataAccess.Models.Veterinaria", "Veterinaria")
-<<<<<<< HEAD
                         .WithMany()
-=======
-                        .WithMany("Productos")
-                        .HasForeignKey("VeterinariaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Veterinaria");
-                });
-
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Recordatorio", b =>
-                {
-                    b.HasOne("s7_01.Api.DataAccess.Models.Propietario", "Destinatario")
-                        .WithMany()
-                        .HasForeignKey("DestinatarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Destinatario");
-                });
-
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Servicio", b =>
-                {
-                    b.HasOne("s7_01.Api.DataAccess.Models.Veterinaria", "Veterinaria")
-                        .WithMany("Servicios")
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                         .HasForeignKey("VeterinariaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -611,11 +428,7 @@ namespace s7_01.Migrations
                     b.HasOne("s7_01.Api.DataAccess.Models.HistoriaClinica", "HistoriaClinica")
                         .WithMany("Tratamientos")
                         .HasForeignKey("HistoriaClinicaId")
-<<<<<<< HEAD
                         .OnDelete(DeleteBehavior.Cascade)
-=======
-                        .OnDelete(DeleteBehavior.Restrict)
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                         .IsRequired();
 
                     b.HasOne("s7_01.Api.DataAccess.Models.Veterinaria", "Veterinaria")
@@ -629,7 +442,6 @@ namespace s7_01.Migrations
                     b.Navigation("Veterinaria");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Veterinaria", b =>
                 {
                     b.HasOne("s7_01.Api.DataAccess.Models.Persona", "PersonaResponsable")
@@ -637,43 +449,17 @@ namespace s7_01.Migrations
                         .HasForeignKey("PersonaResponsableId");
 
                     b.Navigation("PersonaResponsable");
-=======
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Vacuna", b =>
-                {
-                    b.HasOne("s7_01.Api.DataAccess.Models.HistoriaClinica", "HistoriaClinica")
-                        .WithMany("Vacunas")
-                        .HasForeignKey("HistoriaClinicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("HistoriaClinica");
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                 });
 
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.HistoriaClinica", b =>
                 {
                     b.Navigation("Tratamientos");
-<<<<<<< HEAD
-=======
-
-                    b.Navigation("Vacunas");
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
                 });
 
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Persona", b =>
                 {
                     b.Navigation("Direccion");
                 });
-<<<<<<< HEAD
-=======
-
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Veterinaria", b =>
-                {
-                    b.Navigation("Productos");
-
-                    b.Navigation("Servicios");
-                });
->>>>>>> 9cc730068a6049480889e3973bec511e5f4983f8
 #pragma warning restore 612, 618
         }
     }
