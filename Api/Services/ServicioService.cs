@@ -10,10 +10,12 @@ namespace s7_01.Api.Services
     public class ServicioService : IServicioService
     {
         private readonly IGenericRepository<Servicio> _servicioRepository;
+        private readonly IServicioRepository _servRepository;
 
-        public ServicioService(IGenericRepository<Servicio> servicioRepository)
+        public ServicioService(IGenericRepository<Servicio> servicioRepository, IServicioRepository servRepository)
         {
             _servicioRepository = servicioRepository;
+            _servRepository = servRepository;
         }
 
         public async Task<ResponseDTO> GetAllServiciosAsync()
@@ -51,6 +53,32 @@ namespace s7_01.Api.Services
                 Success = true,
                 Result = servicio,
                 Message = "Servicio obtenido correctamente",
+                StatusCode = 200
+            };
+
+            return response;
+        }
+
+        public async Task<ResponseDTO> GetServiciosByVeterinariaIdAsync(int id)
+        {
+            var servicios = await _servRepository.GetServiciosByVeterinariaIdAsync(id);
+
+            if (servicios == null || !servicios.Any())
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Result = null,
+                    Message = "La veterinaria no tiene servicios registrados",
+                    StatusCode = 404
+                };
+            }
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = servicios,
+                Message = "Lista de servicios obtenida correctamente",
                 StatusCode = 200
             };
 
@@ -141,7 +169,7 @@ namespace s7_01.Api.Services
             return response;
         }
 
-
+        
 
     }
 }
