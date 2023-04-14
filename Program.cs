@@ -40,10 +40,15 @@ builder.Services.AddDbContext<VeterinariaContext>(options =>
 
 
 
-
 var emailConfig = builder.Configuration
       .GetSection(EmailConfiguration.Section)
       .Get<EmailConfiguration>();
+
+WebApplication? app = builder.Build();
+var context = app.Services.GetService<VeterinariaContext>();
+
+context.Database.EnsureCreated();
+
 
 builder.Services.AddSingleton(emailConfig);
 
