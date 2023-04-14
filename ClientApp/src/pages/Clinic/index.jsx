@@ -1,3 +1,6 @@
+// hooks
+import { useClinic } from "../../hooks/useClinic";
+// components
 import { CoverClinic } from "../../components/CoverClinic";
 import { DataClinic } from "../../components/DataClinic";
 import { ContactSocialNetwork } from "../../components/common";
@@ -11,6 +14,9 @@ import { OtherClinic } from "../../components/OtherClinic";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function Clinic() {
+  const { hola } = useClinic();
+
+  console.log(hola);
   return (
     <>
       <header>
