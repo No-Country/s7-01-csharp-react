@@ -12,7 +12,7 @@ namespace s7_01.Api.Services
     {
         private readonly IGenericRepository<Veterinaria> _veterinariaRepository;        
 
-        public VeterinariaService(IGenericRepository<Veterinaria> veterinariaRepository, IVeterinariaRepository veteRepository)
+        public VeterinariaService(IGenericRepository<Veterinaria> veterinariaRepository)
         {
             _veterinariaRepository = veterinariaRepository;            
         }
