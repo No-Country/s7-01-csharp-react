@@ -12,7 +12,7 @@ namespace s7_01.Api.DataAccess.Seeds
               new Mascota() {
                   Id =1,
                   Nombre = "FLOKY",
-                  Peso=2.5D,
+                  Peso=2.5m,
                   Especie = "CANINO",
                   FechaNacimento = new DateTime(2015,01,23),
                   Sexo = "MACHO",

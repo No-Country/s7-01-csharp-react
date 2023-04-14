@@ -9,10 +9,12 @@ namespace s7_01.Api.Services
     public class ProductoService : IProductoService
     {
         private readonly IGenericRepository<Producto> _productoRepository;
+        private readonly IProductoRepository _prodRepository;
 
-        public ProductoService(IGenericRepository<Producto> productoRepository)
+        public ProductoService(IGenericRepository<Producto> productoRepository, IProductoRepository prodRepository)
         {
             _productoRepository = productoRepository;
+            _prodRepository = prodRepository;
         }
 
         public async Task<ResponseDTO> GetAllProductosAsync()
@@ -139,6 +141,33 @@ namespace s7_01.Api.Services
 
             return response;
         }
+
+        public async Task<ResponseDTO> GetProductosByVeterinariaIdAsync(int id)
+        {
+            var productos = await _prodRepository.GetProductosByVeterinariaIdAsync(id);
+
+            if (productos == null || !productos.Any())
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Result = null,
+                    Message = "La veterinaria no tiene productos registrados",
+                    StatusCode = 404
+                };
+            }
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = productos,
+                Message = "Lista de productos obtenida correctamente",
+                StatusCode = 200
+            };
+
+            return response;
+        }
+
     }
 
 

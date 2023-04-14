@@ -2,6 +2,7 @@
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Contracts.Services;
+using s7_01.Api.Services;
 
 namespace s7_01.Api.Controllers
 {
@@ -42,6 +43,14 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
+        [HttpGet("{id}/productos")]
+        public async Task<IActionResult> GetProductosByVeterinariaIdAsync(int id)
+        {
+            var response = await _productoService.GetProductosByVeterinariaIdAsync(id);
+
+            return StatusCode(response.StatusCode, response);
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddProductoAsync(ProductoDTO productoDto)
         {
@@ -80,6 +89,7 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
+                
     }
 
 }

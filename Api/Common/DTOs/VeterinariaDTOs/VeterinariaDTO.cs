@@ -11,7 +11,7 @@ namespace s7_01.Api.Common.DTOs.VeterinariaDTOs
     public class VeterinariaDTO
     {        
         public string Nombre { get; set; }
-        public DireccionDTO DireccionDTO { get; set; }
+        public DireccionDTO Direccion { get; set; }
         public string RazonSocial { get; set; }
         public string CUIT { get; set; }
         public string Email { get; set; }

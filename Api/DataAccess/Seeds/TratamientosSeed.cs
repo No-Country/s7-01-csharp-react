@@ -34,7 +34,7 @@ namespace s7_01.Api.DataAccess.Seeds
                   //Fecha = 
               },
                   new Tratamiento() {
-                  Id =3,
+                  Id =4,
                   HistoriaClinicaId = 1,
                   VeterinariaId = 1,
                   Observaciones = "Ingresa Canino de raza pug de 52 semanas de edad, 2450 gramos de peso, propietatio manifiesta se rasca continuevmente orea derecha, descarta otitis, se realiza aseo" +

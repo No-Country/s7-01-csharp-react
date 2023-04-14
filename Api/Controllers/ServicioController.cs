@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Common.DTOs.ServicioDTOs;
 using s7_01.Api.Contracts.Services;
+using s7_01.Api.Services;
 
 namespace s7_01.Api.Controllers
 {
@@ -16,7 +17,7 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllServicios()
+        public async Task<IActionResult> GetAllServiciosAsync()
         {
             var response = await _servicioService.GetAllServiciosAsync();
 
@@ -29,7 +30,7 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetServicioById(int id)
+        public async Task<IActionResult> GetServicioByIdAsync(int id)
         {
             var response = await _servicioService.GetServicioByIdAsync(id);
 
@@ -41,8 +42,16 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
+        [HttpGet("{id}/servicios")]
+        public async Task<IActionResult> GetServiciosByVeterinariaIdAsync(int id)
+        {
+            var response = await _servicioService.GetServiciosByVeterinariaIdAsync(id);
+
+            return StatusCode(response.StatusCode, response);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> AddServicio(ServicioDTO servicioDto)
+        public async Task<IActionResult> AddServicioAsync(ServicioDTO servicioDto)
         {
             var response = await _servicioService.AddServicioAsync(servicioDto);
 
@@ -55,7 +64,7 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateServicio(int id, ServicioDTO servicioDto)
+        public async Task<IActionResult> UpdateServicioAsync(int id, ServicioDTO servicioDto)
         {
             var response = await _servicioService.UpdateServicioAsync(id, servicioDto);
 
@@ -68,7 +77,7 @@ namespace s7_01.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteServicio(int id)
+        public async Task<IActionResult> DeleteServicioAsync(int id)
         {
             var response = await _servicioService.DeleteServicioAsync(id);
 
@@ -79,5 +88,6 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
+
     }
 }
