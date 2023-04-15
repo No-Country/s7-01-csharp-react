@@ -1,16 +1,15 @@
 import React from "react";
 import { CalendarBlank, Syringe } from "@phosphor-icons/react";
-import MiniCards from "./MiniCards";
 
-const RememberCards = () => {
+const MiniCards = () => {
   return (
     <>
-      <div className="mt-6 p-2  ">
+      <div className="mt-6 p-2 hidden  ">
         <h3 className="ml-2 text-[18px] font-bold ">
           Proximos Recordatorios (3)
         </h3>
       </div>
-      <div className="mt-4 w-[314px] h-[113px] rounded bg-white">
+      <div className="mt-4 w-[314px] h-[113px] rounded bg-white  hidden md:block ">
         <div className="ml-2 flex flex-row gap-1 relative">
           <div className="h-16 w-16 mt-2 rounded-full border bg-secondary-50 hover:border-purple-700 ">
             <Syringe size={30} className="left-4 bottom-4  absolute" />
@@ -26,15 +25,13 @@ const RememberCards = () => {
             />
           </div>
         </div>
-        <div className="mt-4 flex gap-4 p-2 ">
+        <div className="mt-4 flex gap-4 p-2">
           <CalendarBlank size={20} />
           <p className="text-center text-gray-500">Miercoles 18 de abril</p>
         </div>
       </div>
-      <MiniCards/>
-      
     </>
   );
 };
 
-export default RememberCards;
+export default MiniCards;
