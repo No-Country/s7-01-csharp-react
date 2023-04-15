@@ -5,6 +5,8 @@ using s7_01.Api.Contracts.Services;
 
 namespace s7_01.Api.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class PropietarioController : Controller
     {
         private readonly IPropietarioService _propietarioService;
