@@ -14,9 +14,12 @@ import { OtherClinic } from "../../components/OtherClinic";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function Clinic() {
-  const { hola } = useClinic();
+  const { hola, services } = useClinic();
 
   console.log(hola);
+  console.log(services);
+  console.log(services.costo);
+
   return (
     <>
       <header>

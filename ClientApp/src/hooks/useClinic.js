@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 // services
-import { getClinicById } from "../services/clinic";
+import { getClinicById, getServicesClinic } from "../services/clinic";
 
 export function useClinic() {
   const [hola, setHola] = useState(true);
+  const [services, setServices] = useState({});
 
   useEffect(() => {
     console.log("consultando");
@@ -15,10 +16,14 @@ export function useClinic() {
     try {
       const response = await getClinicById(1);
       console.log(response);
+      const idVet = response.result.id;
+      const res = await getServicesClinic(idVet);
+      setServices(res);
+      console.log(idVet);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return { hola };
+  return { hola, services };
 }
