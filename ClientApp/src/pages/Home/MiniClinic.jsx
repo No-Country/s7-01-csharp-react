@@ -7,7 +7,8 @@ import {
 } from "@phosphor-icons/react";
 import perro from "../../assets/images/perro.png";
 
-const MiniClinic = () => {
+const MiniClinic = ({nombre}) => {
+
   return (
     <div className="w-[394px] h-[149px] flex flex-col gap-4 justify-center items-center text-center rounded-xl bg-white p-4">
       <div className="flex ml-4">
@@ -15,7 +16,7 @@ const MiniClinic = () => {
           <img src={perro} alt="perrito" />
         </div>
         <div className="ml-4 text-center mt-2">
-          <p className="font-bold">Nombre de la clínica</p>
+          <p className="font-bold">{nombre}</p>
           <div className="flex gap-2 ml-2">
             <Clock className="text-gray-100" />
             <p className="text-gray-100 ">LUN A VIE. DE 08:00 a 19:00</p>
