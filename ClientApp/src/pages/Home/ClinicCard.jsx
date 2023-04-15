@@ -31,19 +31,18 @@ const ClinicCard = () => {
         <button className="bg-primary-150  rounded-xl px-2 py-1">
           Atención
         </button>
-        <button className="bg-primary-150 rounded-xl px-2 py-1 hidden md:flex">Microchips</button>
-        <button className="bg-primary-150 rounded-xl px-2 py-1 hidden md:flex">Más Filtros</button>
+        <button className="bg-primary-150 rounded-xl px-2 py-1 hidden md:flex">
+          Microchips
+        </button>
+        <button className="bg-primary-150 rounded-xl px-2 py-1 hidden md:flex">
+          Más Filtros
+        </button>
       </div>
-      <div className="grid grid-cols-1 md:grid md:grid-cols-2">
-
+      <div className="container mt-8 mx-auto h-screen  grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
         <MiniClinic />
         <MiniClinic />
         <MiniClinic />
-        <MiniClinic />
-
       </div>
-
-
     </div>
   );
 };
