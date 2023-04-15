@@ -1,16 +1,16 @@
 import React from "react";
 import {
-    Clock,
-    MagnifyingGlass,
-    MapPin,
-    WhatsappLogo,
-  } from "@phosphor-icons/react";
-  import perro from "../../assets/images/perro.png";
+  Clock,
+  MagnifyingGlass,
+  MapPin,
+  WhatsappLogo,
+} from "@phosphor-icons/react";
+import perro from "../../assets/images/perro.png";
 
 const MiniClinic = () => {
   return (
-    <>
-      <div className="mt-8 ml-2 container w-[394px] h-[149px] flex text-center rounded-xl bg-white ">
+    <div className="container mx-auto md:grid md:grid-cols-2 relative">
+      <div className="mt-8 ml-2  w-[394px] h-[149px] flex text-center rounded-xl bg-white ">
         <div className="flex ml-4">
           <div className="w-14 h-14 rounded-full flex mt-2 ">
             <img src={perro} alt="perrito" />
@@ -27,12 +27,15 @@ const MiniClinic = () => {
             </div>
           </div>
         </div>
+        <button className="px-4 py-2 absolute bottom-3 left-32 border border-gray-300 rounded-xl ">
+          <div className="flex gap-2">
+            <WhatsappLogo size={20} className="text-black" />
+            <p className="text-black">Whatsapp</p>
+          </div>
+        </button>
       </div>
-      <button className="flex  gap-2 rounded-xl border-2  px-2 py-4 translate-x-24 -translate-y-16">
-        <WhatsappLogo size={20} className="" />
-        <p className=" font-bold">Enviar Whatsapp</p>
-      </button>
-    </>
+
+    </div>
   );
 };
 

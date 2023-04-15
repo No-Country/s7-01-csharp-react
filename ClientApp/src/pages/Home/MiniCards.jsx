@@ -9,7 +9,7 @@ const MiniCards = () => {
           Proximos Recordatorios (3)
         </h3>
       </div>
-      <div className="mt-4 w-[314px] h-[113px] rounded bg-white  hidden md:block ">
+      <div className="mt-4 w-[314px] h-[113px] rounded bg-white   md:block ">
         <div className="ml-2 flex flex-row gap-1 relative">
           <div className="h-16 w-16 mt-2 rounded-full border bg-secondary-50 hover:border-purple-700 ">
             <Syringe size={30} className="left-4 bottom-4  absolute" />
