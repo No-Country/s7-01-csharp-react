@@ -178,35 +178,6 @@ namespace s7_01.Api.Services
             throw new NotImplementedException();
         }
 
-        public async Task<ResponseDTO> GetMascotasByPropietarioIdAsync(int propietarioId)
-        {
-            var response = new ResponseDTO();
-            try
-            {
-                var mascotas = await _propietarioRepository.GetMascotasByPropietarioIdAsync(propietarioId);
-                if (mascotas != null && mascotas.Any())
-                {
-                    response.Success = true;
-                    response.Result = mascotas;
-                    response.Message = "Mascotas found.";
-                    response.StatusCode = 200;
-                }
-                else
-                {
-                    response.Success = false;
-                    response.Message = "Mascotas not found.";
-                    response.StatusCode = 404;
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.Message = ex.Message;
-                response.StatusCode = 500;
-            }
-            return response;
-        }
-
     }
 
 }
