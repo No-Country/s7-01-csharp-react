@@ -10,13 +10,15 @@ namespace s7_01.Api.Services
 {
     public class VeterinariaService : IVeterinariaService
     {
-        private readonly IGenericRepository<Veterinaria> _veterinariaRepository;        
+        private readonly IGenericRepository<Veterinaria> _veterinariaRepository;
+        private readonly IVeterinariaRepository _vetRepo;
 
-        public VeterinariaService(IGenericRepository<Veterinaria> veterinariaRepository)
+        public VeterinariaService(IGenericRepository<Veterinaria> veterinariaRepository, IVeterinariaRepository vetRepo)
         {
-            _veterinariaRepository = veterinariaRepository;            
+            _veterinariaRepository = veterinariaRepository;
+            _vetRepo = vetRepo;
         }
-
+        
         public async Task<ResponseDTO> GetAllVeterinariasAsync()
         {
             try
@@ -41,8 +43,8 @@ namespace s7_01.Api.Services
                 };
                 return response;
             }
-        }
-
+        }      
+                
         public async Task<ResponseDTO> GetVeterinariaByIdAsync(int id)
         {
             var veterinaria = await _veterinariaRepository.GetByIdAsync(id);
@@ -188,9 +190,60 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        
 
-        
+
+
+        public async Task<ResponseDTO> GetAllVetAsync()
+        {
+            try
+            {
+                var veterinarias = await _vetRepo.GetAllVetAsync();
+                var response = new ResponseDTO
+                {
+                    Success = true,
+                    Result = veterinarias,
+                    Message = "Lista de veterinarias obtenida correctamente",
+                    StatusCode = 200
+                };
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var response = new ResponseDTO
+                {
+                    Success = false,
+                    Message = "Ha ocurrido un error al obtener la lista de veterinarias",
+                    StatusCode = 500
+                };
+                return response;
+            }
+        }
+
+        public async Task<ResponseDTO> GetVetByIdAsync(int id)
+        {
+            var veterinaria = await _vetRepo.GetVetByIdAsync(id);
+
+            if (veterinaria == null)
+            {
+                return new ResponseDTO
+                {
+                    Success = false,
+                    Result = null,
+                    Message = "La veterinaria no existe",
+                    StatusCode = 404
+                };
+            }
+
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = veterinaria,
+                Message = "Veterinaria obtenida correctamente",
+                StatusCode = 200
+            };
+
+            return response;
+        }
 
     }
 }

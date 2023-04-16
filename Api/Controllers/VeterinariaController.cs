@@ -20,14 +20,14 @@ namespace s7_01.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllVeterinariasAsync()
         {
-            var response = await _veterinariaService.GetAllVeterinariasAsync();
+            var response = await _veterinariaService.GetAllVetAsync();
             return StatusCode(response.StatusCode, response);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetVeterinariasByIdAsync(int id)
+        public async Task<IActionResult> GetVeterinariaByIdAsync(int id)
         {
-            var response = await _veterinariaService.GetVeterinariaByIdAsync(id);
+            var response = await _veterinariaService.GetVetByIdAsync(id);
             return StatusCode(response.StatusCode, response);
         }
 

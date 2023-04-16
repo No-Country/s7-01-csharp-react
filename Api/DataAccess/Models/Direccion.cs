@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace s7_01.Api.DataAccess.Models
 {
@@ -8,7 +9,8 @@ namespace s7_01.Api.DataAccess.Models
         [Key]
         public int Id { get; set; }
         public int IdPersona { get; set; }
-
+                
+        [JsonIgnore]
         [ForeignKey("IdPersona")]
         public Persona Persona { get; set; }
 
