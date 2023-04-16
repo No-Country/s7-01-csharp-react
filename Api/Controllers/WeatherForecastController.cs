@@ -28,7 +28,7 @@ namespace s7_01.Api.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
+        [HttpGet("Get")]
         public IEnumerable<WeatherForecast> Get()
         {
 

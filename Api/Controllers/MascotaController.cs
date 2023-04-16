@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.MascotaDTOs;
 using s7_01.Api.Contracts.Services;
@@ -7,6 +8,7 @@ namespace s7_01.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize(Roles = "User")]
     public class MascotaController : Controller
     {
         private readonly IMascotaService _macotaService;
