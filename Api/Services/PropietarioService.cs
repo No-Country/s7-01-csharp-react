@@ -27,7 +27,6 @@ namespace s7_01.Api.Services
         public async Task<ResponseDTO> GetByIdAsync(int id)
         {
             var response = new ResponseDTO();
-
             try
             {
                 var entity = await _repository.GetByIdAsync(id);

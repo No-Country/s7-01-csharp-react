@@ -38,9 +38,6 @@ builder.Services.AddDbContext<VeterinariaContext>(options =>
 
     );
 
-
-
-
 var emailConfig = builder.Configuration
       .GetSection(EmailConfiguration.Section)
       .Get<EmailConfiguration>();
@@ -83,8 +80,15 @@ builder.Services.AddCors(o =>
 builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
 builder.Services.AddScoped<IVacunaService, VacunaService>();
 
-
 var app = builder.Build();
+
+//using (var serviceScope = app.Services.CreateScope())
+//{
+//    var services = serviceScope.ServiceProvider;
+//    var context = services.GetRequiredService<VeterinariaContext>();
+//    context.Database.EnsureCreated();
+//}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
