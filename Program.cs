@@ -77,6 +77,7 @@ builder.Services.AddScoped<IGenericRepository<HistoriaClinica>, HistoriaClinicaR
 
 builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
 builder.Services.AddScoped<IVacunaService, VacunaService>();
+builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();  
 
 builder.Services.AddCors(policyBuilder =>
     policyBuilder.AddDefaultPolicy(policy =>

@@ -9,5 +9,13 @@ public class VacunaRepository : GenericRepository<Vacuna>, IVacunaRepository
 {
     public VacunaRepository(VeterinariaContext context) : base(context)
     {
+
+    }
+
+    public async Task<IEnumerable<Vacuna>> GetVacunasByHistoriaClinicaIdAsync(int historiaClinicaId)
+    {
+        return await _context.Set<Vacuna>()
+                             .Where(a => a.HistoriaClinicaId == historiaClinicaId)
+                             .ToListAsync();
     }
 }
