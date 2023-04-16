@@ -5,6 +5,8 @@ using s7_01.Api.Contracts.Services;
 
 namespace s7_01.Api.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class PropietarioController : Controller
     {
         private readonly IPropietarioService _propietarioService;
@@ -40,7 +42,7 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
-        [HttpGet("propietario/{id}/mascotas")]
+        [HttpGet("{idpropietario}")]
         public async Task<IActionResult> GetMascotasByPropietarioIdAsync(int propietarioId)
         {
             var response = await _propietarioService.GetMascotasByPropietarioIdAsync(propietarioId);
