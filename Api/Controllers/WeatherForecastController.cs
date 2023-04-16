@@ -144,91 +144,75 @@ namespace s7_01.Api.Controllers
             //_context.SaveChanges();
 
             //prueba direccion
-            var direccion1 = new Direccion()
-            {
-                Calle = "54 Sanluis",
-                Numero = "8555",
-                CodigoPostal = 5465001,
-                Ciudad = "Buenos Aires",
-                Pais = "Argentina",
-            };
 
-            var direccion2 = new Direccion()
-            {
-                Numero = "4516",
-                Calle = "54 Sanluis",
-                CodigoPostal = 5465001,
-                Ciudad = "Buenos Aires",
-                Pais = "Argentina"
-            };
+            // var persona = new Veterinaria()
+            // {
+            //     Nombre = "SuperVetConDireccion",
+            //  //   Direccion = direccion1,
+            //     Email = "mivet@mailinator.com",
+            //     CUIT = "13132",
+            //     Telefono = "5511998765432",
+            //     Whatsapp = "5511998765432",
+            //     Instagram = "https://www.instagram.com/SuperVet",
+            //     Facebook = "https://www.facebook.com/SuperVet",
+            //     Twitter = "https://www.twitter.com/SuperVet",
+            //     LogoURI = "https://placehold.co/400",
+            //     RazonSocial = "SuperVet",
+            // };
 
-           // var persona = new Veterinaria()
-           // {
-           //     Nombre = "SuperVetConDireccion",
-           //  //   Direccion = direccion1,
-           //     Email = "mivet@mailinator.com",
-           //     CUIT = "13132",
-           //     Telefono = "5511998765432",
-           //     Whatsapp = "5511998765432",
-           //     Instagram = "https://www.instagram.com/SuperVet",
-           //     Facebook = "https://www.facebook.com/SuperVet",
-           //     Twitter = "https://www.twitter.com/SuperVet",
-           //     LogoURI = "https://placehold.co/400",
-           //     RazonSocial = "SuperVet",
-           // };
+            // persona.Direccion = direccion1;
 
-           // persona.Direccion = direccion1;
+            // _context.Veterinarias.Add(persona);
+            //var resul = _context.SaveChanges();
 
-           // _context.Veterinarias.Add(persona);
-           //var resul = _context.SaveChanges();
+            // var per = _context.Veterinarias.Find(persona.Id);
 
-           // var per = _context.Veterinarias.Find(persona.Id);
+            //var direccion1 = new Direccion()
+            //{
+            //    Calle = "54 Sanluis",
+            //    Numero = "8555",
+            //    CodigoPostal = 5465001,
+            //    Ciudad = "Buenos Aires",
+            //    Pais = "Argentina",
+            //};
 
-
-            var clinicas = ClinicasSeed.GetData();
-          
-
-            direccion1.Persona = clinicas.First();
-            direccion2.Persona = clinicas.Last();
-
-            clinicas.First().Direccion = direccion1;
-            clinicas.Last().Direccion = direccion2;
+            //var direccion2 = new Direccion()
+            //{
+            //    Numero = "4516",
+            //    Calle = "54 Sanluis",
+            //    CodigoPostal = 5465001,
+            //    Ciudad = "Buenos Aires",
+            //    Pais = "Argentina"
+            //};
 
 
-            var props = PropietariosSeed.GetData();
+            //var clinicas = ClinicasSeed.GetData();
+            //direccion1.Persona = clinicas.First();
+            //direccion2.Persona = clinicas.Last();
 
-            var mascotas = MascotasSeed.GetData();
-            var owner = new MascotaPropietario() { EsPrincipal = true, Mascota = mascotas.First(), Propietario = props.First() };
+            //var props = PropietariosSeed.GetData();
 
+            //var mascotas = MascotasSeed.GetData();
+            //var owner = new MascotaPropietario() { EsPrincipal = true, Mascota = mascotas.First(), Propietario = props.First() };
 
-            var historia = HistoriaClinicaSeed.GetData();
-            var vacunas = VacunasSeed.GetData();
-            var tratamientos = TratamientosSeed.GetData();
-            tratamientos.ForEach( x => x.Veterinaria = clinicas.First() );
-            tratamientos.ForEach( x => x.HistoriaClinica = historia.First() );
-            historia.First().Mascota = mascotas.First();
-            historia.First().Vacunas = vacunas.ToList();
-            historia.First().Tratamientos = tratamientos.ToList();
+            //var historia = HistoriaClinicaSeed.GetData();
+            //var vacunas = VacunasSeed.GetData();
+            //var tratamientos = TratamientosSeed.GetData();
+            //tratamientos.ForEach( x => x.Veterinaria = clinicas.First() );
+            //tratamientos.ForEach( x => x.HistoriaClinica = historia.First() );
+            //historia.First().Mascota = mascotas.First();
+            //historia.First().Vacunas = vacunas.ToList();
+            //historia.First().Tratamientos = tratamientos.ToList();
 
+            //_context.Propietarios.AddRange(props);            
+            //_context.Veterinarias.AddRange(clinicas);
+            //_context.Direcciones.Add(direccion2);
+            //_context.Direcciones.Add(direccion1);
+            //_context.Mascotas.AddRange(mascotas);
+            //_context.MascotaPropietarios.Add(owner);
+            //_context.Historias.Add(historia.First());
 
-
-            _context.Propietarios.AddRange(props);            
-            _context.Veterinarias.AddRange(clinicas);
-            _context.Direcciones.Add(direccion2);
-            _context.Direcciones.Add(direccion1);
-            _context.Mascotas.AddRange(mascotas);
-            _context.MascotaPropietarios.Add(owner);
-            _context.Historias.Add(historia.First());
-
-            _context.SaveChanges();
-            
-
-
-
-
-
-
-
+            //_context.SaveChanges();
 
             //      _context.Database.ExecuteSql(on);
             //      _context.SaveChanges();
