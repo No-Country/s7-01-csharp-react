@@ -52,7 +52,7 @@ jobs:
           password:  ${{ secrets.SOMEE_URL_FTP_SERVER_PASSWORD }}
           local_dir: "${{ env.WORKING_DIRECTORY }}"
           delete: "true"
-          remote_dir: "/mimascota.somee.com"
+          remote_dir: "/www.mimascota.somee.com"
           max_retries: "7"
           no_symlinks: "false"
           ftp_ssl_allow: "true"
