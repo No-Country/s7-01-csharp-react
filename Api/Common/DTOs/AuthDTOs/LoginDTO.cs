@@ -2,16 +2,14 @@
 
 namespace s7_01.Api.Common.DTOs.AuthDTOs
 {
-    public class RegistroDTO
+    public class LoginDTO
     {
         [Required]
-        public string Nombre { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
         [Required]
         [MinLength(6)]
         [MaxLength(12)]
         public string Password { get; set; }
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
     }
 }

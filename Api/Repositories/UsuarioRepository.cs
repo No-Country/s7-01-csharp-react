@@ -14,7 +14,7 @@ namespace s7_01.Api.Repositories
         }
         public async Task<Usuario> FindEmail(Expression<Func<Usuario, bool>> expression)
         {
-            return await _context.Set<Usuario>().Where(expression).FirstOrDefaultAsync();
+            return await _context.Set<Usuario>().Where(expression).Include(u => u.Role).FirstOrDefaultAsync();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
+using s7_01.Api.Common;
 using s7_01.Api.Common.DTOs.AuthDTOs;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
@@ -19,40 +21,22 @@ namespace s7_01.Api.Controllers
         }
 
 
-        // GET: api/<UsuarioController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<UsuarioController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegistroDTO registerModel)
+        public async Task<ActionResult<ResponseDTO>> Register([FromBody] RegistroDTO registerModel)
         {
-            var result = await _userService.RegisterAsync(registerModel);
 
-            return Ok(result);
-            
+            ResponseDTO response = await _userService.RegisterAsync(registerModel);
+            return StatusCode(response.StatusCode, response);
+
         }
 
-        // PUT api/<UsuarioController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpPost("login")]
+        public async Task<ActionResult<ResponseDTO>> Login([FromBody] LoginDTO loginDTO)
         {
-        }
 
-        // DELETE api/<UsuarioController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            ResponseDTO response = await _userService.LoginAsync(loginDTO);
+            return StatusCode(response.StatusCode, response);
+
         }
     }
 }

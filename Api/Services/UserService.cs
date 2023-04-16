@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using s7_01.Api.Common;
 using s7_01.Api.Common.DTOs.AuthDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
@@ -26,8 +27,15 @@ namespace s7_01.Api.Services
             _jwt = jwt.Value;
         }
 
-        public async Task<string> RegisterAsync(RegistroDTO model)
+        public async Task<ResponseDTO> RegisterAsync(RegistroDTO model)
         {
+            var response = new ResponseDTO
+            {
+                Success = true,
+                Result = "",
+                Message = "",
+                StatusCode = 200
+            };
             Usuario user = new Usuario()
             {
                 Nombre = model.Nombre,
@@ -40,7 +48,7 @@ namespace s7_01.Api.Services
 
             if (usuarioExiste == null)
             {
-                var rolPredeterminado = await _roleRepository.FindRoleName(r => r.Nombre == "User");
+                var rolPredeterminado = await _roleRepository.FindRoleName(r => r.Nombre == Roles.rol_predeterminado.ToString());
                 try
                 {
                     user.Role = rolPredeterminado;
@@ -48,19 +56,78 @@ namespace s7_01.Api.Services
                     await _repository.SaveAsync();
                     JwtSecurityToken jwtSecurityToken = CreateJwtToken(user);
                     string Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-                    return $"El usuario {model.Nombre} ha sido registrado exitosamente\n {Token}";
+                    var userSucces = new SuccessRegisterDTOs()
+                    {
+                        Nombre = model.Nombre,
+                        Email = model.Email,
+                        Token = Token
+                    };
+                    response.Message = "Registro Exitoso";
+                    response.Result = userSucces;
+                    response.StatusCode = 201;
+                    return response;
                 }
                 catch (Exception ex)
                 {
-                    var message = ex.Message;
-                    return $"Error: {message}";
+                    response.Success = false;
+                    response.Result = ex.Message;
+                    response.Message = "Servel Internal Error";
+                    response.StatusCode = 500;
+                    return response;
                 }
 
             }
             else
             {
-                return $"El usuario con {model.Nombre} ya se encuentra registrado.";
+                response.Success = false;
+                response.Message = "Ya existe un usuario con el email registrado";
+                response.StatusCode = 400;
+                return response;
             }
+        }
+
+        public async Task<ResponseDTO> LoginAsync(LoginDTO model)
+        {
+            var success = new SuccessLoginDTO();
+            var response = new ResponseDTO
+            {
+                Success = false,
+                Result = "",
+                Message = "",
+                StatusCode = 500
+            };
+
+            var usuarioExiste = await _repository.FindEmail(u => u.Email == model.Email);
+            if (usuarioExiste == null)
+            {
+                response.Result = null;
+                response.Message = "No existe un usuario con el email ingresado";
+                response.StatusCode = 400;
+                return response;
+            }
+
+            var resultado = _passwordHasher.VerifyHashedPassword(usuarioExiste, usuarioExiste.Password, model.Password);
+            if (resultado == PasswordVerificationResult.Success)
+            {
+                success.Nombre = usuarioExiste.Nombre;
+                success.Email = usuarioExiste.Email;
+                success.Role= usuarioExiste.Role;
+                JwtSecurityToken jwtSecurityToken = CreateJwtToken(usuarioExiste);
+                success.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+
+                response.Result = success;
+                response.Message = "Inicio de Sesion exitoso";
+                response.StatusCode = 200;
+                response.Success = true;
+
+                return response;
+            }
+
+            response.Result = null;
+            response.StatusCode = 400;
+            response.Message = "Credenciales incorrectas";
+
+            return response;
         }
 
         public JwtSecurityToken CreateJwtToken(Usuario usuario)

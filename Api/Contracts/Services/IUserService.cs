@@ -1,9 +1,11 @@
-﻿using s7_01.Api.Common.DTOs.AuthDTOs;
+﻿using s7_01.Api.Common;
+using s7_01.Api.Common.DTOs.AuthDTOs;
 
 namespace s7_01.Api.Contracts.Services
 {
     public interface IUserService
     {
-        Task<string> RegisterAsync(RegistroDTO model);
+        Task<ResponseDTO> RegisterAsync(RegistroDTO model);
+        Task<ResponseDTO> LoginAsync(LoginDTO model);
     }
 }
