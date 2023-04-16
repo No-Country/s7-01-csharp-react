@@ -14,7 +14,7 @@ export function useClinic() {
 
   const getClinic = async () => {
     try {
-      const response = await getClinicById(1);
+      const response = await getClinicById(2);
       console.log(response);
       const idVet = response.result.id;
       const res = await getServicesClinic(idVet);
