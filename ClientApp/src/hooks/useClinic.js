@@ -1,11 +1,17 @@
 import { useEffect, useState } from "react";
 
+// router
+import { useParams } from "react-router-dom";
+
 // services
-import { getClinicById, getServicesClinic } from "../services/clinic";
+import { getClinicById } from "../services/clinic";
 
 export function useClinic() {
+  const { id } = useParams();
+
   const [hola, setHola] = useState(true);
-  const [services, setServices] = useState({});
+  // const [services, setServices] = useState({});
+  const [clinic, setClinic] = useState({});
 
   useEffect(() => {
     console.log("consultando");
@@ -14,16 +20,15 @@ export function useClinic() {
 
   const getClinic = async () => {
     try {
-      const response = await getClinicById(2);
-      console.log(response);
-      const idVet = response.result.id;
-      const res = await getServicesClinic(idVet);
-      setServices(res);
-      console.log(idVet);
+      const response = await getClinicById(id);
+      const vet = response.result;
+      setClinic(vet);
+      // const res = await getServicesClinic(idVet);
+      // setServices(res);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return { hola, services };
+  return { clinic };
 }
