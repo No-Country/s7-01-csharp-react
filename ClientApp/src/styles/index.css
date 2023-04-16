@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 body{
-    @apply font-poppins
+    @apply font-poppins bg-bg-color
+}
+
+#root{
+    /* width: 100vw; */
+    overflow-x: hidden;
 }

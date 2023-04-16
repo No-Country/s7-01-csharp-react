@@ -1,0 +1,65 @@
+name: .NET
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+env:
+  PACKAGE_PATH: /home/runner/work/s7-01-csharp-react/s7-01-csharp-react/bin/Release/net6.0/publish
+  CONFIGURATION: Release
+  WORKING_DIRECTORY: .
+  DONWLOADED_PACK:  /home/runner/work/s7-01-csharp-react/s7-01-csharp-react
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Publish
+      run: dotnet publish  --configuration ${{ env.CONFIGURATION }} --no-build
+      
+    - name: Upload Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: webapp
+        path: "${{ env.PACKAGE_PATH }}"
+        
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: webapp
+        path: "${{ env.WORKING_DIRECTORY }}"
+        
+    - name: Upload  via FTP
+      uses: airvzxf/ftp-deployment-action@latest
+      with:
+          server: "${{ env.SOMEE_URL_FTP_SERVER }}"
+          user:  ${{ secrets.SOMEE_URL_FTP_SERVER_USER }}
+          password:  ${{ secrets.SOMEE_URL_FTP_SERVER_PASSWORD }}
+          local_dir: "${{ env.WORKING_DIRECTORY }}"
+          delete: "true"
+          remote_dir: "/www.mimascota.somee.com"
+          max_retries: "7"
+          no_symlinks: "false"
+          ftp_ssl_allow: "true"
+          ftp_use_feat: "true"
+          ftp_nop_interval: "9"
+          net_max_retries: "0"
+          net_persist_retries: "11"
+          net_timeout: "13s"
+          dns_max_retries: "17"
+          dns_fatal_timeout: "never"

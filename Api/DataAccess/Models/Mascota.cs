@@ -14,8 +14,8 @@ namespace s7_01.Api.DataAccess.Models
         [StringLength(15)]
         public string Sexo { get; set; }
 
-        [StringLength(50)]
-        public string Especie { get; set; }
+    //    [StringLength(50)]
+        public string Especie { get; set; } = "";
 
         public DateTime FechaNacimento { get; set; }
 
