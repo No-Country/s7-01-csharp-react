@@ -70,13 +70,8 @@ builder.Services.AddScoped<IGenericRepository<Servicio>, ServicioRepository>();
 builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
 
-builder.Services.AddCors(o =>
-{
-    o.AddDefaultPolicy(policy =>
-    {
-        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-    });
-});
+
+
 builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
 builder.Services.AddScoped<IVacunaService, VacunaService>();
 
@@ -89,6 +84,12 @@ var app = builder.Build();
 //    context.Database.EnsureCreated();
 //}
 
+builder.Services.AddCors(policyBuilder =>
+    policyBuilder.AddDefaultPolicy(policy =>
+        policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
+);
+var app = builder.Build();
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -99,11 +100,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 
 app.MapControllerRoute(
     name: "default",
