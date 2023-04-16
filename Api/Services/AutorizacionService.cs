@@ -36,13 +36,13 @@ namespace s7_01.Api.Services
                 {
                     response.Success = true;
                     response.Result = entity;
-                    response.Message = "Entity found.";
+                    response.Message = "Authorization found.";
                     response.StatusCode = 200;
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Entity not found.";
+                    response.Message = "Authorization not found.";
                     response.StatusCode = 404;
                 }
             }
@@ -64,6 +64,7 @@ namespace s7_01.Api.Services
                 var result = await _repository.GetAllAsync();
                 response.Result = result;
                 response.Success = true;
+                response.Message = "List of Authorizations successfully loaded";
                 response.StatusCode = 200;
             }
             catch (Exception ex)
@@ -109,6 +110,7 @@ namespace s7_01.Api.Services
                 await _repository.AddAsync(autorizacion);
                 await _repository.SaveAsync();
                 response.Success = true;
+                response.Message = "Authorization successfully added";
                 response.StatusCode = 201;
             }
             catch (Exception ex)
@@ -163,12 +165,13 @@ namespace s7_01.Api.Services
                 {
                     response.Success = false;
                     response.StatusCode = 404;
-                    response.Message = "La autorización no existe.";
+                    response.Message = "Authorization not found.";
                     return response;
                 }
 
                 _repository.Remove(autorizacion);
                 await _repository.SaveAsync();
+                response.Message = "Authorization successfully removed";
                 response.Success = true;
                 response.StatusCode = 200;
             }
@@ -219,6 +222,7 @@ namespace s7_01.Api.Services
                 var result = await _autorizacionRepository.GetAutorizacionesByMascotaIdAsync(mascotaId);
                 response.Result = result;
                 response.Success = true;
+                response.Message = "Authorization found";
                 response.StatusCode = 200;
             }
             catch (Exception ex)
@@ -240,6 +244,7 @@ namespace s7_01.Api.Services
                 var result = await _autorizacionRepository.GetAutorizacionesByVeterinariaIdAsync(veterinariaId);
                 response.Result = result;
                 response.Success = true;
+                response.Message = "Authorization found";
                 response.StatusCode = 200;
             }
             catch (Exception ex)
@@ -259,6 +264,7 @@ namespace s7_01.Api.Services
                 var result = await _autorizacionRepository.GetAutorizacionByMascotaIdAndVeterinariaIdAsync(getAutorizacionDTO);
                 response.Result = result;
                 response.Success = true;
+                response.Message = "Authorization found";
                 response.StatusCode = 200;
             }
             catch (Exception ex)
