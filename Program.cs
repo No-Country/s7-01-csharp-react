@@ -10,6 +10,8 @@ using s7_01.Api.Services.Email;
 using System.ComponentModel;
 using System.Reflection;
 using s7_01.Api.DataAccess.Seeds;
+using System.Text.Json.Serialization;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -60,6 +62,7 @@ builder.Services.AddScoped<IAutorizacionService, AutorizacionService>();
 
 
 builder.Services.AddScoped<IGenericRepository<Veterinaria>, VeterinariaRepository>();
+builder.Services.AddScoped<IVeterinariaRepository, VeterinariaRepository>();
 builder.Services.AddScoped<IVeterinariaService, VeterinariaService>();
 
 builder.Services.AddScoped<IGenericRepository<Producto>, ProductoRepository>();
@@ -82,6 +85,7 @@ builder.Services.AddCors(policyBuilder =>
     policyBuilder.AddDefaultPolicy(policy =>
         policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
 );
+
 var app = builder.Build();
 
 using (var serviceScope = app.Services.CreateScope())
