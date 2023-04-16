@@ -9,7 +9,7 @@ using s7_01.Api.Extensions;
 using s7_01.Api.Services.Email;
 using System.ComponentModel;
 using System.Reflection;
-
+using s7_01.Api.DataAccess.Seeds;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,9 +37,6 @@ builder.Services.AddDbContext<VeterinariaContext>(options =>
 #endif
 
     );
-
-
-
 
 var emailConfig = builder.Configuration
       .GetSection(EmailConfiguration.Section)
@@ -73,6 +70,9 @@ builder.Services.AddScoped<IGenericRepository<Servicio>, ServicioRepository>();
 builder.Services.AddScoped<IServicioRepository, ServicioRepository>();
 builder.Services.AddScoped<IServicioService, ServicioService>();
 
+builder.Services.AddScoped<IHistoriaClinicaService, HistoriaClinicaService>();
+builder.Services.AddScoped<IHistoriaClinicaRepository, HistoriaClinicaRepository>();
+builder.Services.AddScoped<IGenericRepository<HistoriaClinica>, HistoriaClinicaRepository>();
 
 
 builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
@@ -83,6 +83,18 @@ builder.Services.AddCors(policyBuilder =>
         policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
 );
 var app = builder.Build();
+
+using (var serviceScope = app.Services.CreateScope())
+{
+    var services = serviceScope.ServiceProvider;
+    var context = services.GetRequiredService<VeterinariaContext>();
+   //TODO context.Database.EnsureDeleted();
+    var isCreated = context.Database.EnsureCreated();
+    if (isCreated)
+        SeedGraph.Seed(context);
+}
+
+
 app.UseCors();
 
 // Configure the HTTP request pipeline.

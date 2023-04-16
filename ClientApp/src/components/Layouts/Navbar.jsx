@@ -1,8 +1,12 @@
 import React from "react";
 import Logo from "../../assets/images/Logo.svg";
 import profilePic from "../../assets/images/profilePic.png";
+import { useEffect } from 'react';
 
 const Navbar = () => {
+
+    useEffect
+
   return (
     <nav className="mx-auto flex justify-between w-full ">
       <div className="text-2xl cursor-pointer">
