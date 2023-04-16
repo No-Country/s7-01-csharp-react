@@ -6,10 +6,10 @@ on:
   pull_request:
     branches: [ "master" ]
 env:
-  PACKAGE_PATH: /home/runner/work/TestSecretsCI/TestSecretsCI/bin/Release/net6.0/publish
+  PACKAGE_PATH: /home/runner/work/s7-01-csharp-react/s7-01-csharp-react/bin/Release/net6.0/publish
   CONFIGURATION: Release
   WORKING_DIRECTORY: .
-  DONWLOADED_PACK:  /home/runner/work/TestSecretsCI/TestSecretsCI
+  DONWLOADED_PACK:  /home/runner/work/s7-01-csharp-react/s7-01-csharp-react
   
 jobs:
   build:
