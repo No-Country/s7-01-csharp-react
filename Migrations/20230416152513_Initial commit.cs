@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace s7_01.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class Initialcommit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,12 +15,12 @@ namespace s7_01.Migrations
                 name: "Mascotas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nombre = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
-                    Sexo = table.Column<string>(type: "TEXT", maxLength: 15, nullable: false),
-                    Especie = table.Column<string>(type: "TEXT", nullable: false),
-                    FechaNacimento = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Sexo = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Especie = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaNacimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Peso = table.Column<decimal>(type: "DECIMAL(5,2)", nullable: false)
                 },
                 constraints: table =>
@@ -32,20 +32,20 @@ namespace s7_01.Migrations
                 name: "Persona",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nombre = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
-                    Discriminator = table.Column<string>(type: "TEXT", nullable: false),
-                    DNI = table.Column<string>(type: "TEXT", nullable: true),
-                    RazonSocial = table.Column<string>(type: "TEXT", nullable: true),
-                    CUIT = table.Column<string>(type: "TEXT", nullable: true),
-                    LogoURI = table.Column<string>(type: "TEXT", nullable: true),
-                    Facebook = table.Column<string>(type: "TEXT", nullable: true),
-                    Instagram = table.Column<string>(type: "TEXT", nullable: true),
-                    Twitter = table.Column<string>(type: "TEXT", nullable: true),
-                    Whatsapp = table.Column<string>(type: "TEXT", nullable: true),
-                    Telefono = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DNI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RazonSocial = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CUIT = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoURI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Facebook = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Instagram = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Twitter = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Whatsapp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -56,10 +56,10 @@ namespace s7_01.Migrations
                 name: "Historias",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    MascotaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Comentarios = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MascotaId = table.Column<int>(type: "int", nullable: false),
+                    Comentarios = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -76,12 +76,12 @@ namespace s7_01.Migrations
                 name: "Autorizaciones",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    MascotaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    VeterinariaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FechaAutorizacion = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    EsActiva = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MascotaId = table.Column<int>(type: "int", nullable: false),
+                    VeterinariaId = table.Column<int>(type: "int", nullable: false),
+                    FechaAutorizacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EsActiva = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,14 +104,14 @@ namespace s7_01.Migrations
                 name: "Direcciones",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    IdPersona = table.Column<int>(type: "INTEGER", nullable: false),
-                    Calle = table.Column<string>(type: "TEXT", nullable: false),
-                    Numero = table.Column<string>(type: "TEXT", nullable: false),
-                    Ciudad = table.Column<string>(type: "TEXT", nullable: false),
-                    Pais = table.Column<string>(type: "TEXT", nullable: false),
-                    CodigoPostal = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdPersona = table.Column<int>(type: "int", nullable: false),
+                    Calle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Numero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Pais = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CodigoPostal = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -128,9 +128,9 @@ namespace s7_01.Migrations
                 name: "MascotaPropietarios",
                 columns: table => new
                 {
-                    MascotaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    PropietarioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    EsPrincipal = table.Column<bool>(type: "INTEGER", nullable: false)
+                    MascotaId = table.Column<int>(type: "int", nullable: false),
+                    PropietarioId = table.Column<int>(type: "int", nullable: false),
+                    EsPrincipal = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -153,10 +153,10 @@ namespace s7_01.Migrations
                 name: "Productos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    VeterinariaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Nombre = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VeterinariaId = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Costo = table.Column<decimal>(type: "DECIMAL(11,2)", nullable: false)
                 },
                 constraints: table =>
@@ -174,18 +174,18 @@ namespace s7_01.Migrations
                 name: "Recordatorios",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    CreadorId = table.Column<int>(type: "INTEGER", nullable: false),
-                    DestinatarioId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    FechaNotificacion = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DiasPreviosNotificacion = table.Column<int>(type: "INTEGER", nullable: false),
-                    EsEmailEnviado = table.Column<bool>(type: "INTEGER", nullable: false),
-                    EsSMSEnviado = table.Column<bool>(type: "INTEGER", nullable: false),
-                    EsPushNotificationEnviada = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Mensaje = table.Column<string>(type: "TEXT", nullable: false),
-                    EsLeido = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreadorId = table.Column<int>(type: "int", nullable: false),
+                    DestinatarioId = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaNotificacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DiasPreviosNotificacion = table.Column<int>(type: "int", nullable: false),
+                    EsEmailEnviado = table.Column<bool>(type: "bit", nullable: false),
+                    EsSMSEnviado = table.Column<bool>(type: "bit", nullable: false),
+                    EsPushNotificationEnviada = table.Column<bool>(type: "bit", nullable: false),
+                    Mensaje = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EsLeido = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,10 +202,10 @@ namespace s7_01.Migrations
                 name: "Servicios",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    VeterinariaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Nombre = table.Column<string>(type: "TEXT", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    VeterinariaId = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Costo = table.Column<decimal>(type: "DECIMAL(11,2)", nullable: false)
                 },
                 constraints: table =>
@@ -223,14 +223,14 @@ namespace s7_01.Migrations
                 name: "Tratamientos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    HistoriaClinicaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    VeterinariaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    NombreMedico = table.Column<string>(type: "TEXT", nullable: false),
-                    TipoTratamiento = table.Column<int>(type: "INTEGER", nullable: false),
-                    DosisMedicamento = table.Column<string>(type: "TEXT", nullable: false),
-                    Observaciones = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HistoriaClinicaId = table.Column<int>(type: "int", nullable: false),
+                    VeterinariaId = table.Column<int>(type: "int", nullable: false),
+                    NombreMedico = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TipoTratamiento = table.Column<int>(type: "int", nullable: false),
+                    DosisMedicamento = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Observaciones = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -253,14 +253,14 @@ namespace s7_01.Migrations
                 name: "Vacunas",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nombre = table.Column<string>(type: "TEXT", nullable: false),
-                    LoteSerial = table.Column<string>(type: "TEXT", nullable: false),
-                    HistoriaClinicaId = table.Column<int>(type: "INTEGER", nullable: false),
-                    EsDosisUnica = table.Column<bool>(type: "INTEGER", nullable: false),
-                    FechaAplicacion = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    ProximaAplicacion = table.Column<DateTime>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LoteSerial = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HistoriaClinicaId = table.Column<int>(type: "int", nullable: false),
+                    EsDosisUnica = table.Column<bool>(type: "bit", nullable: false),
+                    FechaAplicacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProximaAplicacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

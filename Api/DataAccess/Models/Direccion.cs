@@ -12,7 +12,7 @@ namespace s7_01.Api.DataAccess.Models
 
         [JsonIgnore]
         public int IdPersona { get; set; }
-
+        
         [JsonIgnore]
         [ForeignKey("IdPersona")]
         public Persona Persona { get; set; }
