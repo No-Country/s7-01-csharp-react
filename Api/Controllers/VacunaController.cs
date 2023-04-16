@@ -55,5 +55,14 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
+       
+        [HttpGet("getvacunas/{historiaClinicaId}")]
+        public async Task<IActionResult> GetVacunasByHistoriaClinicaId(int historiaClinicaId)
+        {
+            var response = await _vacunaService.GetVacunasByHistoriaClinicaIdAsync(historiaClinicaId);
+            return StatusCode(response.StatusCode, response);
+        }
+
+        
     }
 }

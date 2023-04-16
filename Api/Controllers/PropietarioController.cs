@@ -19,7 +19,7 @@ namespace s7_01.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            var response = await _propietarioService.GetAllAsync();
+            var response = await _propietarioService.GetAllPropAsync();
 
             if (!response.Success)
             {
