@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Logo from "../../assets/images/Logo.svg";
 import profilePic from "../../assets/images/profilePic.png";
+import { getAllUsers } from "../../services/getAllUsers";
 
 const Navbar = () => {
+  useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = async() =>{
+    try {
+      const res = await getAllUsers();
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
+ 
   return (
     <nav className="mx-auto flex justify-between w-full ">
       <div className="text-2xl cursor-pointer">
