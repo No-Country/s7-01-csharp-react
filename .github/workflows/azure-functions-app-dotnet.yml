@@ -51,4 +51,15 @@ jobs:
           user:  ${{ secrets.SOMEE_URL_FTP_SERVER_USER }}
           password:  ${{ secrets.SOMEE_URL_FTP_SERVER_PASSWORD }}
           local_dir: "${{ env.WORKING_DIRECTORY }}"
-          delete: "false"
+          delete: "true"
+          remote_dir: "/mimascota.somee.com"
+          max_retries: "7"
+          no_symlinks: "false"
+          ftp_ssl_allow: "true"
+          ftp_use_feat: "true"
+          ftp_nop_interval: "9"
+          net_max_retries: "0"
+          net_persist_retries: "11"
+          net_timeout: "13s"
+          dns_max_retries: "17"
+          dns_fatal_timeout: "never"
