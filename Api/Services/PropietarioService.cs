@@ -35,13 +35,13 @@ namespace s7_01.Api.Services
                 {
                     response.Success = true;
                     response.Result = entity;
-                    response.Message = "Entity found.";
+                    response.Message = "User found.";
                     response.StatusCode = 200;
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Entity not found.";
+                    response.Message = "User not found.";
                     response.StatusCode = 404;
                 }
             }
@@ -63,6 +63,7 @@ namespace s7_01.Api.Services
                 var result = await _repository.GetAllAsync();
                 response.Result = result;
                 response.Success = true;
+                response.Message = "List of Users successfully loaded";
                 response.StatusCode = 200;
             }
             catch (Exception ex)
@@ -121,6 +122,7 @@ namespace s7_01.Api.Services
                 await _repository.AddAsync(propietario);
                 await _repository.SaveAsync();
                 response.Success = true;
+                response.Message = "User successfully added";
                 response.StatusCode = 201;
             }
             catch (Exception ex)
@@ -142,7 +144,7 @@ namespace s7_01.Api.Services
                 {
                     Success = false,
                     Result = null,
-                    Message = "Not Found",
+                    Message = "User not found",
                     StatusCode = 404
                 };
             }
@@ -153,6 +155,7 @@ namespace s7_01.Api.Services
                 _repository.Remove(propietario);
                 await _repository.SaveAsync();
                 response.Success = true;
+                response.Message = "User successfully removed";
                 response.StatusCode = 200;
             }
             catch (Exception ex)
@@ -172,35 +175,6 @@ namespace s7_01.Api.Services
         public ResponseDTO RemoveRangeAsync(IEnumerable<GetAutorizacionDTO> getAutorizacionDTOs)
         {
             throw new NotImplementedException();
-        }
-
-        public async Task<ResponseDTO> GetMascotasByPropietarioIdAsync(int propietarioId)
-        {
-            var response = new ResponseDTO();
-            try
-            {
-                var mascotas = await _propietarioRepository.GetMascotasByPropietarioIdAsync(propietarioId);
-                if (mascotas != null && mascotas.Any())
-                {
-                    response.Success = true;
-                    response.Result = mascotas;
-                    response.Message = "Mascotas found.";
-                    response.StatusCode = 200;
-                }
-                else
-                {
-                    response.Success = false;
-                    response.Message = "Mascotas not found.";
-                    response.StatusCode = 404;
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.Message = ex.Message;
-                response.StatusCode = 500;
-            }
-            return response;
         }
 
     }

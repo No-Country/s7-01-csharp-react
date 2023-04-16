@@ -15,7 +15,6 @@ namespace s7_01.Api.Contracts.Services
         Task<ResponseDTO> AddRangeAsync(IEnumerable<CreatePropietarioDTO> createPropietarioDTOs);
         Task<ResponseDTO> RemoveAsync(int propietarioId);
         ResponseDTO RemoveRangeAsync(IEnumerable<GetAutorizacionDTO> getAutorizacionDTOs);
-        Task<ResponseDTO> GetMascotasByPropietarioIdAsync(int propietarioId);
 
     }
 }
