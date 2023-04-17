@@ -1,4 +1,4 @@
-﻿using s7_01.Api.Common;
+﻿using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.AuthDTOs;
 
 namespace s7_01.Api.Contracts.Services
