@@ -23,5 +23,21 @@ namespace s7_01.Api.Repositories
             return mascotas;
         }
 
+        public async Task<IEnumerable<Propietario>> GetAllPropAsync()
+        {
+            return await _context.Set<Propietario>()
+                .Include(v => v.Direccion)
+                .ToListAsync();
+        }
+
+
+        public async Task<Propietario> GetPropByIdAsync(int id)
+        {
+            return await _context.Set<Propietario>()
+                      .Include(v => v.Direccion)
+                      .FirstOrDefaultAsync(v => v.Id == id);
+        }
+
+
     }
 }

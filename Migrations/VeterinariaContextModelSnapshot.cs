@@ -139,6 +139,10 @@ namespace s7_01.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
+                    b.Property<string>("URLFotoPerfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Mascotas");
@@ -384,6 +388,10 @@ namespace s7_01.Migrations
                     b.HasBaseType("s7_01.Api.DataAccess.Models.Persona");
 
                     b.Property<string>("DNI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URLFotoPerfil")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

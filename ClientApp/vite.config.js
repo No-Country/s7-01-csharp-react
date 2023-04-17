@@ -6,7 +6,7 @@ import mkcert from 'vite-plugin-mkcert'
 export default defineConfig({
     server: {
         proxy: {
-            "/weatherforecast": {
+            "/weatherforecast*": {
                 target: "https://localhost:7280",
                 changeOrigin: true,
                 secure: false,

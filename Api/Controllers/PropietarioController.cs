@@ -19,7 +19,7 @@ namespace s7_01.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllAsync()
         {
-            var response = await _propietarioService.GetAllAsync();
+            var response = await _propietarioService.GetAllPropAsync();
 
             if (!response.Success)
             {
@@ -41,20 +41,6 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
-
-        [HttpGet("propietario/{id}/mascotas")]
-        public async Task<IActionResult> GetMascotasByPropietarioIdAsync(int propietarioId)
-        {
-            var response = await _propietarioService.GetMascotasByPropietarioIdAsync(propietarioId);
-
-            if (!response.Success)
-            {
-                return StatusCode(response.StatusCode, response.Message);
-            }
-
-            return Ok(response.Result);
-        }
-
 
 
         [HttpPost]

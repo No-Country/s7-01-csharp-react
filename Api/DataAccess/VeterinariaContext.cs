@@ -14,8 +14,21 @@ namespace s7_01.Api.DataAccess
 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.EnableSensitiveDataLogging();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            ////seeds
+            //Seeds.ClinicasSeed.Seed(modelBuilder);
+            //Seeds.PropietariosSeed.Seed(modelBuilder);
+            //Seeds.MascotasSeed.Seed(modelBuilder);
+            //Seeds.MascotasPropietarioSeed.Seed(modelBuilder);
+            //Seeds.TratamientosSeed.Seed(modelBuilder);
+
             // Configuración de Tratamiento
             modelBuilder.Entity<Tratamiento>()
                 .HasOne(t => t.HistoriaClinica)
@@ -23,8 +36,6 @@ namespace s7_01.Api.DataAccess
                 .HasForeignKey(t => t.HistoriaClinicaId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-
-
 
         public virtual DbSet<Direccion> Direcciones { get; set; }
 
@@ -34,16 +45,10 @@ namespace s7_01.Api.DataAccess
 
         public virtual DbSet<MascotaPropietario> MascotaPropietarios { get; set; }
 
-
-
-
         public virtual DbSet<Autorizacion> Autorizaciones { get; set; }
 
         public virtual DbSet<Vacuna> Vacunas { get; set; }
 
-
-
-        //Veterinaria
         public virtual DbSet<Veterinaria> Veterinarias { get; set; }
 
         public virtual DbSet<HistoriaClinica> Historias { get; set; }
@@ -54,6 +59,7 @@ namespace s7_01.Api.DataAccess
 
         public virtual DbSet<Servicio> Servicios { get; set; }
 
+        public virtual DbSet<Recordatorio> Recordatorios { get; set; }
         public virtual DbSet<Recordatorio>  Recordatorios { get; set; }
 
 

@@ -13,7 +13,7 @@ namespace s7_01.Api.DataAccess.Models
 
         public string? Comentarios { get; set; }
 
-        public virtual ICollection<Vacuna> Vacunas { get; } = new List<Vacuna>(); // carnet de vacunas 
-        public virtual ICollection<Tratamiento> Tratamientos { get; } = new List<Tratamiento>();
+        public virtual ICollection<Vacuna> Vacunas { get; set; } = new List<Vacuna>(); // carnet de vacunas 
+        public virtual ICollection<Tratamiento> Tratamientos { get; set; } = new List<Tratamiento>();
     }
 }

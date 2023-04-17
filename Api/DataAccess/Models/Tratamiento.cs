@@ -21,6 +21,8 @@ namespace s7_01.Api.DataAccess.Models
         public string DosisMedicamento { get; set; }
 
         public string Observaciones { get; set; }
+
+        public DateTime Fecha { get; set; } 
     }
 
     
