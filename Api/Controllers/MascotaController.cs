@@ -16,6 +16,7 @@ namespace s7_01.Api.Controllers
         {
             _macotaService = mascotaService;
         }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ResponseDTO>>> Index()
         {

@@ -5,47 +5,94 @@ namespace s7_01.Api.DataAccess.Seeds
 {
     public static class TratamientosSeed
     {
+        private static List<Tratamiento> data { get; set; }
         public static void Seed(ModelBuilder modelBuilder)
         {
-            var data = new[]
+            data = GetData();
+            modelBuilder.Entity<Tratamiento>().HasData(data);
+        }
+
+        public static List<Tratamiento> GetData()
+        {
+            data = new List<Tratamiento>
             {
               new Tratamiento() {
-                  Id =1,
-                  HistoriaClinicaId = 1,
-                  VeterinariaId = 1,
-                  Observaciones = "Ingresa Canino de raza pug de 6 semanas de edad, 300 gramos de peso, recien destetado, parto de 6 , primera revision, evidencia buen estado de salud, formacion osea, sentidos .inicio plan de vacunación, se aplica triple viral  CANIGEN® MHA2 PUPPY, se dan recomendaciones generales, se programa alerta para proxima vacuna x  polivalente para la 8va semana",
+                  //Id =1,
+                  HistoriaClinicaId = 2,
+                  VeterinariaId = 8,
+                  Observaciones = "Ingresa Canino de raza pug de 6 semanas de edad, 300 gramos de peso, " +
+                  "recien destetado, parto de 6 , primera revision, evidencia buen estado de salud, " +
+                  "formacion osea bien, sentidos bien .inicio plan de vacunación, se aplica triple viral  CANIGEN® MHA2 PUPPY," +
+                  " se dan recomendaciones generales, se programa alerta para proxima vacuna x  polivalente para la 8va semana",
                   TipoTratamiento = TipoTratamiento.Desparasitación,
-                  //Fecha = 
+                  DosisMedicamento = "",
+                  NombreMedico = "Gaspar Tomello",
+                  Fecha = new DateTime(2022,04,15)
               },
                  new Tratamiento() {
-                  Id =2,
-                  HistoriaClinicaId = 1,
-                  VeterinariaId = 1,
-                  Observaciones = "Ingresa Canino de raza pug de 8 semanas de edad, 350 gramos de peso,  evidencia buen estado de salud,asiste para seguimiento plan de vacunacion, se aplica polivalente  , se aplica Nobivac® DHPPI, se dan recomendaciones generales, se programa alerta para proxima vacuna x refuerzo polivalente para la 12va semana",
+                  //Id =2,
+                  HistoriaClinicaId = 2,
+                  VeterinariaId = 8,
+                  Observaciones = "Ingresa Canino de raza pug de 8 semanas de edad, 350 gramos de peso, " +
+                  " evidencia buen estado de salud,asiste para seguimiento plan de vacunacion, se aplica polivalente  ," +
+                  " se aplica Nobivac® DHPPI, se dan recomendaciones generales, se programa alerta para proxima vacuna" +
+                  " x refuerzo polivalente para la 12va semana",
                   TipoTratamiento = TipoTratamiento.Desparasitación,
-                  //Fecha = 
+                  DosisMedicamento = "",
+                  NombreMedico = "Gaspar Tomello",
+                  Fecha = new DateTime(2022,04,15).AddDays(15)
               },
                    new Tratamiento() {
-                  Id =3,
-                  HistoriaClinicaId = 1,
-                  VeterinariaId = 1,
-                  Observaciones = "Ingresa Canino de raza pug de 12 semanas de edad, 500 gramos de peso, evidencia buen estado de salud, seguimiento plan de vacunacion, se aplica  refuerzo polivalente  , se aplica Nobivac® DHPPI, se dan recomendaciones generales, se programa alerta para proxima vacuna rabia a 1 año de edad",
+                  //Id =3,
+                  HistoriaClinicaId = 2,
+                  VeterinariaId = 8,
+                  Observaciones = "Ingresa Canino de raza pug de 12 semanas de edad, " +
+                  "500 gramos de peso, evidencia buen estado de salud, seguimiento plan de vacunacion, " +
+                  "se aplica  refuerzo polivalente  , se aplica Nobivac® DHPPI, se dan recomendaciones generales, " +
+                  "se programa alerta para proxima vacuna rabia la semana 16",
                   TipoTratamiento = TipoTratamiento.Desparasitación,
-                  //Fecha = 
+                   DosisMedicamento = "",
+                  NombreMedico = "Gaspar Tomello",
+                  Fecha = new DateTime(2022,04,15).AddDays(43)
               },
                   new Tratamiento() {
-                  Id =3,
-                  HistoriaClinicaId = 1,
-                  VeterinariaId = 1,
-                  Observaciones = "Ingresa Canino de raza pug de 52 semanas de edad, 2450 gramos de peso, propietatio manifiesta se rasca continuevmente orea derecha, descarta otitis, se realiza aseo" +
-                  "con alcohol + agua, se dan recomendaciones asepsia para aseo, por lo demas goza buen estado de salud,  seguimiento plan de vacunacion, se aplica  refuerzo polivalente  , se aplica Nobivac® Rabia, se dan recomendaciones generales, se programa alerta para proxima vacuna refuerzo rabia a 2 año de edad",
+                  //Id =4,
+                  HistoriaClinicaId = 2,
+                  VeterinariaId = 8,
+                  Observaciones = "Ingresa Canino de raza pug de 16 semanas de edad, 800 gramos de peso," +
+                    " propietatio manifiesta se rasca continuamente oreja derecha," +
+                  " descarta otitis, se realiza aseo" +
+                  "con alcohol + agua, se dan recomendaciones asepsia para aseo, " +
+
+                  " goza buen estado de salud,  seguimiento plan de vacunacion, se aplica  refuerzo rabia  " +
+                  ", se aplica Nobivac® Rabia, se dan recomendaciones generales, se programa alerta para" +
+                  " proxima vacuna polivalente a 1 año de edad",
                   TipoTratamiento = TipoTratamiento.Desparasitación,
-                  //Fecha = 
+                   DosisMedicamento = "",
+                  NombreMedico = "Gaspar Tomello",
+                  Fecha = new DateTime(2022,04,15).AddDays(71)
+              },
+                  new Tratamiento() {
+                  //Id =4,
+                  HistoriaClinicaId = 2,
+                  VeterinariaId = 8,
+                  Observaciones = "Ingresa Canino de raza pug de 52 semanas de edad, " +
+                  "2450 gramos de peso," +
+                   " se valor antecedentes de otitis, descarta otitis," +
+                  "por lo demas goza buen estado de salud,  seguimiento plan de vacunacion, " +
+                  "se aplica  refuerzo polivalente  , se aplica Nobivac® DHPPI," +
+                  " se dan recomendaciones generales, se programa alerta para proxima " +
+                  "vacuna refuerzo polivalente a 2 año de edad",
+                  TipoTratamiento = TipoTratamiento.Desparasitación,
+                   DosisMedicamento = "",
+                  NombreMedico = "Gaspar Tomello",
+                  Fecha = new DateTime(2022,04,15).AddDays(323)
               },
 
             };
+            //recordatorios
 
-            modelBuilder.Entity<Mascota>().HasData(data);
+            return data;
         }
     }
 }

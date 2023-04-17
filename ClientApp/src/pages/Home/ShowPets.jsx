@@ -6,8 +6,8 @@ import imgPerro3 from "../../assets/images/imgPerro3.png"
 
 const ShowPets = () => {
   return (
-    <>
-      <>
+    
+      <div className="container mx-auto">
         <div className="mt-4 p-2 bg-gray-50">
           <h3 className="ml-2 text-[18px] font-bold">Mis Mascotas(5)</h3>
         </div>
@@ -32,8 +32,8 @@ const ShowPets = () => {
             <p className="text-center">{"Mascota"}</p>
           </div>        
         </div>
-      </>
-    </>
+      <div/>
+    </div>
   );
 };
 

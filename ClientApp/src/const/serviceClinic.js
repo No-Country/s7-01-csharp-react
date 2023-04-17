@@ -1,7 +1,7 @@
 export const services = [
   "Cirugías",
   "Vacunaciones",
-  "Desparacitaciónes",
+  "Desparasitaciones",
   "Atención a domicilio",
   "Microchips",
   "Peluquería",

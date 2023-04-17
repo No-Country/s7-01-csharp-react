@@ -28,10 +28,40 @@ namespace s7_01.Api.Services
         public async Task<ResponseDTO> GetByIdAsync(int id)
         {
             var response = new ResponseDTO();
-
             try
             {
                 var entity = await _repository.GetByIdAsync(id);
+
+                if (entity != null)
+                {
+                    response.Success = true;
+                    response.Result = entity;
+                    response.Message = "User found.";
+                    response.StatusCode = 200;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "User not found.";
+                    response.StatusCode = 404;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+                response.StatusCode = 500;
+            }
+
+            return response;
+        }
+
+        public async Task<ResponseDTO> GetPropByIdAsync(int id)
+        {
+            var response = new ResponseDTO();
+            try
+            {
+                var entity = await _propietarioRepository.GetPropByIdAsync(id);
 
                 if (entity != null)
                 {
@@ -77,6 +107,25 @@ namespace s7_01.Api.Services
             return response;
         }
 
+        public async Task<ResponseDTO> GetAllPropAsync()
+        {
+            var response = new ResponseDTO();
+            try
+            {
+                var result = await _propietarioRepository.GetAllPropAsync();
+                response.Result = result;
+                response.Success = true;
+                response.Message = "List of Users successfully loaded";
+                response.StatusCode = 200;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
         public async Task<ResponseDTO> FindAsync(Expression<Func<Propietario, bool>> expression)
         {
             var response = new ResponseDTO();
@@ -98,7 +147,7 @@ namespace s7_01.Api.Services
 
         public async Task<ResponseDTO> AddAsync(CreatePropietarioDTO createPropietarioDTO)
         {
-            var dir = createPropietarioDTO.DireccionDTO;
+            var dir = createPropietarioDTO.Direccion;
 
             var direccion = new Direccion
             {
@@ -177,35 +226,6 @@ namespace s7_01.Api.Services
         public ResponseDTO RemoveRangeAsync(IEnumerable<GetAutorizacionDTO> getAutorizacionDTOs)
         {
             throw new NotImplementedException();
-        }
-
-        public async Task<ResponseDTO> GetMascotasByPropietarioIdAsync(int propietarioId)
-        {
-            var response = new ResponseDTO();
-            try
-            {
-                var mascotas = await _propietarioRepository.GetMascotasByPropietarioIdAsync(propietarioId);
-                if (mascotas != null && mascotas.Any())
-                {
-                    response.Success = true;
-                    response.Result = mascotas;
-                    response.Message = "Mascotas found.";
-                    response.StatusCode = 200;
-                }
-                else
-                {
-                    response.Success = false;
-                    response.Message = "Mascotas not found.";
-                    response.StatusCode = 404;
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Success = false;
-                response.Message = ex.Message;
-                response.StatusCode = 500;
-            }
-            return response;
         }
 
     }

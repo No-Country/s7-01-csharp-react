@@ -3,6 +3,7 @@ using s7_01.Api.Common.DTOs.VacunaDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
+using s7_01.Api.Repositories;
 using System.Net.WebSockets;
 using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;
 
@@ -12,9 +13,12 @@ public class VacunaService : IVacunaService
 {
     private readonly IGenericRepository<Vacuna> _vacunaRepository;
 
-    public VacunaService(IGenericRepository<Vacuna> vacunaRepository)
+    private readonly IVacunaRepository _repository;
+
+    public VacunaService(IGenericRepository<Vacuna> vacunaRepository, IVacunaRepository repository)
     {
         _vacunaRepository = vacunaRepository;
+        _repository = repository;
     }
     public async Task<ResponseDTO> AddAsync(VacunaDTO vacunaDTO)
     {
@@ -162,6 +166,29 @@ public class VacunaService : IVacunaService
             _vacunaRepository.Remove(vacuna);
             await _vacunaRepository.SaveAsync();
         }
+
+        return response;
+    }
+
+
+    public async Task<ResponseDTO> GetVacunasByHistoriaClinicaIdAsync(int historiaClinicaId)
+    {
+        var response = new ResponseDTO();
+        try
+        {
+            var result = await _repository.GetVacunasByHistoriaClinicaIdAsync(historiaClinicaId);
+            response.Result = result;
+            response.Success = true;
+            response.Message = "Vacunas found";
+            response.StatusCode = 200;
+        }
+        catch (Exception ex)
+        {
+            response.Success = false;
+            response.StatusCode = 500;
+            response.Message = ex.Message;
+        }
+
 
         return response;
     }
