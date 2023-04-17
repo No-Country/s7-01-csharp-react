@@ -29,6 +29,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddAplicationServices();
+builder.Services.AddJwt(builder.Configuration);
 
 builder.Services.AddDbContext<VeterinariaContext>(options =>
 
@@ -114,6 +115,10 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",

@@ -60,5 +60,11 @@ namespace s7_01.Api.DataAccess
         public virtual DbSet<Servicio> Servicios { get; set; }
 
         public virtual DbSet<Recordatorio> Recordatorios { get; set; }
+
+
+        //Usuario
+        public virtual DbSet<Usuario> Usuarios { get; set;}
+        public virtual DbSet<Role> Roles { get; set; }
+
     }
 }

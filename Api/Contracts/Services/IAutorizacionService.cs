@@ -1,4 +1,5 @@
-﻿using s7_01.Api.Common;
+﻿
+using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.AutorizacionDTOs;
 using s7_01.Api.DataAccess.Models;
 using System.Linq.Expressions;
