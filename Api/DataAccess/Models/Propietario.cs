@@ -7,5 +7,6 @@ namespace s7_01.Api.DataAccess.Models
     {
         public string DNI { get; set; }
 
+        public string URLFotoPerfil { get; set; }
     }
 }

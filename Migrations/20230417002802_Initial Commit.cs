@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace s7_01.Migrations
 {
     /// <inheritdoc />
-    public partial class Initialcommit : Migration
+    public partial class InitialCommit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,6 +19,7 @@ namespace s7_01.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Sexo = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    URLFotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Especie = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaNacimento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Peso = table.Column<decimal>(type: "DECIMAL(5,2)", nullable: false)
@@ -38,6 +39,7 @@ namespace s7_01.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DNI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    URLFotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RazonSocial = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CUIT = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LogoURI = table.Column<string>(type: "nvarchar(max)", nullable: true),

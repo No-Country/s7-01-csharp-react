@@ -9,6 +9,8 @@ namespace s7_01.Api.Common.DTOs.MascotaDTOs
 
         public string Sexo { get; set; }
 
+        public string URLFotoPerfil { get; set; }
+
         public string Especie { get; set; }
 
         public DateTime FechaNacimento { get; set; }
