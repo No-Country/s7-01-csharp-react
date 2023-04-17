@@ -24,7 +24,7 @@ namespace s7_01.Api.DataAccess.Seeds
                   TipoTratamiento = TipoTratamiento.Desparasitación,
                   DosisMedicamento = "",
                   NombreMedico = "Gaspar Tomello"
-                  //Fecha = 
+                  Fecha = 
               },
                  new Tratamiento() {
                   //Id =2,
