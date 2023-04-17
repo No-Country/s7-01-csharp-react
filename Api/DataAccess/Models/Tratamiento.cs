@@ -1,13 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace s7_01.Api.DataAccess.Models
 {
     public class Tratamiento
     {
         public int Id { get; set; }
-       
+
+        [JsonIgnore]
         public int HistoriaClinicaId { get; set; }
 
+        [JsonIgnore]
         public HistoriaClinica HistoriaClinica { get; set; }
        
         public int VeterinariaId { get; set; }

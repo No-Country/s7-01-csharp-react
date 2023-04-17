@@ -18,5 +18,6 @@ namespace s7_01.Api.Contracts.Services
         Task<ResponseDTO> RemoveAsync(int historiaClinicaId);
         Task<ResponseDTO> UpdateAsync(int id, CreateHistoriaClinicaDTO createHistoriaClinicaDTO);
         ResponseDTO RemoveRangeAsync(IEnumerable<GetHistoriaClinicaDTO> getHistoriaClinicaDTOs);
+        Task<ResponseDTO> GetHistoriaClinicaByMascotaId(int mascotaId);
     }
 }

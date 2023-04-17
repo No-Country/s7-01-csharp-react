@@ -12,12 +12,13 @@ namespace s7_01.Api.Repositories
         {
 
         }
-
         public async Task<HistoriaClinica> GetHistoriaClinicaByMascotaId(int mascotaId)
         {
             return await _context.Set<HistoriaClinica>()
-                                 .SingleOrDefaultAsync(h => h.MascotaId == mascotaId);
+                .Include(h => h.Vacunas)
+                .Include(h => h.Tratamientos)
+                .SingleOrDefaultAsync(h => h.MascotaId == mascotaId);
         }
-      
+
     }
 }

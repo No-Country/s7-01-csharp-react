@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace s7_01.Api.DataAccess.Models
 {
@@ -17,6 +18,7 @@ namespace s7_01.Api.DataAccess.Models
         [ForeignKey("HistoriaClinica")]
         public int HistoriaClinicaId { get; set; }
 
+        [JsonIgnore]
         public HistoriaClinica HistoriaClinica { get; set; }
 
         public bool EsDosisUnica { get; set; } = false;

@@ -14,6 +14,7 @@ namespace s7_01.Api.Controllers
     {
         private readonly IHistoriaClinicaService _historiaClinicaService;
 
+
         public HistoriaClinicaController(IHistoriaClinicaService historiaClinicaService)
         {
             _historiaClinicaService = historiaClinicaService;
@@ -32,10 +33,23 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("historiaclinica/{id}")]
         public async Task<IActionResult> GetByIdAsync(int id)
         {
             var response = await _historiaClinicaService.GetByIdAsync(id);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
+        }
+
+        [HttpGet("historiaclinica/mascota/{mascotaId}")]
+        public async Task<IActionResult> GetHistoriaClinicaByMascotaIdAsync(int mascotaId)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaByMascotaId(mascotaId);
 
             if (!response.Success)
             {
