@@ -20,29 +20,7 @@ namespace s7_01.Api.Controllers
         [HttpGet]
         public IEnumerable<Recordatorio> Get()
         {
-            //mock data
-            var data = new List<Recordatorio>()
-            {
-                new Recordatorio() 
-                {
-                    DiasPreviosNotificacion = 3,
-                    FechaNotificacion = new DateTime(),
-                    Mensaje = ""
-                  
-                },
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {},
-                new Recordatorio() {}
-            };
-
-
-          //  var data = _context.Recordatorios.AsEnumerable();
+            var data = _context.Recordatorios.AsEnumerable();
             return data;
         }
 
