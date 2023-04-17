@@ -46,7 +46,7 @@ namespace s7_01.Api.DataAccess.Seeds
                  Instagram = "https://www.instagram.com/SuperVet",
                  Facebook = "https://www.facebook.com/SuperVet",
                  Twitter = "\"https://www.twitter.com/SuperVet",
-                 LogoURI = "https://placehold.co/400",
+                 LogoURI = "https://iili.io/HvvH3Ex.jpg",
                  RazonSocial = "SuperVet",
 
               },
@@ -61,7 +61,7 @@ namespace s7_01.Api.DataAccess.Seeds
                  Instagram = "https://www.instagram.com/VetSanFrancisco",
                  Facebook = "https://www.facebook.com/VetSanFrancisco",
                  Twitter = "https://www.twitter.com/VetSanFrancisco",
-                 LogoURI = "https://placehold.co/400",
+                 LogoURI = " https://iili.io/HvvH2Bj.jpg",
                  RazonSocial = "Veterinaria San Francisco SRL"
               },
 
