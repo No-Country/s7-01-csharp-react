@@ -18,6 +18,11 @@ export function Clinic() {
 
   console.log(clinic);
 
+  console.log(
+    "🚀 ~ file: index.jsx:31 ~ Clinic ~ clinic.logoUri:",
+    clinic.logoURI
+  );
+
   return (
     <>
       <header>
@@ -26,7 +31,7 @@ export function Clinic() {
 
       <main className="flex flex-col gap-8">
         <section className="container relative mx-auto">
-          <CoverClinic />
+          <CoverClinic logo={clinic.logoURI} />
         </section>
 
         <section className="mt-10 mx-4">

@@ -1,18 +1,18 @@
-export function CoverClinic() {
+export function CoverClinic({ logo }) {
   return (
     <>
-      <div className="w-full h-48 bg-slate-500 rounded-t-lg">
+      <div className="w-full h-48 bg-slate-500 rounded-t-lg border-0">
         <img
-          className="w-full h-full object-cover object-center rounded-t-lg"
-          src="https://picsum.photos/seed/picsum/500/600"
+          className="w-full h-full object-cover object-center rounded-t-lg border-0"
+          src={logo}
           alt="cover clinica"
         />
       </div>
 
-      <div className="w-28 h-28 rounded-full absolute -bottom-14 ml-4 bg-slate-500">
+      <div className="w-28 h-28 rounded-full absolute -bottom-14 ml-4 bg-slate-500 border-4 border-black">
         <img
           className="w-full h-full rounded-full object-cover object-center"
-          src="https://picsum.photos/200/300?random=1"
+          src={logo}
           alt="perfil"
         />
       </div>
