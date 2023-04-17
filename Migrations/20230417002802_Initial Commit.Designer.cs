@@ -12,8 +12,8 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    [Migration("20230416152513_Initial commit")]
-    partial class Initialcommit
+    [Migration("20230417002802_Initial Commit")]
+    partial class InitialCommit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -140,6 +140,10 @@ namespace s7_01.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("URLFotoPerfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -369,6 +373,10 @@ namespace s7_01.Migrations
                     b.HasBaseType("s7_01.Api.DataAccess.Models.Persona");
 
                     b.Property<string>("DNI")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URLFotoPerfil")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

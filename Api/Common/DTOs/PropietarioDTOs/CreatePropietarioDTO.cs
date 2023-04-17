@@ -10,6 +10,8 @@ namespace s7_01.Api.Common.DTOs.PropietarioDTOs
 
         public string DNI { get; set; }
 
+        public string URLFotoPerfil { get; set; }
+
         public DireccionDTO? Direccion { get; set; }
 
         [Required]
