@@ -3,7 +3,7 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
-]
+
 env:
   PACKAGE_PATH: /home/runner/work/s7-01-csharp-react/s7-01-csharp-react/bin/Release/net6.0/publish
   CONFIGURATION: Release
