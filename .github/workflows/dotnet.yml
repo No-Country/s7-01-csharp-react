@@ -33,24 +33,4 @@ jobs:
         name: webapp
         path: "${{ env.PACKAGE_PATH }}"
         
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Download artifact from build job
-      uses: actions/download-artifact@v3
-      with:
-        name: webapp
-        path: "${{ env.WORKING_DIRECTORY }}"
-        
-    - name: Upload from public_html via FTP
-      uses: airvzxf/ftp-deployment-action@latest
-      with:
-         server: 155.254.244.28
-         user: danto
-         password: ${{ secrets.SOMEE_URL_FTP_SERVER_PASSWORD }}
-         local_dir: ${{ env.WORKING_DIRECTORY }}
-         remote_dir: /www.mimascota.somee.com
-         
-         delete: "false"
 
