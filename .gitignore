@@ -257,3 +257,6 @@ _Pvt_Extensions
 /ClientApp/yarn-debug.log*
 /ClientApp/yarn-error.log*
 /appsettings.Development.json
+/vet.db
+/vet.db-shm
+/vet.db-wal
