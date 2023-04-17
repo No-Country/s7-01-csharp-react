@@ -1,11 +1,11 @@
 import { Clock, MapPin } from "@phosphor-icons/react";
 
-export function DataClinic({ className }) {
+export function DataClinic({ className, name }) {
   return (
     <div className="flex flex-col">
       <div className="mb-2">
         <h1 className="text-[#010B1D] not-italic font-medium text-2xl">
-          nombre de la clinica
+          {name}
         </h1>
       </div>
 

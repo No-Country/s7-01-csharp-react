@@ -30,7 +30,7 @@ export function Clinic() {
         </section>
 
         <section className="mt-10 mx-4">
-          <DataClinic />
+          <DataClinic name={clinic.nombre} />
         </section>
 
         <section className="mx-4">
