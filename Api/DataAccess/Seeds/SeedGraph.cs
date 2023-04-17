@@ -52,10 +52,11 @@ namespace s7_01.Api.DataAccess.Seeds
             _context.MascotaPropietarios.Add(owner);
             _context.Historias.Add(historia.First());
 
+
+            var recordatorios = Seeds.RecordatoriosSeed.GetData();
+            recordatorios.ToList().ForEach(x => { x.Destinatario = props.First(); x.CreadorId = 1; });
+            _context.Recordatorios.AddRange(recordatorios);
             _context.SaveChanges();
-
-            return true;
-
 
             return true;
         }
