@@ -43,6 +43,7 @@ namespace s7_01.Migrations
                     RazonSocial = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CUIT = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LogoURI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    URLFotoPortada = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Facebook = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Instagram = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Twitter = table.Column<string>(type: "nvarchar(max)", nullable: true),

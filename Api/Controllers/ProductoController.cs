@@ -51,7 +51,7 @@ namespace s7_01.Api.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpPost]
+        [HttpPost("producto")]
         public async Task<IActionResult> AddProductoAsync(ProductoDTO productoDto)
         {
             var response = await _productoService.AddProductoAsync(productoDto);
@@ -89,7 +89,21 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
-                
+
+        
+        [HttpPost("productosList")]
+        public async Task<IActionResult> AddProductosAsync([FromBody] IEnumerable<ProductoDTO> productoDTOs)
+        {
+            var response = await _productoService.AddRangeAsync(productoDTOs);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
+        }
+        
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Common.DTOs.ServicioDTOs;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.Services;
@@ -50,7 +51,7 @@ namespace s7_01.Api.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpPost]
+        [HttpPost("servicio")]
         public async Task<IActionResult> AddServicioAsync(ServicioDTO servicioDto)
         {
             var response = await _servicioService.AddServicioAsync(servicioDto);
@@ -89,5 +90,18 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
+
+        [HttpPost("serviciosList")]
+        public async Task<IActionResult> AddServiciosAsync([FromBody] IEnumerable<ServicioDTO> servicioDTOs)
+        {
+            var response = await _servicioService.AddRangeAsync(servicioDTOs);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
+        }
     }
 }

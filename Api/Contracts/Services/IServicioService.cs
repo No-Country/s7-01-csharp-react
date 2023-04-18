@@ -13,5 +13,8 @@ namespace s7_01.Api.Contracts.Services
         Task<ResponseDTO> AddServicioAsync(ServicioDTO servicioDTO);
         Task<ResponseDTO> UpdateServicioAsync(int id, ServicioDTO servicioDTO);
         Task<ResponseDTO> DeleteServicioAsync(int id);
+
+
+        Task<ResponseDTO> AddRangeAsync(IEnumerable<ServicioDTO> servicioDTOs);
     }
 }

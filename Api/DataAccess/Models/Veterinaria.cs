@@ -9,7 +9,9 @@ namespace s7_01.Api.DataAccess.Models
                 
         public string CUIT { get; set; } // Estructura: xx - xx xxx xxx - x ("x" son números, "-" son guiones). Ej: 29-15662874-9
 
-        public string LogoURI { get; set; }        
+        public string LogoURI { get; set; }   
+        
+        public string URLFotoPortada { get; set; }
 
         [Url]
         [DataType(DataType.Url)]

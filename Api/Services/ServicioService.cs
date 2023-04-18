@@ -4,6 +4,7 @@ using s7_01.Api.Common.DTOs.ServicioDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
+using s7_01.Api.Repositories;
 
 namespace s7_01.Api.Services
 {
@@ -169,7 +170,38 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        
+
+
+        public async Task<ResponseDTO> AddRangeAsync(IEnumerable<ServicioDTO> servicioDTOs)
+        {
+            var servicios = new List<Servicio>();
+            foreach (var dto in servicioDTOs)
+            {
+                var servicio = new Servicio
+                {
+                    VeterinariaId = dto.VeterinariaId,
+                    Nombre = dto.Nombre,
+                    Costo = dto.Costo
+                };
+                servicios.Add(servicio);
+            }
+
+            var response = new ResponseDTO();
+            try
+            {
+                await _servicioRepository.AddRangeAsync(servicios);
+                await _servicioRepository.SaveAsync();
+                response.Success = true;
+                response.StatusCode = 201;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
 
     }
 }

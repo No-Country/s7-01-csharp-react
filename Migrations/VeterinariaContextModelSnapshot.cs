@@ -409,6 +409,10 @@ namespace s7_01.Migrations
                     b.Property<string>("Twitter")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("URLFotoPortada")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Whatsapp")
                         .HasColumnType("nvarchar(max)");
 

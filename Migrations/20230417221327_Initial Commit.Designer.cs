@@ -12,7 +12,7 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    [Migration("20230417002802_Initial Commit")]
+    [Migration("20230417221327_Initial Commit")]
     partial class InitialCommit
     {
         /// <inheritdoc />
@@ -410,6 +410,10 @@ namespace s7_01.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Twitter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URLFotoPortada")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Whatsapp")

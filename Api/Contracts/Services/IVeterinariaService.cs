@@ -14,5 +14,7 @@ namespace s7_01.Api.Contracts.Services
 
         Task<ResponseDTO> GetAllVetAsync();
         Task<ResponseDTO> GetVetByIdAsync(int id);
+
+        Task<ResponseDTO> AddRangeAsync(IEnumerable<VeterinariaDTO> veterinariaDTOs);
     }
 }

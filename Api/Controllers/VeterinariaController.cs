@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Common.DTO;
+using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Common.DTOs.VeterinariaDTOs;
 using s7_01.Api.Contracts.Services;
+using s7_01.Api.Services;
 
 namespace s7_01.Api.Controllers
 {
@@ -31,7 +33,7 @@ namespace s7_01.Api.Controllers
             return StatusCode(response.StatusCode, response);
         }
 
-        [HttpPost]
+        [HttpPost("veterinaria")]
         public async Task<IActionResult> AddVeterinariaAsync([FromBody] VeterinariaDTO veterinariaDTO)
         {
             var response = await _veterinariaService.AddVeterinariaAsync(veterinariaDTO);
@@ -51,6 +53,20 @@ namespace s7_01.Api.Controllers
             var response = await _veterinariaService.DeleteVeterinariaAsync(id);
             return StatusCode(response.StatusCode, response);
         }
-          
+
+
+        [HttpPost("veterinariasList")]
+        public async Task<IActionResult> AddVeterinariasAsync([FromBody] IEnumerable<VeterinariaDTO> veterinariaDTOs)
+        {
+            var response = await _veterinariaService.AddRangeAsync(veterinariaDTOs);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
+        }
+
     }
 }
