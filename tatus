@@ -1,0 +1,31 @@
+[1mdiff --git a/Api/Controllers/TratamientoController.cs b/Api/Controllers/TratamientoController.cs[m
+[1mindex ad8ce46..4d61ddc 100644[m
+[1m--- a/Api/Controllers/TratamientoController.cs[m
+[1m+++ b/Api/Controllers/TratamientoController.cs[m
+[36m@@ -1,11 +1,6 @@[m
+[31m-﻿using Microsoft.AspNetCore.Http;[m
+[31m-using Microsoft.AspNetCore.Mvc;[m
+[31m-using s7_01.Api.Common.DTOs.TratamientoDTOs;[m
+[31m-using s7_01.Api.Contracts.Repositories;[m
+[32m+[m[32m﻿using Microsoft.AspNetCore.Mvc;[m
+ using s7_01.Api.Contracts.Services;[m
+[31m-using s7_01.Api.Services;[m
+ using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;[m
+[31m-using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;[m
+ [m
+ namespace s7_01.Api.Controllers;[m
+ [m
+[1mdiff --git a/Api/Services/TratamientoService.cs b/Api/Services/TratamientoService.cs[m
+[1mindex bc82086..1051474 100644[m
+[1m--- a/Api/Services/TratamientoService.cs[m
+[1m+++ b/Api/Services/TratamientoService.cs[m
+[36m@@ -3,9 +3,7 @@[m [musing s7_01.Api.Common.DTOs.TratamientoDTOs;[m
+ using s7_01.Api.Contracts.Repositories;[m
+ using s7_01.Api.Contracts.Services;[m
+ using s7_01.Api.DataAccess.Models;[m
+[31m-using s7_01.Api.Repositories;[m
+ using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;[m
+[31m-using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;[m
+ [m
+ namespace s7_01.Api.Services[m
+ {[m
