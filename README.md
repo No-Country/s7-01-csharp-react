@@ -125,7 +125,7 @@ The main objective is for the user to have access to all the information about t
 
 **Oscar Espinosa**
 [![GitHub Icon](https://icons.iconarchive.com/icons/pictogrammers/material/48/github-icon.png)](https://github.com/oscarzx) 
-[![LinkedIn Icon](https://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Linkedin-icon.png)](https://www.linkedin.com) 
+[![LinkedIn Icon](https://icons.iconarchive.com/icons/limav/flat-gradient-social/48/Linkedin-icon.png)](https://www.linkedin.com/in/oscar-andres-espinosa) 
 
 +
 +
