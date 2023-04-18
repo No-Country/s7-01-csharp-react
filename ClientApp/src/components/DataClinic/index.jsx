@@ -5,7 +5,7 @@ export function DataClinic({ className, name }) {
     <div className="flex flex-col">
       <div className="mb-2">
         <h1 className="text-[#010B1D] not-italic font-medium text-2xl">
-          {name}
+          {/* {name} */}xzxzxzx
         </h1>
       </div>
 

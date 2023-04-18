@@ -29,20 +29,16 @@ export function Clinic() {
         <Navbar />
       </header>
 
-      <main className="flex flex-col gap-8">
-        <section className="container relative mx-auto">
+      <main className="mt-4 flex flex-col gap-8">
+        <section className="relative mx-4 ">
           <CoverClinic logo={clinic.logoURI} />
-        </section>
-
-        <section className="mt-10 mx-4">
-          <DataClinic name={clinic.nombre} />
-        </section>
-
-        <section className="mx-4">
-          <ContactSocialNetwork
-            icon={<WhatsappLogo size={20} />}
-            title="Enviar Whatsapp"
-          />
+          <div className="bg-white pt-20 p-4 rounded-b-lg border-0">
+            <DataClinic name={clinic.nombre} />
+            <ContactSocialNetwork
+              icon={<WhatsappLogo size={20} />}
+              title="Enviar Whatsapp"
+            />
+          </div>
         </section>
 
         <section className="mx-4">

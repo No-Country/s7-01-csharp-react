@@ -9,7 +9,7 @@ export function CoverClinic({ logo }) {
         />
       </div>
 
-      <div className="w-28 h-28 rounded-full absolute -bottom-14 ml-4 bg-slate-500 border-4 border-black">
+      <div className="w-28 h-28 rounded-full absolute top-1/3 ml-4 bg-slate-500 border-4 border-black">
         <img
           className="w-full h-full rounded-full object-cover object-center"
           src={logo}
