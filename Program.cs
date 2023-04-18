@@ -93,29 +93,16 @@ builder.Services.AddCors(policyBuilder =>
 
 var app = builder.Build();
 
-//using (var serviceScope = app.Services.CreateScope())
-//{
-//    var services = serviceScope.ServiceProvider;
-//    var context = services.GetRequiredService<VeterinariaContext>();
-//   //TODO context.Database.EnsureDeleted();
-//    var isCreated = context.Database.EnsureCreated();
-//    if (isCreated)
-//        SeedGraph.Seed(context);
-//}
-
-var ScopeFactory =
-    app.Services.GetRequiredService<IServiceScopeFactory>();
-
-using (var scope = ScopeFactory.CreateScope())
+using (var serviceScope = app.Services.CreateScope())
 {
-    var context = scope.ServiceProvider
-        .GetRequiredService<VeterinariaContext>();
-
-    if (context.Database.EnsureCreated())
-    {
+    var services = serviceScope.ServiceProvider;
+    var context = services.GetRequiredService<VeterinariaContext>();
+    //TODO context.Database.EnsureDeleted();
+    var isCreated = context.Database.EnsureCreated();
+    if (isCreated)
         SeedGraph.Seed(context);
-    }
 }
+
 
 
 app.UseCors();
