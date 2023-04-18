@@ -4,7 +4,6 @@ using s7_01.Api.DataAccess;
 using s7_01.Api.DataAccess.Models;
 using s7_01.Api.Repositories;
 using s7_01.Api.Services.Email;
-using s7_01.Api.DataAccess.Seeds;
 using Microsoft.Data.Sql;
 using Microsoft.EntityFrameworkCore;
 
