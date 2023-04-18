@@ -81,7 +81,11 @@ builder.Services.AddScoped<IGenericRepository<HistoriaClinica>, HistoriaClinicaR
 
 builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
 builder.Services.AddScoped<IVacunaService, VacunaService>();
-builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();  
+builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();
+
+builder.Services.AddScoped<IGenericRepository<Tratamiento>, TratamientoRepository>();
+builder.Services.AddScoped<ITratamientoService, TratamientoService>();
+builder.Services.AddScoped<ITratamientoRepository, TratamientoRepository>();
 
 builder.Services.AddCors(policyBuilder =>
     policyBuilder.AddDefaultPolicy(policy =>
@@ -94,11 +98,12 @@ using (var serviceScope = app.Services.CreateScope())
 {
     var services = serviceScope.ServiceProvider;
     var context = services.GetRequiredService<VeterinariaContext>();
-   //TODO context.Database.EnsureDeleted();
+    //TODO context.Database.EnsureDeleted();
     var isCreated = context.Database.EnsureCreated();
     if (isCreated)
         SeedGraph.Seed(context);
 }
+
 
 
 app.UseCors();

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using s7_01.Api.DataAccess;
 
@@ -11,9 +12,11 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    partial class VeterinariaContextModelSnapshot : ModelSnapshot
+    [Migration("20230417170303_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,8 +123,7 @@ namespace s7_01.Migrations
 
                     b.Property<string>("Especie")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaNacimento")
                         .HasColumnType("datetime2");
@@ -268,23 +270,6 @@ namespace s7_01.Migrations
                     b.ToTable("Recordatorios");
                 });
 
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Role", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Servicio", b =>
                 {
                     b.Property<int>("Id")
@@ -401,25 +386,6 @@ namespace s7_01.Migrations
                     b.HasDiscriminator().HasValue("Propietario");
                 });
 
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Usuario", b =>
-                {
-                    b.HasBaseType("s7_01.Api.DataAccess.Models.Persona");
-
-                    b.Property<int>("IdRole")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasDiscriminator().HasValue("Usuario");
-                });
-
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.Veterinaria", b =>
                 {
                     b.HasBaseType("s7_01.Api.DataAccess.Models.Persona");
@@ -447,10 +413,6 @@ namespace s7_01.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Twitter")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("URLFotoPortada")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Whatsapp")
@@ -580,17 +542,6 @@ namespace s7_01.Migrations
                         .IsRequired();
 
                     b.Navigation("HistoriaClinica");
-                });
-
-            modelBuilder.Entity("s7_01.Api.DataAccess.Models.Usuario", b =>
-                {
-                    b.HasOne("s7_01.Api.DataAccess.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("s7_01.Api.DataAccess.Models.HistoriaClinica", b =>
