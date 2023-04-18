@@ -3,9 +3,7 @@ using s7_01.Api.Common.DTOs.TratamientoDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
-using s7_01.Api.Repositories;
 using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;
-using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;
 
 namespace s7_01.Api.Services
 {
