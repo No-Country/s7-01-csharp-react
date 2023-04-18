@@ -8,7 +8,7 @@ export function ServiceClinic() {
       <h2 className="text-[#010B1D] not-italic font-medium text-xl">
         Servicios ofrecidos
       </h2>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <div key={service} className="flex justify-start items-center gap-2">
             <div className="bg-[#E0E0E0] p-1">

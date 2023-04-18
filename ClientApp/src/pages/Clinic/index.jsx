@@ -29,7 +29,7 @@ export function Clinic() {
         <Navbar />
       </header>
 
-      <main className="mt-4 mx-4 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:container lg:mx-auto lg:mt-6">
+      <main className="my-4 mx-4 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:container lg:mx-auto lg:mt-6">
         <section className="flex flex-col gap-8 lg:col-span-2">
           <article className="relative">
             <CoverClinic logo={clinic.logoURI} />
