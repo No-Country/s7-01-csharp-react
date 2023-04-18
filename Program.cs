@@ -97,6 +97,9 @@ using (var serviceScope = app.Services.CreateScope())
 {
     var services = serviceScope.ServiceProvider;
     var context = services.GetRequiredService<VeterinariaContext>();
+
+    //TODO context.Database.EnsureDeleted();
+    var isCreated = context.Database.EnsureCreated();
 }
 
 

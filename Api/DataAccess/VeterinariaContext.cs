@@ -22,13 +22,6 @@ namespace s7_01.Api.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ////seeds
-            //Seeds.ClinicasSeed.Seed(modelBuilder);
-            //Seeds.PropietariosSeed.Seed(modelBuilder);
-            //Seeds.MascotasSeed.Seed(modelBuilder);
-            //Seeds.MascotasPropietarioSeed.Seed(modelBuilder);
-            //Seeds.TratamientosSeed.Seed(modelBuilder);
-
             // Configuración de Tratamiento
             modelBuilder.Entity<Tratamiento>()
                 .HasOne(t => t.HistoriaClinica)
