@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 import Logo from "../../assets/images/Logo.svg";
 import profilePic from "../../assets/images/profilePic.png";
-import { useEffect } from 'react';
+import { getAllUsers } from "../../services/getAllUsers";
+
+
 
 const Navbar = () => {
-
-    useEffect
-
+ // const [propietario, setPropietario] = useState([])
+  useEffect(() => {
+    getUser();
+  }, []);
+  const getUser = async() =>{
+    try {
+      const res = await getAllUsers();
+      console.log(res);    
+     // setPropietario(res)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+ 
   return (
     <nav className="mx-auto flex justify-between w-full ">
       <div className="text-2xl cursor-pointer">
@@ -19,6 +32,7 @@ const Navbar = () => {
           className="w-8 h-8 rounded-full mt-2 mr-2"
         />
       </div>
+        
     </nav>
   );
 };

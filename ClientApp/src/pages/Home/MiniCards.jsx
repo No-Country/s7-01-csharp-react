@@ -1,7 +1,21 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { CalendarBlank, Syringe } from "@phosphor-icons/react";
+import { getRememberCard } from "../../services/getRememberCard";
 
 const MiniCards = () => {
+  const [remember, setRemember] = useState([])
+  useEffect(() => {
+   recordatorio()   
+   
+  }, [])  
+  const recordatorio = async()=>{
+    try {
+      const res = await getRememberCard()
+      console.log(res)      
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
       <div className="mt-6 p-2 hidden  ">

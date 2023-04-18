@@ -3,6 +3,9 @@ import { MagnifyingGlass } from "@phosphor-icons/react";
 import MiniClinic from "./MiniClinic";
 import { useAllClinics } from "../../hooks/useAllClinics";
 
+// rutas
+import { Link } from "react-router-dom";
+
 const ClinicCard = () => {
   const { clinicas, services } = useAllClinics();
 
@@ -32,7 +35,9 @@ const ClinicCard = () => {
 
       <div className="container mt-8 mx-auto h-screen  grid md:grid-cols-2 lg:grid-cols-3 md:gap-8">
         {clinicas.map((clinica) => (
-          <MiniClinic key={clinica.id} nombre={clinica.nombre} />
+          <Link to={`app/clinic`}>
+            <MiniClinic key={clinica.id} nombre={clinica.nombre} />
+          </Link>
         ))}
       </div>
     </div>

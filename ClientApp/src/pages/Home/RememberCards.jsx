@@ -1,7 +1,9 @@
 import React from "react";
 import MiniCards from "./MiniCards";
 
+
 const RememberCards = () => {
+
   return (
     <div className="container mx-auto">
       <div className="mt-6 p-2  ">
