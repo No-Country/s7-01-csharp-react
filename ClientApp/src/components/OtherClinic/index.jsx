@@ -12,7 +12,7 @@ export function OtherClinic() {
         <h2 className="text-[#010B1D] not-italic font-medium text-xl">
           Otras clinicas cercanas
         </h2>
-        <div className="flex flex-row justify-center lg:justify-start gap-4">
+        <div className="flex flex-row justify-start gap-4">
           <div className="w-12 h-12 rounded-full bg-slate-500">
             <img
               className="w-full h-full rounded-full object-cover object-center"
