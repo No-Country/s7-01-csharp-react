@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Common.DTOs.VeterinariaDTOs;
@@ -7,7 +9,7 @@ using s7_01.Api.Services;
 
 namespace s7_01.Api.Controllers
 {
-    [ApiController]
+    [ApiController]    
     [Route("api/[controller]")]
     public class VeterinariaController : ControllerBase
     {
