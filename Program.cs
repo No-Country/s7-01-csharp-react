@@ -9,7 +9,6 @@ using s7_01.Api.Extensions;
 using s7_01.Api.Services.Email;
 using System.ComponentModel;
 using System.Reflection;
-using s7_01.Api.DataAccess.Seeds;
 using System.Text.Json.Serialization;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
@@ -98,10 +97,6 @@ using (var serviceScope = app.Services.CreateScope())
 {
     var services = serviceScope.ServiceProvider;
     var context = services.GetRequiredService<VeterinariaContext>();
-    //TODO context.Database.EnsureDeleted();
-    var isCreated = context.Database.EnsureCreated();
-    if (isCreated)
-        SeedGraph.Seed(context);
 }
 
 
