@@ -17,20 +17,20 @@ const FourBlock = () => {
           </thead>
           <tbody>
             <tr className="border-b dark:border-neutral-500">
-              <td className="whitespace-nowrap px-2 py-4 font-medium">1</td>
-              <td className="whitespace-nowrap px-2 py-4">Tobi</td>
+              <td className="whitespace-nowrap px-2 py-4 font-medium">Tobi</td>
+              <td className="whitespace-nowrap px-2 py-4">06/05/23</td>
               <td className="whitespace-nowrap px-2 py-4">11/12/23</td>
               <td className="whitespace-nowrap px-2 py-4">Pulgoso</td>
             </tr>
             <tr className="border-b dark:border-neutral-500">
-              <td className="whitespace-nowrap px-2 py-4 font-medium">2</td>
-              <td className="whitespace-nowrap px-2 py-4">Thor</td>
+              <td className="whitespace-nowrap px-2 py-4 font-medium">Thor</td>
+              <td className="whitespace-nowrap px-2 py-4">03/03/23</td>
               <td className="whitespace-nowrap px-2 py-4">05/06/23</td>
               <td className="whitespace-nowrap px-2 py-4">Rabioso</td>
             </tr>
             <tr className="border-b dark:border-neutral-500">
-              <td className="whitespace-nowrap px-2 py-4 font-medium">3</td>
-              <td className="whitespace-nowrap px-2 py-4">Larry</td>
+              <td className="whitespace-nowrap px-2 py-4 font-medium">Larry</td>
+              <td className="whitespace-nowrap px-2 py-4">02/02/23</td>
               <td className="whitespace-nowrap px-2 py-4">07/08/23</td>
               <td className="whitespace-nowrap px-2 py-4">Obesidad</td>
             </tr>
