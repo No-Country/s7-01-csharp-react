@@ -1,20 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import Logo from "../../assets/images/Logo.svg";
 import profilePic from "../../assets/images/profilePic.png";
 import { getAllUsers } from "../../services/getAllUsers";
 
+
+
 const Navbar = () => {
+ // const [propietario, setPropietario] = useState([])
   useEffect(() => {
     getUser();
   }, []);
   const getUser = async() =>{
     try {
       const res = await getAllUsers();
-      console.log(res);
+      console.log(res);    
+     // setPropietario(res)
     } catch (error) {
       console.log(error);
     }
-
   }
  
   return (
@@ -29,6 +32,7 @@ const Navbar = () => {
           className="w-8 h-8 rounded-full mt-2 mr-2"
         />
       </div>
+        
     </nav>
   );
 };
