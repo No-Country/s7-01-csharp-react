@@ -1,10 +1,12 @@
 ﻿using Azure;
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.DireccionDTOs;
+using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Common.DTOs.VeterinariaDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
+using s7_01.Api.Repositories;
 
 namespace s7_01.Api.Services
 {
@@ -93,6 +95,7 @@ namespace s7_01.Api.Services
                 CUIT = veterinariaDTO.CUIT,
                 Email = veterinariaDTO.Email,
                 LogoURI = veterinariaDTO.LogoURI,
+                URLFotoPortada = veterinariaDTO.URLFotoPortada,
                 Facebook = veterinariaDTO.Facebook,
                 Instagram = veterinariaDTO.Instagram,
                 Twitter = veterinariaDTO.Twitter,
@@ -142,6 +145,7 @@ namespace s7_01.Api.Services
             veterinaria.CUIT = veterinariaDTO.CUIT;
             veterinaria.Email = veterinariaDTO.Email;
             veterinaria.LogoURI = veterinariaDTO.LogoURI;
+            veterinaria.URLFotoPortada = veterinariaDTO.URLFotoPortada;
             veterinaria.Facebook = veterinariaDTO.Facebook;
             veterinaria.Instagram = veterinariaDTO.Instagram;
             veterinaria.Twitter = veterinariaDTO.Twitter;
@@ -242,6 +246,58 @@ namespace s7_01.Api.Services
                 StatusCode = 200
             };
 
+            return response;
+        }
+
+
+        public async Task<ResponseDTO> AddRangeAsync(IEnumerable<VeterinariaDTO> veterinariaDTOs)
+        {
+            var veterinarias = new List<Veterinaria>();
+            foreach (var dto in veterinariaDTOs)
+            {
+                var dir = dto.Direccion;
+
+                var direccion = new Direccion
+                {
+                    Calle = dir.Calle,
+                    Numero = dir.Numero,
+                    Ciudad = dir.Ciudad,
+                    Pais = dir.Pais,
+                    CodigoPostal = dir.CodigoPostal
+                };
+
+                var veterinaria = new Veterinaria
+                {
+                    Nombre = dto.Nombre,
+                    Direccion = direccion,
+                    RazonSocial = dto.RazonSocial,
+                    CUIT = dto.CUIT,
+                    Email = dto.Email,
+                    LogoURI = dto.LogoURI,
+                    URLFotoPortada = dto.URLFotoPortada,
+                    Facebook = dto.Facebook,
+                    Instagram = dto.Instagram,
+                    Twitter = dto.Twitter,
+                    Whatsapp = dto.Whatsapp,
+                    Telefono = dto.Telefono
+                };
+                veterinarias.Add(veterinaria);
+            }
+
+            var response = new ResponseDTO();
+            try
+            {
+                await _veterinariaRepository.AddRangeAsync(veterinarias);
+                await _veterinariaRepository.SaveAsync();
+                response.Success = true;
+                response.StatusCode = 201;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+            }
             return response;
         }
 

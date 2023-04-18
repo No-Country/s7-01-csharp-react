@@ -16,6 +16,7 @@ namespace s7_01.Api.Common.DTOs.VeterinariaDTOs
         public string CUIT { get; set; }
         public string Email { get; set; }
         public string LogoURI { get; set; }
+        public string URLFotoPortada { get; set; }
         public string? Facebook { get; set; }
         public string? Instagram { get; set; }
         public string? Twitter { get; set; }

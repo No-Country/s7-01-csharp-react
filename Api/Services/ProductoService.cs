@@ -1,4 +1,5 @@
 ﻿using s7_01.Api.Common.DTO;
+using s7_01.Api.Common.DTOs.AutorizacionDTOs;
 using s7_01.Api.Common.DTOs.ProductoDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
@@ -167,6 +168,47 @@ namespace s7_01.Api.Services
 
             return response;
         }
+
+
+
+
+        public async Task<ResponseDTO> AddRangeAsync(IEnumerable<ProductoDTO> productoDTOs)
+        {
+            var productos = new List<Producto>();
+            foreach (var dto in productoDTOs)
+            {
+                var producto = new Producto
+                {
+                    VeterinariaId = dto.VeterinariaId,
+                    Nombre = dto.Nombre,
+                    Costo = dto.Costo
+                };
+                productos.Add(producto);
+            }
+
+            var response = new ResponseDTO();
+            try
+            {
+                await _productoRepository.AddRangeAsync(productos);
+                await _productoRepository.SaveAsync();
+                response.Success = true;
+                response.StatusCode = 201;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+            }
+            return response;
+        }
+
+
+
+
+
+
+
 
     }
 

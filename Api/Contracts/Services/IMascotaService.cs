@@ -10,5 +10,6 @@ namespace s7_01.Api.Contracts.Services
         Task<ResponseDTO> GetMascotaByIdAsync(int id);
         Task<ResponseDTO> AddMascotaAsync(int id, MascotaDTO mascota);
         Task<ResponseDTO> UpdateMascotaAsync(int id, MascotaDTO mascota);
+        Task<ResponseDTO> AddRangeAsync(int id, IEnumerable<MascotaDTO> mascotaDTOs);
     }
 }

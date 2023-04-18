@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Common.DTOs.AutorizacionDTOs;
 using s7_01.Api.Common.DTOs.PropietarioDTOs;
+using s7_01.Api.Common.DTOs.VeterinariaDTOs;
 using s7_01.Api.Contracts.Services;
+using s7_01.Api.DataAccess.Models;
+using s7_01.Api.Services;
 
 namespace s7_01.Api.Controllers
 {
@@ -43,7 +46,7 @@ namespace s7_01.Api.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("propietario")]
         public async Task<IActionResult> AddAsync(CreatePropietarioDTO createPropietarioDTO)
         {
             var response = await _propietarioService.AddAsync(createPropietarioDTO);
@@ -61,6 +64,21 @@ namespace s7_01.Api.Controllers
         public async Task<IActionResult> Delete(int propietarioId)
         {
             var response = await _propietarioService.RemoveAsync(propietarioId);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
+        }
+
+
+
+        [HttpPost("propietariosList")]
+        public async Task<IActionResult> AddPropietariosAsync([FromBody] IEnumerable<CreatePropietarioDTO> createPropietarioDTOs)
+        {
+            var response = await _propietarioService.AddRangeAsync(createPropietarioDTOs);
 
             if (!response.Success)
             {

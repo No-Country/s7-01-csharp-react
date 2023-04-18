@@ -3,6 +3,7 @@ using s7_01.Api.Common;
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.AutorizacionDTOs;
 using s7_01.Api.Common.DTOs.PropietarioDTOs;
+using s7_01.Api.Common.DTOs.ServicioDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess;
@@ -126,6 +127,7 @@ namespace s7_01.Api.Services
             }
             return response;
         }
+
         public async Task<ResponseDTO> FindAsync(Expression<Func<Propietario, bool>> expression)
         {
             var response = new ResponseDTO();
@@ -162,9 +164,9 @@ namespace s7_01.Api.Services
             {
                Nombre = createPropietarioDTO.Nombre,
                DNI = createPropietarioDTO.DNI,
+               URLFotoPerfil = createPropietarioDTO.URLFotoPerfil,
                Direccion= direccion,
-               Email= createPropietarioDTO.Email,
-
+               Email= createPropietarioDTO.Email
             };
 
             var response = new ResponseDTO();
@@ -218,14 +220,56 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public Task<ResponseDTO> AddRangeAsync(IEnumerable<CreatePropietarioDTO> createPropietarioDTOs)
-        {
-            throw new NotImplementedException();
-        }
-     
+        
         public ResponseDTO RemoveRangeAsync(IEnumerable<GetAutorizacionDTO> getAutorizacionDTOs)
         {
             throw new NotImplementedException();
+        }
+
+
+        
+        public async Task<ResponseDTO> AddRangeAsync(IEnumerable<CreatePropietarioDTO> createPropietarioDTOs)
+        {
+            var propietarios = new List<Propietario>();
+            foreach (var dto in createPropietarioDTOs)
+            {
+                var dir = dto.Direccion;
+
+                var direccion = new Direccion
+                {
+                    Calle = dir.Calle,
+                    Numero = dir.Numero,
+                    Ciudad = dir.Ciudad,
+                    Pais = dir.Pais,
+                    CodigoPostal = dir.CodigoPostal
+                };
+
+                var propietario = new Propietario
+                {
+                    Nombre = dto.Nombre,
+                    DNI = dto.DNI,
+                    URLFotoPerfil = dto.URLFotoPerfil,
+                    Direccion = direccion,
+                    Email = dto.Email
+                };
+                propietarios.Add(propietario);
+            }
+
+            var response = new ResponseDTO();
+            try
+            {
+                await _repository.AddRangeAsync(propietarios);
+                await _repository.SaveAsync();
+                response.Success = true;
+                response.StatusCode = 201;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.StatusCode = 500;
+                response.Message = ex.Message;
+            }
+            return response;
         }
 
     }

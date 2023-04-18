@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace s7_01.Api.DataAccess.Models
 {
@@ -10,6 +11,7 @@ namespace s7_01.Api.DataAccess.Models
         [ForeignKey("Veterinaria")]
         public int VeterinariaId { get; set; }
 
+        [JsonIgnore]
         public Veterinaria Veterinaria { get; set; }               
 
         public string Nombre { get; set; }

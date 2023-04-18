@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.MascotaDTOs;
+using s7_01.Api.Common.DTOs.VeterinariaDTOs;
 using s7_01.Api.Contracts.Services;
+using s7_01.Api.Services;
 
 namespace s7_01.Api.Controllers
 {
@@ -58,6 +60,19 @@ namespace s7_01.Api.Controllers
             ResponseDTO response = await _macotaService.UpdateMascotaAsync(id, mascotaDTO);
 
             return StatusCode(response.StatusCode, response);
+        }
+
+        [HttpPost("mascotasList")]
+        public async Task<IActionResult> AddMascotasAsync(int id, [FromBody] IEnumerable<MascotaDTO> mascotaDTOs)
+        {
+            var response = await _macotaService.AddRangeAsync(id, mascotaDTOs);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
         }
     }
 }
