@@ -3,6 +3,7 @@ import Navbar from '../../components/Layouts/Navbar'
 import FirstBlock from './FirstBlock'
 import SecondBlock from './SecondBlock'
 import ThirdBlock from './ThirdBlock'
+import FourBlock from './FourBlock'
 
 const HomeVet = () => {
   return (
@@ -11,6 +12,7 @@ const HomeVet = () => {
       <FirstBlock/>
       <SecondBlock/>    
       <ThirdBlock/>  
+      <FourBlock/>
     </div>
   )
 }
