@@ -10,7 +10,6 @@ namespace s7_01.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "User")]
     public class MascotaController : Controller
     {
         private readonly IMascotaService _macotaService;
