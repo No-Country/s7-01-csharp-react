@@ -19,7 +19,7 @@ namespace s7_01.Api.Services
             _tratamientoRepository = tratamientoRepository;
             _tratamiento = tratamiento;
         }
-        public async Task<Common.ResponseDTO> AddAsync(TratamientoDTO tratamientoDTO)
+        public async Task<ResponseDTO> AddAsync(TratamientoDTO tratamientoDTO)
         {
             var tratamiento = new Tratamiento
             {
@@ -35,7 +35,7 @@ namespace s7_01.Api.Services
             await _tratamientoRepository.AddAsync(tratamiento);
             await _tratamientoRepository.SaveAsync();
 
-            var response = new Common.ResponseDTO
+            var response = new ResponseDTO
             {
                 Success = true,
                 Result = tratamiento,
@@ -46,14 +46,14 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<Common.ResponseDTO> DeleteAsync(int id)
+        public async Task<ResponseDTO> DeleteAsync(int id)
         {
             var tratamiento = await _tratamientoRepository.GetByIdAsync(id);
-            Common.ResponseDTO response = null;
+            ResponseDTO response = null;
 
             if (tratamiento == null)
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = false,
                     Result = tratamiento,
@@ -63,7 +63,7 @@ namespace s7_01.Api.Services
             }
             else
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = true,
                     Result = tratamiento,
@@ -78,13 +78,13 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<Common.ResponseDTO> GetAllAsync()
+        public async Task<ResponseDTO> GetAllAsync()
         {
             var tratamiento = await _tratamientoRepository.GetAllAsync();
-            Common.ResponseDTO response = null;
+            ResponseDTO response = null;
             if (tratamiento != null)
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = true,
                     Result = tratamiento,
@@ -94,7 +94,7 @@ namespace s7_01.Api.Services
             }
             else
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = false,
                     Result = tratamiento,
@@ -105,14 +105,14 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<Common.ResponseDTO> GetByIdAsync(int id)
+        public async Task<ResponseDTO> GetByIdAsync(int id)
         {
             var tratamiento = await _tratamientoRepository.GetByIdAsync(id);
-            Common.ResponseDTO? response = null;
+            ResponseDTO? response = null;
 
             if (tratamiento != null)
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = true,
                     Result = tratamiento,
@@ -122,7 +122,7 @@ namespace s7_01.Api.Services
             }
             else
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = false,
                     Result = tratamiento,
@@ -133,14 +133,14 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<Common.ResponseDTO> GetTratamientoByVeterinariaIdAsync(int veterinariId)
+        public async Task<ResponseDTO> GetTratamientoByVeterinariaIdAsync(int veterinariId)
         {
             //var tratamiento = await _service.GetTratamientoByVeterinariaIdAsync(veterinariId);
             var tratamiento = await _tratamiento.GetTratamientoByVeterinariaIdAsync(veterinariId);
 
             if (tratamiento is null)
             {
-                return new Common.ResponseDTO
+                return new ResponseDTO
                 {
                     Success = false,
                     Result = null,
@@ -149,7 +149,7 @@ namespace s7_01.Api.Services
                 };
             }
 
-            var response = new Common.ResponseDTO
+            var response = new ResponseDTO
             {
                 Success = true,
                 Result = tratamiento,
@@ -160,14 +160,14 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<Common.ResponseDTO> UpdateAsync(int id, TratamientoDTOs.TratamientoDTO tratamientoDTO)
+        public async Task<ResponseDTO> UpdateAsync(int id, TratamientoDTOs.TratamientoDTO tratamientoDTO)
         {
             var tratamiento = await _tratamientoRepository.GetByIdAsync(id);
-            Common.ResponseDTO response = null;
+            ResponseDTO response = null;
 
             if (tratamiento == null)
             {
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = false,
                     Result = tratamiento,
@@ -188,7 +188,7 @@ namespace s7_01.Api.Services
 
                 await _tratamientoRepository.UpdateAsync(tratamiento);
 
-                response = new Common.ResponseDTO
+                response = new ResponseDTO
                 {
                     Success = false,
                     Result = tratamiento,

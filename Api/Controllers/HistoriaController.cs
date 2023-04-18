@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using s7_01.Api.DataAccess;
 using s7_01.Api.DataAccess.Models;
-using s7_01.Api.DataAccess.Seeds;
 
 namespace s7_01.Api.Controllers
 {
