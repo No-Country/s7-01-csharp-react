@@ -1,11 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using s7_01.Api.Common.DTOs.TratamientoDTOs;
-using s7_01.Api.Contracts.Repositories;
+﻿using Microsoft.AspNetCore.Mvc;
 using s7_01.Api.Contracts.Services;
-using s7_01.Api.Services;
 using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;
-using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;
 
 namespace s7_01.Api.Controllers;
 
