@@ -12,8 +12,8 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    [Migration("20230417002802_Initial Commit")]
-    partial class InitialCommit
+    [Migration("20230417170303_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -306,6 +306,9 @@ namespace s7_01.Migrations
                     b.Property<string>("DosisMedicamento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");

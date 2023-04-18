@@ -80,7 +80,11 @@ builder.Services.AddScoped<IGenericRepository<HistoriaClinica>, HistoriaClinicaR
 
 builder.Services.AddScoped<IGenericRepository<Vacuna>, VacunaRepository>();
 builder.Services.AddScoped<IVacunaService, VacunaService>();
-builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();  
+builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();
+
+builder.Services.AddScoped<IGenericRepository<Tratamiento>, TratamientoRepository>();
+builder.Services.AddScoped<ITratamientoService, TratamientoService>();
+builder.Services.AddScoped<ITratamientoRepository, TratamientoRepository>();
 
 builder.Services.AddCors(policyBuilder =>
     policyBuilder.AddDefaultPolicy(policy =>
@@ -89,14 +93,28 @@ builder.Services.AddCors(policyBuilder =>
 
 var app = builder.Build();
 
-using (var serviceScope = app.Services.CreateScope())
+//using (var serviceScope = app.Services.CreateScope())
+//{
+//    var services = serviceScope.ServiceProvider;
+//    var context = services.GetRequiredService<VeterinariaContext>();
+//   //TODO context.Database.EnsureDeleted();
+//    var isCreated = context.Database.EnsureCreated();
+//    if (isCreated)
+//        SeedGraph.Seed(context);
+//}
+
+var ScopeFactory =
+    app.Services.GetRequiredService<IServiceScopeFactory>();
+
+using (var scope = ScopeFactory.CreateScope())
 {
-    var services = serviceScope.ServiceProvider;
-    var context = services.GetRequiredService<VeterinariaContext>();
-   //TODO context.Database.EnsureDeleted();
-    var isCreated = context.Database.EnsureCreated();
-    if (isCreated)
+    var context = scope.ServiceProvider
+        .GetRequiredService<VeterinariaContext>();
+
+    if (context.Database.EnsureCreated())
+    {
         SeedGraph.Seed(context);
+    }
 }
 
 

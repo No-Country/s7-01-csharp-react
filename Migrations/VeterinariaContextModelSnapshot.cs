@@ -304,6 +304,9 @@ namespace s7_01.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
 

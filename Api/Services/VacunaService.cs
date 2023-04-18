@@ -113,7 +113,7 @@ public class VacunaService : IVacunaService
                 Success = false,
                 Result = vacuna,
                 Message = $"No existe una vacuna con id {id}",
-                StatusCode = 200
+                StatusCode = 404
             };
         }
         else
@@ -132,7 +132,7 @@ public class VacunaService : IVacunaService
                 Success = false,
                 Result = vacuna,
                 Message = "Vacuna actualizada correctamente",
-                StatusCode = 404
+                StatusCode = 201
             };
         }
         return response;
