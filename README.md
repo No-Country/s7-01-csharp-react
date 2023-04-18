@@ -1,6 +1,6 @@
 ![App Screenshot](https://iili.io/HvliejI.jpg)
 
-
+[![.NET](https://github.com/No-Country/s7-01-csharp-react/actions/workflows/dotnet.yml/badge.svg)](https://github.com/No-Country/s7-01-csharp-react/actions/workflows/dotnet.yml)
 # 👨‍⚕️🩺👩‍⚕️ MiMascota 🐶🐱🐴
 
 The main objective is for the user to have access to all the information about their pets through the app, and for the veterinary clinics to have access to all the information about their patients, including their respective medical histories, treatments, vaccines, and so on.
