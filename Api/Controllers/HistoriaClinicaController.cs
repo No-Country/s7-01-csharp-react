@@ -45,7 +45,6 @@ namespace s7_01.Api.Controllers
             return Ok(response.Result);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> AddAsync(CreateHistoriaClinicaDTO createHistoriaClinicaDTO)
         {
@@ -78,6 +77,23 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
+
+        [HttpGet("historiaclinica/mascota/{mascotaId}")]
+        public async Task<IActionResult> GetHistoriaClinicaByMascotaIdAsync(int mascotaId)
+        {
+            var response = await _historiaClinicaService.GetHistoriaClinicaByMascotaId(mascotaId);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return Ok(response.Result);
+        }
+
+
+
+
     }
 }
 

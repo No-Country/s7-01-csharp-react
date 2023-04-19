@@ -1,6 +1,7 @@
 ﻿using s7_01.Api.Common.DTO;
+using s7_01.Api.Common.DTOs.VacunaDTOs;
 using s7_01.Api.DataAccess.Models;
-using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;
+using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTO;
 
 namespace s7_01.Api.Contracts.Services;
 

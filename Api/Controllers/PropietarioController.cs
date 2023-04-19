@@ -51,12 +51,7 @@ namespace s7_01.Api.Controllers
         {
             var response = await _propietarioService.AddAsync(createPropietarioDTO);
 
-            if (!response.Success)
-            {
-                return StatusCode(response.StatusCode, response.Message);
-            }
-
-            return Ok(response.Result);
+            return StatusCode(response.StatusCode, response);
         }
 
 
@@ -80,12 +75,7 @@ namespace s7_01.Api.Controllers
         {
             var response = await _propietarioService.AddRangeAsync(createPropietarioDTOs);
 
-            if (!response.Success)
-            {
-                return StatusCode(response.StatusCode, response.Message);
-            }
-
-            return Ok(response.Result);
+            return StatusCode(response.StatusCode, response);
         }
     }
 }
