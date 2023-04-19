@@ -6,6 +6,10 @@ using s7_01.Api.Repositories;
 using s7_01.Api.Services.Email;
 using Microsoft.Data.Sql;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using Microsoft.Data.Sqlite;
+using static System.Net.Mime.MediaTypeNames;
+using System.IO;
 
 namespace s7_01.Api.Controllers
 {
@@ -222,6 +226,49 @@ namespace s7_01.Api.Controllers
 
 
             return Ok(true);
+        }
+
+        [HttpGet("GetDb")]
+        public FileResult GetDbBackup()
+        {
+            string MimeType = "application/octet-stream";
+            var fileName = "backupDb.db";
+            //      backup(fileName);
+
+            using (var fs = System.IO.File.Open(fileName, FileMode.Open,FileAccess.Read))
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    fs.CopyTo(memoryStream);
+
+                    byte[] byteArray = memoryStream.ToArray();
+                    return File(byteArray, MimeType, fileName);
+                }
+            }
+        }
+
+        [HttpGet("DoBackup")]
+        public IActionResult GenerateBackup()
+        {
+            var fileName = "backupDb.db";
+            backup(fileName);
+            return Ok();
+        }
+
+        [NonAction]
+        private void backup(string strDestination)
+        {
+            using (var location = new SqliteConnection(@"Data Source=vet.db;"))
+            using (var destination = new SqliteConnection(@"Data Source=backupDb.db;"))
+            {
+                location.Open();
+                destination.Open();
+                location.BackupDatabase(destination);
+                destination.Close();
+                location.Close();
+            }
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
         }
 
         /*
