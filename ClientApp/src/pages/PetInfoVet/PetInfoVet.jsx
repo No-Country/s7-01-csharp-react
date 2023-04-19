@@ -8,7 +8,7 @@ import ThirdBlock from './ThirdBlock'
 
 const PetInfoVet = () => {
     return (
-        <div className='mx-auto container'>
+        <div className='mx-auto container '>
             <Navbar />
             <PetCard />
             <ThirdBlock />
