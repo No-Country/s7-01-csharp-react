@@ -18,7 +18,7 @@ export function AppRouter() {
         <Route path="/petinfo" element={<PetInfo />} />
         <Route path="/add-mascot" element={<AddPet />} />
         <Route path="/veterinary" element={<HomeVet/>} />
-        <Route path="/petvet" element={<PetVet/>} />
+        <Route path="/propvet" element={<PetVet/>} />
       </Routes>
     </>
   );
