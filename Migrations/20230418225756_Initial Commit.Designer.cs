@@ -12,8 +12,8 @@ using s7_01.Api.DataAccess;
 namespace s7_01.Migrations
 {
     [DbContext(typeof(VeterinariaContext))]
-    [Migration("20230416005916_AddUserRole")]
-    partial class AddUserRole
+    [Migration("20230418225756_Initial Commit")]
+    partial class InitialCommit
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -123,8 +123,7 @@ namespace s7_01.Migrations
 
                     b.Property<string>("Especie")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaNacimento")
                         .HasColumnType("datetime2");
@@ -141,6 +140,10 @@ namespace s7_01.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("URLFotoPerfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -321,6 +324,9 @@ namespace s7_01.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("HistoriaClinicaId")
                         .HasColumnType("int");
 
@@ -390,6 +396,10 @@ namespace s7_01.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("URLFotoPerfil")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasDiscriminator().HasValue("Propietario");
                 });
 
@@ -439,6 +449,10 @@ namespace s7_01.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Twitter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("URLFotoPortada")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Whatsapp")

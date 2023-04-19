@@ -4,7 +4,7 @@ using s7_01.Api.Common.DTOs.TratamientoDTOs;
 using s7_01.Api.Contracts.Repositories;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
-using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;
+using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTO;
 
 namespace s7_01.Api.Services
 {
@@ -82,7 +82,7 @@ namespace s7_01.Api.Services
         {
             var tratamiento = await _tratamientoRepository.GetAllAsync();
             ResponseDTO response = null;
-            if (tratamiento != null)
+            if (tratamiento.Any())
             {
                 response = new ResponseDTO
                 {
@@ -97,9 +97,9 @@ namespace s7_01.Api.Services
                 response = new ResponseDTO
                 {
                     Success = false,
-                    Result = tratamiento,
+                    Result = null,
                     Message = "No se encontraron tratamientos",
-                    StatusCode = 200
+                    StatusCode = 404
                 };
             }
             return response;
@@ -160,7 +160,7 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<ResponseDTO> UpdateAsync(int id, TratamientoDTOs.TratamientoDTO tratamientoDTO)
+        public async Task<ResponseDTO> UpdateAsync(int id, TratamientoDTO tratamientoDTO)
         {
             var tratamiento = await _tratamientoRepository.GetByIdAsync(id);
             ResponseDTO response = null;
