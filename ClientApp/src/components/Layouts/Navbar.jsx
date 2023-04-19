@@ -14,6 +14,7 @@ const Navbar = () => {
   const match = useMatch("/");
   const navigate = useNavigate();
 
+  // const [propietario, setPropietario] = useState([])
   useEffect(() => {
     getUser();
   }, []);
