@@ -8,6 +8,7 @@ import { AddPet } from "../pages/AddPet";
 import PetInfo from "../pages/PetInfo/PetInfo";
 import HomeVet from "../pages/HomeVet/HomeVet";
 import PetVet from "../pages/PetVet/PetVet";
+import PetInfoVet from "../pages/PetInfoVet/PetInfoVet";
 
 export function AppRouter() {
   return (
@@ -19,6 +20,7 @@ export function AppRouter() {
         <Route path="/add-mascot" element={<AddPet />} />
         <Route path="/veterinary" element={<HomeVet/>} />
         <Route path="/propvet" element={<PetVet/>} />
+        <Route path="/petinfovet" element={<PetInfoVet/>} />
       </Routes>
     </>
   );

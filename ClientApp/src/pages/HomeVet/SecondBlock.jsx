@@ -12,7 +12,7 @@ const SecondBlock = () => {
             </div>
             <div className="mt-6 flex w-full justify-around">             
 
-                <Link to={`/app/petInfo`}>
+                <Link to={`/app/petInfoVet`}>
                     <div className="">
                         <img
                             src={imgPerro}
