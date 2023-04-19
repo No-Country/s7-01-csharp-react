@@ -7,8 +7,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <ShowPets />
-      <RememberCards />
+      <ShowPets />      
       <ClinicCard />
     </>
   );

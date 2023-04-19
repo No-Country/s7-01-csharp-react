@@ -8,11 +8,11 @@ import { WhatsappLogo } from "@phosphor-icons/react";
 export function OtherClinic() {
   return (
     <>
-      <div className="p-4 border-[1px] border-solid border-[#999CA0] rounded-lg flex flex-col gap-2">
+      <div className="p-4 bg-white rounded-lg flex flex-col gap-2">
         <h2 className="text-[#010B1D] not-italic font-medium text-xl">
           Otras clinicas cercanas
         </h2>
-        <div className="flex flex-row justify-center gap-4">
+        <div className="flex flex-row justify-start gap-4">
           <div className="w-12 h-12 rounded-full bg-slate-500">
             <img
               className="w-full h-full rounded-full object-cover object-center"

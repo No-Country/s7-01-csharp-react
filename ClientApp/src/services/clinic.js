@@ -11,10 +11,10 @@ export const getClinicById = async (id) => {
   return res.data;
 };
 
-export const getServicesClinic = async (id) => {
-  console.log(id, "axios servicios");
-  const baseUrl = `${BASE_URL}servicios/${id}`;
-  console.log(baseUrl);
-  const res = await axios.get(baseUrl);
-  return res.data;
-};
+// export const getServicesClinic = async (id) => {
+//   console.log(id, "axios servicios");
+//   const baseUrl = `${BASE_URL}servicios/${id}`;
+//   console.log(baseUrl);
+//   const res = await axios.get(baseUrl);
+//   return res.data;
+// };
