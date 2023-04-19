@@ -11,8 +11,8 @@ const FourBlock = () => {
             <tr>
               <th scope="col" className="px-1 py-2">Paciente</th>
               <th scope="col" className="px-1 py-2">Última Consulta</th>
-              <th scope="col" className="px-1 py-2">Próxima Cita</th>
-              <th scope="col" className="px-1 py-2">Últimas Observaciones</th>
+              <th scope="col" className="px-1 py-2">Tratamiento</th>
+              <th scope="col" className="px-1 py-2">Observaciones</th>
             </tr>
           </thead>
           <tbody>

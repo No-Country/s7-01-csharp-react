@@ -14,11 +14,14 @@ import { OtherClinic } from "../../components/OtherClinic";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function Clinic() {
-  const { hola, services } = useClinic();
+  const { clinic } = useClinic();
 
-  console.log(hola);
-  console.log(services);
-  console.log(services.costo);
+  console.log(clinic);
+
+  console.log(
+    "🚀 ~ file: index.jsx:31 ~ Clinic ~ clinic.logoUri:",
+    clinic.logoURI
+  );
 
   return (
     <>
@@ -26,37 +29,32 @@ export function Clinic() {
         <Navbar />
       </header>
 
-      <main className="flex flex-col gap-8">
-        <section className="container relative mx-auto">
-          <CoverClinic />
+      <main className="my-4 mx-4 grid grid-cols-1 gap-8 lg:grid-cols-3 lg:container lg:mx-auto lg:mt-6">
+        <section className="flex flex-col gap-8 lg:col-span-2">
+          <article className="relative">
+            <CoverClinic logo={clinic.logoURI} />
+            <div className="bg-white pt-20 p-4 rounded-b-lg border-0">
+              <DataClinic name={clinic.nombre} />
+              <ContactSocialNetwork
+                icon={<WhatsappLogo size={20} />}
+                title="Enviar Whatsapp"
+              />
+            </div>
+          </article>
+          <article>
+            <InfoClinic />
+          </article>
+          <article>
+            <ServiceClinic />
+          </article>
+          <article>
+            <SocialNetwork />
+          </article>
         </section>
 
-        <section className="mt-10 mx-4">
-          <DataClinic />
-        </section>
-
-        <section className="mx-4">
-          <ContactSocialNetwork
-            icon={<WhatsappLogo size={20} />}
-            title="Enviar Whatsapp"
-          />
-        </section>
-
-        <section className="mx-4">
-          <InfoClinic />
-        </section>
-
-        <section className="mx-4">
-          <ServiceClinic />
-        </section>
-
-        <section className="mx-4">
-          <SocialNetwork />
-        </section>
-
-        <section className="mx-4">
+        <aside className="lg:col-span-1">
           <OtherClinic />
-        </section>
+        </aside>
       </main>
     </>
   );
