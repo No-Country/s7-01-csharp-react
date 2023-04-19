@@ -8,6 +8,7 @@ namespace s7_01.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize("Bearer")]
     [Authorize(Roles = "User")]
     public class MascotaController : Controller
     {

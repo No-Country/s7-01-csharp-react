@@ -12,6 +12,7 @@ using System.Reflection;
 using s7_01.Api.DataAccess.Seeds;
 using System.Text.Json.Serialization;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,30 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.CustomSchemaIds(x => x.GetCustomAttributes<DisplayNameAttribute>()
                               .SingleOrDefault()?.DisplayName ?? x.Name);
+
+    var securityscheme = new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Description = "Autorizacion JWT con el esquema Bearer. Ejemplo : \"Bearer\"",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+        }
+    };
+    c.AddSecurityDefinition("Bearer", securityscheme);
+
+    var securityRequirement = new OpenApiSecurityRequirement
+    {
+        {
+            securityscheme, new string [] {}
+        }
+    };
+
+    c.AddSecurityRequirement(securityRequirement);
 });
 
 
