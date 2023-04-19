@@ -7,6 +7,7 @@ import { Clinic } from "../pages/Clinic";
 import { AddPet } from "../pages/AddPet";
 import PetInfo from "../pages/PetInfo/PetInfo";
 import HomeVet from "../pages/HomeVet/HomeVet";
+import PetVet from "../pages/PetVet/PetVet";
 
 export function AppRouter() {
   return (
@@ -17,6 +18,7 @@ export function AppRouter() {
         <Route path="/petinfo" element={<PetInfo />} />
         <Route path="/add-mascot" element={<AddPet />} />
         <Route path="/veterinary" element={<HomeVet/>} />
+        <Route path="/petvet" element={<PetVet/>} />
       </Routes>
     </>
   );
