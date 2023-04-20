@@ -57,7 +57,7 @@ const ShowPets = () => {
           </div>
         </Link>
         {mascots.map((mascot) => (
-          <Link key={mascot.id} to={`/app/petInfo`}>
+          <Link key={mascot.id} to={`/app/petInfo/${mascot.id}`}>
             <div className="">
               <img
                 src={mascot.urlFotoPerfil}

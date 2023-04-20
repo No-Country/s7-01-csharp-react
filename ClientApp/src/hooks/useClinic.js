@@ -15,10 +15,10 @@ export function useClinic() {
 
   useEffect(() => {
     console.log("consultando");
-    getClinic();
+    getClinic(id);
   }, []);
 
-  const getClinic = async () => {
+  const getClinic = async (id) => {
     try {
       const response = await getClinicById(id);
       const vet = response.result;

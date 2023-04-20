@@ -17,11 +17,7 @@ export function Clinic() {
   const { clinic } = useClinic();
 
   console.log(clinic);
-
-  console.log(
-    "🚀 ~ file: index.jsx:31 ~ Clinic ~ clinic.logoUri:",
-    clinic.logoURI
-  );
+  // console.log(clinic.direccion?.calle);
 
   return (
     <>
@@ -34,7 +30,7 @@ export function Clinic() {
           <article className="relative">
             <CoverClinic logo={clinic.logoURI} />
             <div className="bg-white pt-20 p-4 rounded-b-lg border-0">
-              <DataClinic name={clinic.nombre} />
+              <DataClinic name={clinic.nombre} direccion={clinic.direccion} />
               <ContactSocialNetwork
                 icon={<WhatsappLogo size={20} />}
                 title="Enviar Whatsapp"

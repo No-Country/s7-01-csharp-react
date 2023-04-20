@@ -16,11 +16,11 @@ export function AppRouter() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/clinic/:id" element={<Clinic />} />
-        <Route path="/petinfo" element={<PetInfo />} />
+        <Route path="/petinfo/:id" element={<PetInfo />} />
         <Route path="/add-mascot" element={<AddPet />} />
-        <Route path="/veterinary" element={<HomeVet/>} />
-        <Route path="/propvet/:id" element={<PetVet/>} />
-        <Route path="/petinfovet/:id" element={<PetInfoVet/>} />
+        <Route path="/veterinary" element={<HomeVet />} />
+        <Route path="/propvet/:id" element={<PetVet />} />
+        <Route path="/petinfovet/:id" element={<PetInfoVet />} />
       </Routes>
     </>
   );

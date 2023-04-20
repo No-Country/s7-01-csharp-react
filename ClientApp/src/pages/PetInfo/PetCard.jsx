@@ -1,18 +1,19 @@
 import React from "react";
-import imgPerro from "../../assets/images/imgPerro.png"
+import imgPerro from "../../assets/images/imgPerro.png";
 
-const PetCard = () => {
+const PetCard = ({ pet }) => {
   return (
     <>
       <div className="mt-4 w-[328px] h-[275px] ml-4 ">
-        <img src={imgPerro} alt="perro" className="mt-6" />
-       
-        <p className="mt-2 text-[24px]">
-          {"{nombre de la"} <br />
-          {"mascota}"}
-        </p>
+        <img
+          src={pet.urlFotoPerfil}
+          alt="perro"
+          className="mt-6 rounded-full object-cover object-center"
+        />
+
+        <p className="mt-2 text-[24px]">{pet.nombre}</p>
         <p className="mt-2 text-gray-150">
-        {"{Especie}"}-{"{Sexo}"} 
+          {pet.especie}-{pet.sexo}
         </p>
       </div>
     </>
