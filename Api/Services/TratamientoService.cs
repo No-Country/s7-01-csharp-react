@@ -133,10 +133,10 @@ namespace s7_01.Api.Services
             return response;
         }
 
-        public async Task<ResponseDTO> GetTratamientoByVeterinariaIdAsync(int veterinariId)
+        public async Task<ResponseDTO> GetTratamientosByVeterinariaIdAsync(int veterinariId)
         {
             //var tratamiento = await _service.GetTratamientoByVeterinariaIdAsync(veterinariId);
-            var tratamiento = await _tratamiento.GetTratamientoByVeterinariaIdAsync(veterinariId);
+            var tratamiento = await _tratamiento.GetTratamientosByVeterinariaIdAsync(veterinariId);
 
             if (tratamiento is null)
             {

@@ -5,7 +5,7 @@ using s7_01.Api.Contracts.Services;
 using s7_01.Api.DataAccess.Models;
 using s7_01.Api.Repositories;
 using System.Net.WebSockets;
-using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTOs;
+using static s7_01.Api.Common.DTOs.VacunaDTOs.VacunaDTO;
 
 namespace s7_01.Api.Services;
 

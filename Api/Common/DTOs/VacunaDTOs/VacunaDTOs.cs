@@ -1,7 +1,15 @@
-﻿namespace s7_01.Api.Common.DTOs.VacunaDTOs;
+﻿using System.Text.Json.Serialization;
 
-public class VacunaDTOs
+namespace s7_01.Api.Common.DTOs.VacunaDTOs;
+
+public class VacunaDTO
 {
-    public record VacunaDTO(int VacunaId, string Nombre, string LoteSerial, int HistoriaClinicaId,
-    bool EsDosisUnica, DateTime FechaAplicacion, DateTime ProximaAplicacion);
+    [JsonIgnore]
+    public int VacunaId { get; set; }
+    public string Nombre { get; set; }
+    public string LoteSerial { get; set; }
+    public int HistoriaClinicaId { get; set; }
+    public bool EsDosisUnica { get; set; }
+    public DateTime FechaAplicacion { get; set; }
+    public DateTime ProximaAplicacion { get; set; }
 }

@@ -11,9 +11,9 @@ namespace s7_01.Api.Repositories
         {
         }
 
-        public async Task<Tratamiento> GetTratamientoByVeterinariaIdAsync(int veterinariaId)
+        public async Task<List<Tratamiento>> GetTratamientosByVeterinariaIdAsync(int veterinariaId)
         {
-            var tratamiento = await _context.Set<Tratamiento>().FirstOrDefaultAsync(t => t.VeterinariaId == veterinariaId);
+            var tratamiento = await _context.Set<Tratamiento>().Where(t => t.VeterinariaId == veterinariaId).ToListAsync();
             return tratamiento;
         }
     }

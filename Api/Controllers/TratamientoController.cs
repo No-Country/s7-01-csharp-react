@@ -54,10 +54,10 @@ public class TratamientoController : ControllerBase
         return Ok(response.Result);
     }
 
-    [HttpGet("gettratamientobyveterinariaId/{id}")]
+    [HttpGet("gettratamientosbyveterinariaId/{id}")]
     public async Task<IActionResult> GetTratamientoByVeterinariaId(int id)
     {
-        var response = await _tratamientoService.GetTratamientoByVeterinariaIdAsync(id);
+        var response = await _tratamientoService.GetTratamientosByVeterinariaIdAsync(id);
         return StatusCode(response.StatusCode, response);
     }
 }
