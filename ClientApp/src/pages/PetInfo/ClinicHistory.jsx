@@ -8,7 +8,7 @@ const ClinicHistory = () => {
           Informacion Medica
         </button>        
       </div> */}
-      <div className="mt-11 flex gap-20 ml-2 p-8">
+      <div className="mt-4 flex gap-20 ml-2 p-8">
         <h2 className="ml-4 text-2xl font-bold">Historial Clínico</h2>
       </div>
     </>

@@ -10,8 +10,8 @@ const ClinicCard = () => {
   const { clinicas, services } = useAllClinics();
   // console.log(clinicas);
   return (
-    <div className="container mx-auto">
-      <div className="mt-8 px-2 ">
+    <div className="container mx-auto my-8 ">
+      <div className="px-2 ">
         <h3 className="mt-4 font-bold">Clínicas Veterinarias</h3>
         <div className="mt-4 w-[328px] h-[40px] md:w-[900px] md:h-[21px] rounded-xl  flex items-center gap-2">
           <MagnifyingGlass size={20} />

@@ -49,8 +49,8 @@ const ShowPets = () => {
       <div className="mt-6 flex w-full justify-around">
         <Link to={`/app/add-mascot`}>
           <div className="relative">
-            <div className="h-16 w-16 rounded-full border bg-gray-100 hover:border-purple-700">
-              <PawPrint size={28} className="absolute left-4 top-4" />
+            <div className="h-16 w-16 md:h-20 md:w-20 rounded-full border bg-gray-100 hover:border-purple-700 flex justify-center items-center">
+              <PawPrint size={36} />
             </div>
             <p className="text-center">Agregar</p>
             <p className="text-center">Mascota</p>
@@ -62,7 +62,7 @@ const ShowPets = () => {
               <img
                 src={mascot.urlFotoPerfil}
                 alt="perro"
-                className="h-16 w-16 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer"
+                className="h-16 w-16 md:h-20 md:w-20 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer"
               />
               <p className="text-center">{mascot.nombre}</p>
             </div>
