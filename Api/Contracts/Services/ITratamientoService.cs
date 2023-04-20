@@ -1,6 +1,7 @@
 ﻿using s7_01.Api.Common;
 using s7_01.Api.Common.DTO;
-using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;
+using s7_01.Api.Common.DTOs.TratamientoDTOs;
+using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTO;
 
 namespace s7_01.Api.Contracts.Services;
 

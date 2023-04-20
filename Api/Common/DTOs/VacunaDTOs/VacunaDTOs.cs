@@ -2,7 +2,7 @@
 
 namespace s7_01.Api.Common.DTOs.VacunaDTOs;
 
-public class VacunaDTO
+public class VacunaDTOs
 {
     [JsonIgnore]
     public int VacunaId { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using s7_01.Api.Common.DTOs.TratamientoDTOs;
 using s7_01.Api.Contracts.Services;
-using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTOs;
+using static s7_01.Api.Common.DTOs.TratamientoDTOs.TratamientoDTO;
 
 namespace s7_01.Api.Controllers;
 

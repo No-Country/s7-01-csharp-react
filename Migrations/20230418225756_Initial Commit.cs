@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace s7_01.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCommit : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,28 +30,16 @@ namespace s7_01.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Persona",
+                name: "Roles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DNI = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    URLFotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RazonSocial = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CUIT = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LogoURI = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Facebook = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Instagram = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Twitter = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Whatsapp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Persona", x => x.Id);
+                    table.PrimaryKey("PK_Roles", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -70,6 +58,65 @@ namespace s7_01.Migrations
                         name: "FK_Historias_Mascotas_MascotaId",
                         column: x => x.MascotaId,
                         principalTable: "Mascotas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Persona",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DNI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    URLFotoPerfil = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdRole = table.Column<int>(type: "int", nullable: true),
+                    RoleId = table.Column<int>(type: "int", nullable: true),
+                    RazonSocial = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CUIT = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LogoURI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    URLFotoPortada = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Facebook = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Instagram = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Twitter = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Whatsapp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Persona", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Persona_Roles_RoleId",
+                        column: x => x.RoleId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vacunas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LoteSerial = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HistoriaClinicaId = table.Column<int>(type: "int", nullable: false),
+                    EsDosisUnica = table.Column<bool>(type: "bit", nullable: false),
+                    FechaAplicacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProximaAplicacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vacunas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vacunas_Historias_HistoriaClinicaId",
+                        column: x => x.HistoriaClinicaId,
+                        principalTable: "Historias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -252,30 +299,6 @@ namespace s7_01.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Vacunas",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LoteSerial = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    HistoriaClinicaId = table.Column<int>(type: "int", nullable: false),
-                    EsDosisUnica = table.Column<bool>(type: "bit", nullable: false),
-                    FechaAplicacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ProximaAplicacion = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vacunas", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Vacunas_Historias_HistoriaClinicaId",
-                        column: x => x.HistoriaClinicaId,
-                        principalTable: "Historias",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Autorizaciones_MascotaId",
                 table: "Autorizaciones",
@@ -301,6 +324,11 @@ namespace s7_01.Migrations
                 name: "IX_MascotaPropietarios_PropietarioId",
                 table: "MascotaPropietarios",
                 column: "PropietarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Persona_RoleId",
+                table: "Persona",
+                column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Productos_VeterinariaId",
@@ -365,6 +393,9 @@ namespace s7_01.Migrations
 
             migrationBuilder.DropTable(
                 name: "Historias");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Mascotas");

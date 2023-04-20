@@ -120,8 +120,7 @@ namespace s7_01.Migrations
 
                     b.Property<string>("Especie")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("FechaNacimento")
                         .HasColumnType("datetime2");
