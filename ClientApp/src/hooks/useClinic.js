@@ -26,7 +26,6 @@ export function useClinic() {
       // const res = await getServicesClinic(idVet);
       // setServices(res);
     } catch (error) {
-      console.log("🚀 ~ file: useClinic.js:29 ~ getClinic ~ error:", error);
       console.log(error);
     }
   };

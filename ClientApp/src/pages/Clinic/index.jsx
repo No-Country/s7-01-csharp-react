@@ -16,7 +16,7 @@ import { WhatsappLogo } from "@phosphor-icons/react";
 export function Clinic() {
   const { clinic } = useClinic();
 
-  console.log(clinic);
+  // console.log(clinic);
   // console.log(clinic.direccion?.calle);
 
   return (
