@@ -11,8 +11,13 @@ import AccessClinic from "./AccessClinic";
 import { usePet } from "../../hooks/usePet";
 
 const PetInfo = () => {
-  const { pet } = usePet();
-  console.log("🚀 ~ file: PetInfo.jsx:15 ~ PetInfo ~ pet:", pet);
+  const { pet, tratamientos, vacunas } = usePet();
+  // console.log("🚀 ~ file: PetInfo.jsx:15 ~ PetInfo ~ vacunas:", vacunas);
+  console.log(
+    "🚀 ~ file: PetInfo.jsx:15 ~ PetInfo ~ tratamientos:",
+    tratamientos
+  );
+  // console.log("🚀 ~ file: PetInfo.jsx:15 ~ PetInfo ~ pet:", pet);
 
   return (
     <>
@@ -23,7 +28,9 @@ const PetInfo = () => {
         <div className="flex flex-col md:flex-row justify-start gap-8 md:p-6">
           <div className="w-full md:w-5/12">
             <h2 className="font-bold text-lg"> Tratamientos</h2>
-            <Medication />
+            {tratamientos.map((trata) => (
+              <Medication key={trata.tipoTratamiento} tratamiento={trata} />
+            ))}
           </div>
 
           <div className="w-full md:w-5/12">

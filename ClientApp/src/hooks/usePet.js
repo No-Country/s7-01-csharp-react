@@ -5,11 +5,14 @@ import { useParams } from "react-router-dom";
 
 // services
 import { getPetyId } from "../services/pet";
+import { getHistoryPet } from "../services/history";
 
 export function usePet() {
   const { id } = useParams();
 
   const [pet, setPet] = useState({});
+  const [tratamientos, setTratamientos] = useState([]);
+  const [vacunas, setVacunas] = useState([]);
 
   useEffect(() => {
     console.log("consultando pet");
@@ -19,13 +22,15 @@ export function usePet() {
   const getPet = async (id) => {
     try {
       const response = await getPetyId(id);
-      // console.log("🚀 ~ file: usePet.js:22 ~ getPet ~ response:", response);
       const pet = response.result;
+      const res = await getHistoryPet(5);
+      setTratamientos(res.tratamientos);
+      setVacunas(res.vacunas);
       setPet(pet);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return { pet };
+  return { pet, tratamientos, vacunas };
 }
