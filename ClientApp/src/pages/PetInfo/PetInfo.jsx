@@ -36,7 +36,7 @@ const PetInfo = () => {
           <div className="w-full md:w-5/12">
             <h2 className="font-bold text-lg"> Vacunación</h2>
             {[...vacunas].reverse().map((vacu) => (
-              <VaccinationCard vacuna={vacu} />
+              <VaccinationCard key={vacu.id} vacuna={vacu} />
             ))}
           </div>
         </div>
