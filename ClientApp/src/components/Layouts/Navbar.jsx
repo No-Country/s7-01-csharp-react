@@ -23,7 +23,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="mx-auto flex justify-between w-full p-4 bg-white">
+    <nav className="mx-auto flex justify-between w-full p-2 bg-white sticky shadow-lg z-10">
       {match ? (
         <div className="text-2xl cursor-pointer">
           <img src={Logo} alt="Logo" className="w-[130px] h-[32] mt-2 ml-2 " />
