@@ -8,21 +8,28 @@ import { veterinaryAproved } from "../../services/veterinaryAproved";
 
 const HomeVet = () => {
   const [Mascotas, setMascotas] = useState();
-  const getMascotas = async ()=>{
-    let response = await veterinaryAproved(1)
-    setMascotas(response)
-  }
+  const getMascotas = async () => {
+    let response = await veterinaryAproved(1);
+    console.log(
+      "🚀 ~ file: HomeVet.jsx:13 ~ getMascotas ~ response:",
+      response
+    );
+    setMascotas(response);
+  };
 
   useEffect(() => {
-    getMascotas()
+    getMascotas();
   }, []);
   return (
-    <div className="container mx-auto w-full h-full">
+    <>
       <Navbar />
-      <FirstBlock />
-      <SecondBlock mascotas={Mascotas} />    
-      <FourBlock />
-    </div>
+
+      <div className="container mx-auto w-full h-full">
+        <FirstBlock />
+        <SecondBlock mascotas={Mascotas} />
+        <FourBlock />
+      </div>
+    </>
   );
 };
 
