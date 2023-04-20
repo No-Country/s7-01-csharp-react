@@ -24,9 +24,7 @@ const ClinicCard = () => {
       </div>
       <div className="container mt-8 mx-auto grid gap-4 gap-x-16 justify-center md:grid-cols-2 lg:grid-cols-3">
         {clinicas.map((clinica) => (
-          <Link key={clinica.id} to={`app/clinic/${clinica.id}`}>
-            <MiniClinic clinica={clinica} />
-          </Link>
+          <MiniClinic key={clinica.id} clinica={clinica} />
         ))}
       </div>
     </div>

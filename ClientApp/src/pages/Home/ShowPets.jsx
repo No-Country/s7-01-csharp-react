@@ -26,10 +26,10 @@ const ShowPets = () => {
       // console.log(id);
       // console.log("cargando mascota");
       const response = await getMascotByUser(id);
-      // console.log(
-      //   "🚀 ~ file: ShowPets.jsx:27 ~ getmascot ~ response:",
-      //   response.result
-      // );
+      console.log(
+        "🚀 ~ file: ShowPets.jsx:27 ~ getmascot ~ response:",
+        response.result
+      );
 
       setMascots(response.result);
     } catch (error) {

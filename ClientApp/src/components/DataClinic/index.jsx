@@ -4,7 +4,9 @@ export function DataClinic({ className, name, direccion }) {
   return (
     <div className="flex flex-col">
       <div className="mb-2">
-        <h1 className="text-[#010B1D] not-italic font-medium text-2xl">
+        <h1
+          className={`text-[#010B1D] not-italic font-medium text-2xl ${className}`}
+        >
           {name}
         </h1>
       </div>

@@ -14,10 +14,10 @@ import { OtherClinic } from "../../components/OtherClinic";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function Clinic() {
-  const { clinic } = useClinic();
+  const { clinic, services } = useClinic();
 
-  // console.log(clinic);
-  // console.log(clinic.direccion?.calle);
+  // console.log("🚀 ~ file: index.jsx:18 ~ Clinic ~ services:", services);
+  // console.log("🚀 ~ file: index.jsx:18 ~ Clinic ~ clinic:", clinic);
 
   return (
     <>
@@ -41,7 +41,7 @@ export function Clinic() {
             <InfoClinic />
           </article>
           <article>
-            <ServiceClinic />
+            <ServiceClinic servicios={services} />
           </article>
           <article>
             <SocialNetwork />
@@ -49,7 +49,7 @@ export function Clinic() {
         </section>
 
         <aside className="lg:col-span-1">
-          <OtherClinic />
+          <OtherClinic idNotClinic={clinic.id} />
         </aside>
       </main>
     </>

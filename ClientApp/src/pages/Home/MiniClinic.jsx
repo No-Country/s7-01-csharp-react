@@ -7,6 +7,8 @@ import {
 } from "@phosphor-icons/react";
 import perro from "../../assets/images/perro.png";
 
+import { Link } from "react-router-dom";
+
 const MiniClinic = ({ clinica }) => {
   // console.log(clinica.direccion.calle);
   // console.log(clinica);
@@ -15,11 +17,13 @@ const MiniClinic = ({ clinica }) => {
     <div className="w-[394px] h-[149px] flex flex-col gap-4 justify-center items-center text-center rounded-xl bg-white p-4">
       <div className="flex ml-4">
         <div className="w-16 h-16 rounded-full flex mt-2 border-2 border-black">
-          <img
-            className="rounded-full object-cover object-center"
-            src={clinica.logoURI}
-            alt="perrito"
-          />
+          <Link to={`app/clinic/${clinica.id}`}>
+            <img
+              className="rounded-full object-cover object-center"
+              src={clinica.logoURI}
+              alt="perrito"
+            />
+          </Link>
         </div>
         <div className="ml-4 text-center mt-2">
           <p className="font-bold">{clinica.nombre}</p>
