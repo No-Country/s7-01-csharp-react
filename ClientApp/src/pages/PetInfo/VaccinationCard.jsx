@@ -5,7 +5,7 @@ import { myFecha } from "../../utils/fecha";
 const VaccinationCard = ({ vacuna }) => {
   return (
     <div className="w-full flex flex-col gap-1">
-      <div className=" h-[120px] bg-secondary-50 ml-4 mr-4  mt-2 flex flex-col gap-2 rounded-lg">
+      <div className="bg-secondary-50 ml-4 mr-4  mt-2 flex flex-col gap-2 rounded-lg p-4">
         <h1 className="font-bold ml-5 mt-2">{vacuna.nombre}</h1>
         <p className="ml-5 text-[13px]">
           Fecha de aplicación: {myFecha(vacuna.fechaAplicacion)}
