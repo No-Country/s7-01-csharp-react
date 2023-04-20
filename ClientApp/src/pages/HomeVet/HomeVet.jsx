@@ -10,8 +10,7 @@ const HomeVet = () => {
     <div className="container mx-auto w-full h-full">
       <Navbar />
       <FirstBlock />
-      <SecondBlock />
-      <ThirdBlock />
+      <SecondBlock />    
       <FourBlock />
     </div>
   );

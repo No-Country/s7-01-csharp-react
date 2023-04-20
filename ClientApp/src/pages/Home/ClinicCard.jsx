@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const ClinicCard = () => {
   const { clinicas, services } = useAllClinics();
-  console.log(clinicas);
+  // console.log(clinicas);
   return (
     <div className="container mx-auto">
       <div className="mt-8 px-2 ">
@@ -22,17 +22,6 @@ const ClinicCard = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 md:flex md:flex-row md:justify-start  gap-4 justify-between mt-4 container">
-        {services.map((service) => (
-          <button
-            key={service.id}
-            className="bg-primary-150 rounded-xl px-2 py-1"
-          >
-            {service.nombre}
-          </button>
-        ))}
-      </div>
-
       <div className="container mt-8 mx-auto h-screen  grid gap-4 gap-x-16 justify-center md:grid-cols-2 lg:grid-cols-3">
         {clinicas.map((clinica) => (
           <Link key={clinica.id} to={`app/clinic/${clinica.id}`}>

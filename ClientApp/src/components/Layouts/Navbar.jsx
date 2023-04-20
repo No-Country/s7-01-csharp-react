@@ -3,30 +3,19 @@ import { CaretLeft } from "@phosphor-icons/react";
 
 import { useMatch, useNavigate } from "react-router-dom";
 
+// redux
+import { useSelector } from "react-redux";
+
 import { Button } from "../common";
 
 import Logo from "../../assets/images/Logo.svg";
-import profilePic from "../../assets/images/profilePic.png";
-import { getAllUsers } from "../../services/getAllUsers";
 
 const Navbar = () => {
-  // const [propietario, setPropietario] = useState([])
   const match = useMatch("/");
   const navigate = useNavigate();
 
-  // const [propietario, setPropietario] = useState([])
-  useEffect(() => {
-    getUser();
-  }, []);
-  const getUser = async () => {
-    try {
-      const res = await getAllUsers();
-      console.log(res);
-      // setPropietario(res)
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const fotoPerfil = useSelector((state) => state.fotoPerfil);
+  // console.log("🚀 ~ file: Navbar.jsx:20 ~ Navbar ~ userId:", userId);
 
   const handleBack = () => {
     console.log("click");
@@ -54,7 +43,7 @@ const Navbar = () => {
 
       <div className="cursor-pointer">
         <img
-          src={profilePic}
+          src={fotoPerfil}
           alt="profilePic"
           className="w-8 h-8 rounded-full mt-2 mr-2"
         />

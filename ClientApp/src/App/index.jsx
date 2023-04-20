@@ -1,20 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-// import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { PublicRoutes, PrivateRoutes, AuthRouter, AppRouter } from "../router";
 
 export function App() {
   // usa una variable de estado para verificar si el usuario está conectado
-  // const authenticate = useSelector((state) => state.authenticate);
-  const authenticate = true;
+  const authenticate = useSelector((state) => state.authenticate);
+  // const authenticate = true;
   console.log(authenticate, " routes");
   return (
     <BrowserRouter>
-      
-      <Routes >
-    
-        <Route path="/" element={<Home/>} />
+      <Routes>
+        <Route path="/" element={<Home />} />
         <Route
           path="/auth/*"
           element={

@@ -14,12 +14,11 @@ const PetInfo = () => {
   return (
     <div className='container mx-auto'>
       <Navbar/>
-      <PetCard/>
-      <RememberCards/>
+      <PetCard/>      
       <ClinicHistory/>
       <VaccinationCard/>
-      <Medication/>  
-      <AccessClinic/>      
+      <Medication/> 
+          
     </div >
   )
 }
