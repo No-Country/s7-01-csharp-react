@@ -23,8 +23,8 @@ const ShowPets = () => {
 
   const getmascot = async (id) => {
     try {
-      console.log(id);
-      console.log("cargando mascota");
+      // console.log(id);
+      // console.log("cargando mascota");
       const response = await getMascotByUser(id);
       console.log(
         "🚀 ~ file: ShowPets.jsx:27 ~ getmascot ~ response:",
@@ -37,7 +37,7 @@ const ShowPets = () => {
     }
   };
 
-  console.log(mascots);
+  // console.log(mascots);
 
   return (
     <div className="container mx-auto">
@@ -49,20 +49,20 @@ const ShowPets = () => {
       <div className="mt-6 flex w-full justify-around">
         <Link to={`/app/add-mascot`}>
           <div className="relative">
-            <div className="h-16 w-16 rounded-full border bg-gray-100 hover:border-purple-700">
-              <PawPrint size={28} className="absolute left-4 top-4" />
+            <div className="h-16 w-16 md:h-20 md:w-20 rounded-full border bg-gray-100 hover:border-purple-700 flex justify-center items-center">
+              <PawPrint size={36} />
             </div>
             <p className="text-center">Agregar</p>
             <p className="text-center">Mascota</p>
           </div>
         </Link>
         {mascots.map((mascot) => (
-          <Link key={mascot.id} to={`/app/petInfo`}>
+          <Link key={mascot.id} to={`/app/petInfo/${mascot.id}`}>
             <div className="">
               <img
                 src={mascot.urlFotoPerfil}
                 alt="perro"
-                className="h-16 w-16 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer"
+                className="h-16 w-16 md:h-20 md:w-20 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer"
               />
               <p className="text-center">{mascot.nombre}</p>
             </div>

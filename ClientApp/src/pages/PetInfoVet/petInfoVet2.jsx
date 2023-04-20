@@ -1,16 +1,12 @@
-import React from "react";
-import Navbar from "../../components/Layouts/Navbar";
-import PetCard from "./PetCard";
-import RememberCards from "../Home/RememberCards";
-import ClinicHistory from "./ClinicHistory";
-import VaccinationCard from "./VaccinationCard";
-import Medication from "./Medication";
-import AccessClinic from "./AccessClinic";
-
-// custom hook
 import { usePet } from "../../hooks/usePet";
+import Navbar from "../../components/Layouts/Navbar";
+import PetCard from "../PetInfo/PetCard";
+import ClinicHistory from "../PetInfo/ClinicHistory";
+import Medication from "../PetInfo/Medication";
+import VaccinationCard from "../PetInfo/VaccinationCard";
+import ThirdBlock from "./ThirdBlock";
 
-const PetInfo = () => {
+const PetInfoVet2 = () => {
   const { pet, tratamientos, vacunas } = usePet();
   console.log("🚀 ~ file: PetInfo.jsx:15 ~ PetInfo ~ vacunas:", vacunas);
   console.log(
@@ -24,6 +20,7 @@ const PetInfo = () => {
       <Navbar />
       <div className="container mx-auto">
         <PetCard pet={pet} />
+        <ThirdBlock />
         <ClinicHistory />
         <div className="flex flex-col md:flex-row justify-start gap-8 md:p-6">
           <div className="w-full md:w-5/12">
@@ -45,4 +42,4 @@ const PetInfo = () => {
   );
 };
 
-export default PetInfo;
+export default PetInfoVet2;
