@@ -45,7 +45,7 @@ const Navbar = () => {
         <img
           src={fotoPerfil}
           alt="profilePic"
-          className="w-8 h-8 rounded-full mt-2 mr-2"
+          className="w-12 h-12 rounded-full mt-2 mr-2"
         />
       </div>
     </nav>

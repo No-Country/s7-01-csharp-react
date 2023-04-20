@@ -15,13 +15,24 @@ const PetInfo = () => {
   console.log("🚀 ~ file: PetInfo.jsx:15 ~ PetInfo ~ pet:", pet);
 
   return (
-    <div className="container mx-auto">
+    <>
       <Navbar />
-      <PetCard pet={pet} />
-      <ClinicHistory />
-      <VaccinationCard />
-      <Medication />
-    </div>
+      <div className="container mx-auto">
+        <PetCard pet={pet} />
+        <ClinicHistory />
+        <div className="flex flex-col md:flex-row justify-start gap-8 md:p-6">
+          <div className="w-full md:w-5/12">
+            <h2 className="font-bold text-lg"> Tratamientos</h2>
+            <Medication />
+          </div>
+
+          <div className="w-full md:w-5/12">
+            <h2 className="font-bold text-lg"> Vacunación</h2>
+            <VaccinationCard />
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

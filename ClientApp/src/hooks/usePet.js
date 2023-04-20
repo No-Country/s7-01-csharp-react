@@ -14,7 +14,7 @@ export function usePet() {
   useEffect(() => {
     console.log("consultando pet");
     getPet(id);
-  }, []);
+  }, [id]);
 
   const getPet = async (id) => {
     try {
