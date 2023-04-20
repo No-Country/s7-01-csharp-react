@@ -24,6 +24,7 @@ namespace s7_01.Api.Repositories
         public async Task<IEnumerable<Autorizacion>> GetAutorizacionesByVeterinariaIdAsync(int veterinariaId)
         {
             return await _context.Set<Autorizacion>()
+                                 .Include(a => a.Mascota)
                                  .Where(a => a.VeterinariaId == veterinariaId)
                                  .ToListAsync();
         }
