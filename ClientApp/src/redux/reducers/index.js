@@ -1,5 +1,7 @@
 const initialState = {
   authenticate: true,
+  userId: 9,
+  fotoPerfil: "https://iili.io/HV7Uexn.jpg",
 };
 
 export default function rootReducer(state = initialState, action) {

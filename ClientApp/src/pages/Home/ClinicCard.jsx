@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const ClinicCard = () => {
   const { clinicas, services } = useAllClinics();
-  console.log(clinicas);
+  // console.log(clinicas);
   return (
     <div className="container mx-auto">
       <div className="mt-8 px-2 ">
