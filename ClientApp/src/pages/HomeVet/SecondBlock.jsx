@@ -24,11 +24,11 @@ const SecondBlock = ({mascotas}) => {
                  <Link key={m.id} to={`/app/petInfoVet/${m.mascotaId}`}>
                     <div className="">
                         <img
-                            src={imgPerro}
+                            src={m.mascota.urlFotoPerfil}
                             alt="perro"
                             className="h-16 w-16 rounded-full hover:scale-110 hover:duration-500 hover:transition-all cursor-pointer"
                         />
-                        <p className="text-center">{"Mascota"}</p>
+                        <p className="text-center">{m.mascota.nombre}</p>
                     </div>
                 </Link>
                ))}

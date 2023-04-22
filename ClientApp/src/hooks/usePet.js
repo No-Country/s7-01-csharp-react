@@ -23,7 +23,7 @@ export function usePet() {
     try {
       const response = await getPetyId(id);
       const pet = response.result;
-      const res = await getHistoryPet(5);
+      const res = await getHistoryPet(id);
       setTratamientos(res.tratamientos);
       setVacunas(res.vacunas);
       setPet(pet);
@@ -31,6 +31,8 @@ export function usePet() {
       console.log(error);
     }
   };
-
+  console.log(pet)
+  console.log(tratamientos)
+  console.log(vacunas)
   return { pet, tratamientos, vacunas };
 }
