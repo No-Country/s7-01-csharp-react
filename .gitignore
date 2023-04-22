@@ -230,3 +230,33 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+/appsettings.Development.json
+/ClientApp/dist
+/ClientApp/node_modules
+
+
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+/ClientApp//node_modules
+
+# testing
+/ClientApp/coverage
+
+# production
+/ClientApp/build
+
+# misc
+/ClientApp/.DS_Store
+/ClientApp/.env.local
+/ClientApp/.env.development.local
+/ClientApp/.env.test.local
+/ClientApp/.env.production.local
+
+/ClientApp/pnpm-debug.log*
+/ClientApp/yarn-debug.log*
+/ClientApp/yarn-error.log*
+/appsettings.Development.json
+/vet.db
+/vet.db-shm
+/vet.db-wal
