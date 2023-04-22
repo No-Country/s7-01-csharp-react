@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using s7_01.Api.Common.DTO;
 using s7_01.Api.Common.DTOs.AutorizacionDTOs;
 using s7_01.Api.Contracts.Services;
 using s7_01.Api.Services;
@@ -108,5 +109,20 @@ namespace s7_01.Api.Controllers
 
             return Ok(response.Result);
         }
+
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<ResponseDTO>> RemoveAutorizacionById(int id)
+        {
+            var response = await _autorizacionService.RemoveAutorizacionByIdAsync(id);
+
+            if (!response.Success)
+            {
+                return StatusCode(response.StatusCode, response.Message);
+            }
+
+            return StatusCode(response.StatusCode, response.Message);
+        }
+
     }
 }

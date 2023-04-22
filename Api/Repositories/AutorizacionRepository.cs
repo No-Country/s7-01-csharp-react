@@ -35,7 +35,15 @@ namespace s7_01.Api.Repositories
         }
 
 
-
+        public async Task RemoveAutorizacionById(int id)
+        {
+            var autorizacion = await _context.Set<Autorizacion>().FindAsync(id);
+            if (autorizacion == null)
+            {
+                throw new Exception("No se encontró la autorización con el id especificado.");
+            }
+            _context.Set<Autorizacion>().Remove(autorizacion);
+        }
 
     }
 }

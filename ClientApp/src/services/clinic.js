@@ -2,15 +2,24 @@ import axios from "axios";
 import { BASE_URL } from "../const/backend";
 
 export const getClinicById = async (id) => {
+<<<<<<< HEAD
   console.log(id, "axios");
   const baseUrl = `${BASE_URL}Veterinaria/${id}`;
   // const baseUrl = "http://mimascota.somee.com/api/Veterinaria/1";
 
   console.log(baseUrl);
+=======
+  // console.log(id, "axios");
+  const baseUrl = `${BASE_URL}Veterinaria/${id}`;
+  // const baseUrl = "http://mimascota.somee.com/api/Veterinaria/1";
+
+  // console.log(baseUrl);
+>>>>>>> aca0c765fa2d510625ef751a8ad51e40cb2bbc00
   const res = await axios.get(baseUrl);
   return res.data;
 };
 
+<<<<<<< HEAD
 // export const getServicesClinic = async (id) => {
 //   console.log(id, "axios servicios");
 //   const baseUrl = `${BASE_URL}servicios/${id}`;
@@ -18,3 +27,12 @@ export const getClinicById = async (id) => {
 //   const res = await axios.get(baseUrl);
 //   return res.data;
 // };
+=======
+export const getServicesClinic = async (id) => {
+  // console.log(id, "axios servicios");
+  const baseUrl = `${BASE_URL}servicios/${id}/servicios`;
+  // console.log(baseUrl);
+  const res = await axios.get(baseUrl);
+  return res.data;
+};
+>>>>>>> aca0c765fa2d510625ef751a8ad51e40cb2bbc00

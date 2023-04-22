@@ -277,6 +277,41 @@ namespace s7_01.Api.Services
             return response;
         }
 
+
+        public async Task<ResponseDTO> RemoveAutorizacionByIdAsync(int id)
+        {
+            var response = new ResponseDTO();
+
+            try
+            {
+                var entity = await _repository.GetByIdAsync(id);
+
+                if (entity == null)
+                {
+                    response.Success = false;
+                    response.Message = "Authorization not found.";
+                    response.StatusCode = 404;
+                    return response;
+                }
+
+                _autorizacionRepository.RemoveAutorizacionById(id);
+                await _repository.SaveAsync();
+                response.Success = true;
+                response.Message = "Authorization successfully removed";
+                response.StatusCode = 200;
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = ex.Message;
+                response.StatusCode = 500;
+            }
+
+            return response;
+        }
+
+
+
     }
 
 }

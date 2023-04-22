@@ -14,6 +14,7 @@ import { OtherClinic } from "../../components/OtherClinic";
 import { WhatsappLogo } from "@phosphor-icons/react";
 
 export function Clinic() {
+<<<<<<< HEAD
   const { clinic } = useClinic();
 
   console.log(clinic);
@@ -22,6 +23,12 @@ export function Clinic() {
     "🚀 ~ file: index.jsx:31 ~ Clinic ~ clinic.logoUri:",
     clinic.logoURI
   );
+=======
+  const { clinic, services } = useClinic();
+
+  // console.log("🚀 ~ file: index.jsx:18 ~ Clinic ~ services:", services);
+  // console.log("🚀 ~ file: index.jsx:18 ~ Clinic ~ clinic:", clinic);
+>>>>>>> aca0c765fa2d510625ef751a8ad51e40cb2bbc00
 
   return (
     <>
@@ -34,7 +41,11 @@ export function Clinic() {
           <article className="relative">
             <CoverClinic logo={clinic.logoURI} />
             <div className="bg-white pt-20 p-4 rounded-b-lg border-0">
+<<<<<<< HEAD
               <DataClinic name={clinic.nombre} />
+=======
+              <DataClinic name={clinic.nombre} direccion={clinic.direccion} />
+>>>>>>> aca0c765fa2d510625ef751a8ad51e40cb2bbc00
               <ContactSocialNetwork
                 icon={<WhatsappLogo size={20} />}
                 title="Enviar Whatsapp"
@@ -45,7 +56,11 @@ export function Clinic() {
             <InfoClinic />
           </article>
           <article>
+<<<<<<< HEAD
             <ServiceClinic />
+=======
+            <ServiceClinic servicios={services} />
+>>>>>>> aca0c765fa2d510625ef751a8ad51e40cb2bbc00
           </article>
           <article>
             <SocialNetwork />
@@ -53,7 +68,11 @@ export function Clinic() {
         </section>
 
         <aside className="lg:col-span-1">
+<<<<<<< HEAD
           <OtherClinic />
+=======
+          <OtherClinic idNotClinic={clinic.id} />
+>>>>>>> aca0c765fa2d510625ef751a8ad51e40cb2bbc00
         </aside>
       </main>
     </>

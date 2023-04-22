@@ -10,5 +10,7 @@ namespace s7_01.Api.Contracts.Repositories
         Task<IEnumerable<Autorizacion>> GetAutorizacionesByVeterinariaIdAsync(int veterinariaId);
 
         Task<Autorizacion> GetAutorizacionByMascotaIdAndVeterinariaIdAsync(GetAutorizacionDTO getAutorizacionDTO);
+
+        Task RemoveAutorizacionById(int id);
     }
 }

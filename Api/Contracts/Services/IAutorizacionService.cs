@@ -19,5 +19,7 @@ namespace s7_01.Api.Contracts.Services
         Task<ResponseDTO> GetAutorizacionesByMascotaIdAsync(int mascotaId);
         Task<ResponseDTO> GetAutorizacionesByVeterinaIdAsync(int veterinariaId);
         Task<ResponseDTO> GetAutorizacionByMascotaIdAndVeterinariaIdAsync(GetAutorizacionDTO getAutorizacionDTO);
+
+        Task<ResponseDTO> RemoveAutorizacionByIdAsync(int id);
     }
 }
